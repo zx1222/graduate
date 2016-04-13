@@ -1,0 +1,117 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.container{
+    width: 540px;
+    height: 960px;
+    overflow: hidden;
+}
+.content{
+    width: 100%;
+    height: 890px;
+    background-image: url(../img/loginimg/loginbackimg1.jpg);
+    
+}
+.btn-login-box{
+    width: 340px;
+    height: 250px;
+    float: left;
+    margin-top: 280px;
+
+}
+.btn-loginset-box{
+    width:200px;
+    height: 180px;
+    float: left;
+    margin-top: 400px;
+}
+.btn-login{
+    display: block;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background-color: #3B3B44;
+    margin: 40px 130px;
+    color:#fff;
+    line-height: 170px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "微软雅黑";
+    font-size: 25px;
+}
+.btn-login:hover{
+    background-color: #ACD738;
+    color:azure;
+    box-shadow: 0px 0px 14px 0px #fff;
+}
+.btn-loginset{
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 40px 0px;
+    background-color: #5a6662;
+}
+.btn-loginset img{
+    width: 40px;
+    height: 40px;
+    margin: 10px 10px;
+}
+.content-p{
+    clear: both;
+    width: 100%;
+    height: 70px;
+}
+.content-p p{
+    font-size: 17px;
+    color: #fff;
+    line-height: 35px;
+    margin: 0px 70px;
+    text-align: center;
+}
+.footer{
+    width: 100%;
+    height: 80px;
+    background-color: #eee;
+}
+.footer ul{
+    display: block;
+    width: 100%;
+    height: 80px;
+}
+.footer li{
+    float: left;
+    list-style: none;
+    display: block;
+    width: 135px;
+    height: 100%;
+    background-color: #3B3B44;
+}
+.footer li a{
+    width: 135px;
+    height: 100%;
+    text-decoration: none;
+}
+.footer li:hover{
+    background-color: #4D4D59;
+}
+.footer li img{
+    width: 35px;
+    height: 35px;
+    margin-top: 7px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.footer li span{
+    display: block;
+    width: 35px;
+    height: 25px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    margin: 0px auto;
+    font-family: "微软雅黑";
+}
+
+

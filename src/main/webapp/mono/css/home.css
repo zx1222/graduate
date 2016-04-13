@@ -1,0 +1,189 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.wraper{
+    width: 540px;
+    overflow: hidden;
+    position: relative;
+}
+.nav{
+    width: 540px;
+    height: 70px;
+    background-color: #3B3B44;
+    display: flex;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+.nav1{
+    flex: 1;
+    color: #fff;
+    line-height: 50px;
+    margin: 10px auto;
+    text-align: center;
+    border-right: 1px solid #eee;
+}
+.nav2{
+    flex: 1;
+    color: #fff;
+    line-height: 50px;
+    margin: 10px auto;
+    text-align: center
+}
+.content{
+    width: 540px;
+    position: relative;
+    height: auto;
+    margin-top: 70px;
+    margin-bottom: 80px;
+}
+.content .contentbox{
+    width: 540px;
+    height: 400px;
+    position: relative;
+}
+.contentbox .author-title{
+    width: 100%;
+    height: 60px;
+}
+.contentbox .authorphoto{
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+.contentbox .authorphoto img{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border-radius: 50%;
+}
+.contentbox .nameAndtime{
+    float: left;
+    width: 160px;
+    height: 50px;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.contentbox .nameAndtime .name{
+    display: block;
+    width: 160px;
+    height: 25px;
+}
+.contentbox .nameAndtime .time{
+    display: block;
+    width: 160px;
+    height: 25px;
+}
+.contentbox .sort{
+    display: block;
+    width: 60px;
+    height: 60px;
+    float: right;
+    line-height: 60px;
+}
+.contentbox .sort span{
+    display: block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.content .authorcontent{
+    width: 100%;
+    height: 340px;
+    position: relative;
+}
+.content .authorcontent a{
+    display: block;
+    width: 100%;
+    height: 340px;
+}
+.content .authorcontent .article-content{
+    width: 100%;
+    height: 340px;
+    background-image: url("../img/homeimg/content1.jpg");
+    overflow: hidden;
+}
+.content .authorcontent .article-content .article-title{
+    width: 100%;
+    height: 80px;
+    margin-top: 40px ;
+}
+.content .authorcontent .article-content .article-subhead{
+    width: 100%;
+    height:100px;
+    margin-top: 40px;
+}
+.content .authorcontent .interflow span img:hover{
+    opacity: 1;
+}
+.content .authorcontent .interflow{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    top:300px;
+}
+.content .authorcontent .interflow span{
+    display: block;
+    width: 70px;
+    height: 40px;
+    float: left;
+    margin-left: 10px;
+    color: #fff;
+}
+.content .authorcontent .interflow span img{
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+}
+.content .authorcontent .interflow span img:hover{
+    opacity: 1;
+}
+.footer{
+    width: 540px;
+    height: 80px;
+    position: fixed;
+    bottom: 0px;
+    background-color: #3B3B44;
+}
+.footer ul{
+    display: block;
+    width: 100%;
+    height: 80px;
+}
+.footer li{
+    float: left;
+    list-style: none;
+    display: block;
+    width: 135px;
+    height: 100%;
+    background-color: #3B3B44;
+}
+.footer li a{
+    width: 135px;
+    height: 100%;
+    text-decoration: none;
+}
+.footer li:hover{
+    background-color: #4D4D59;
+}
+.footer li img{
+    width: 35px;
+    height: 35px;
+    margin-top: 7px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.footer li span{
+    display: block;
+    width: 35px;
+    height: 25px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    margin: 0px auto;
+    font-family: "微软雅黑";
+}
+
