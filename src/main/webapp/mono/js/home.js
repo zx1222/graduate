@@ -1,68 +1,27 @@
 window.onload = function () {
-        var contentimgData={"data":
+
+    var article_list=[];
+    $.get("../js/article.json",function(data){
+        console.log(data);
+        article_list = JSON.parse(data);
+    });
+
+    var interflowimgData=
+    {"data":
         [
-             {"src":"content1.jpg"},
-             {"src":"content2.jpg"},
-             {"src":"content3.jpg"},
-             {"src":"content2.jpg"}
-       ]
-    }
-        var authorimgData={"data":
-        [
-             {"src":"user.jpg"},
-             {"src":"user2.jpg"},
-             {"src":"user.jpg"},
-             {"src":"user3.jpeg"}
-       ]
-    }
-        var interflowimgData={"data":
-        [
-             {"src":"zhuanfa.png"},
-             {"src":"dianzan.png"},
-             {"src":"like.png"},
-             {"src":"pinglun.png"}
-       ]
-    }
-        var authornameData={"data":
-        [
-             {"name":"夜礼服假面"},
-             {"name":"didadi"},
-             {"name":"吃土的girl"},
-             {"name":"北城以北"}
-       ]
-    }
-        var contenttimeData={"data":
-        [
-             {"time":"2016.02.12 10:11发布"},
-             {"time":"2016.02.15 14:21发布"},
-             {"time":"2016.02.02 20:45发布"},
-             {"time":"2016.02.21 21:34发布"}
-       ]
-    }
-        var contentsortData={"data":
-        [
-             {"sort":"#电影#"},
-             {"sort":"#动漫#"},
-             {"sort":"#电影#"},
-             {"sort":"#动漫#"}
-       ]
-    }
-    var articleLoader = {
-        page:1,
-        len:5,
-        getdata:function(){
-            $.get("/mono/article/list",{page:page,len:len},function(data){
-                console.log(data);
-                this.loadData(data);
-            })
-        },
-        loadData:function(data){
+            {"src":"zhuanfa.png"},
+            {"src":"dianzan.png"},
+            {"src":"like.png"},
+            {"src":"pinglun.png"}
+        ]
+    };
+
+
+        window.onscroll=function(){
             if(checkFlag()){
-
-
                 var parent=document.getElementById("content");
 
-                for(var i=0;i<contentimgData.data.length;i++){
+                for(var i=0;i<article_list.length;i++){
                     var contentbox=document.createElement("div");
                     contentbox.className="contentbox";
                     parent.appendChild(contentbox);
@@ -76,7 +35,7 @@ window.onload = function () {
                     authortitle.appendChild(authorphoto);
 
                     var authorphotoimg=document.createElement("img");
-                    authorphotoimg.src="../img/homeimg/"+authorimgData.data[i].src;
+                    authorphotoimg.src="../img/homeimg/"+article_list[i].user_info.userphoto;
                     authorphoto.appendChild(authorphotoimg);
 
                     var nameAndtime=document.createElement("div");
@@ -85,17 +44,17 @@ window.onload = function () {
 
                     var name=document.createElement("span");
                     name.className="name";
-                    name.innerHTML=authornameData.data[i].name;
+                    name.innerHTML=article_list[i].user_info.name;
                     nameAndtime.appendChild(name);
 
                     var time=document.createElement("span");
                     time.className="time";
-                    time.innerHTML=contenttimeData.data[i].time;
+                    time.innerHTML=article_list[i].article_data.time;
                     nameAndtime.appendChild(time);
 
                     var sort=document.createElement("div");
                     sort.className="sort";
-                    sort.innerHTML=contentsortData.data[i].sort;
+                    sort.innerHTML=article_list[i].article_data.sort;
                     authortitle.appendChild(sort);
 
                     var sortname=document.createElement("span");
@@ -110,14 +69,17 @@ window.onload = function () {
 
                     var articlecontent=document.createElement("div");
                     articlecontent.className="article-content";
+                    // articlecontent.style.cssText("background-image","url("../img/homeimg/"+art)")
                     contentlink.appendChild(articlecontent);
 
                     var articletitle=document.createElement("div");
                     articletitle.className="article-title";
+                    articletitle.innerHTML=article_list[i].article_data.articletitle;
                     articlecontent.appendChild(articletitle);
 
                     var articlesubhead=document.createElement("div");
                     articlesubhead.className="article-subhead";
+                    articlesubhead.innerHTML=article_list[i].article_data.articlesubhead;
                     articlecontent.appendChild(articlesubhead);
 
                     var interflow=document.createElement("div");
@@ -159,13 +121,6 @@ window.onload = function () {
                 }
             }
         }
-    }
-
-        window.onscroll=function(){
-            //articleLoader.getdata();
-            //articleLoader.page++;
-            console.log(articleLoader.page);
-        }
 }
 
 function getChildBox(parent,content){         /*用来获取content下每一个contentbox*/
@@ -184,11 +139,11 @@ function checkFlag(){                         /*监听滚动条，用来判断�
     var parent = document.getElementById("content");
     var contentbox=getChildBox(parent,"contentbox");
     var pageheight = document.documentElement.clientHeight||document.body.clientHeight;
-    var scrolltop = document.documentElement.scrollTop||document.body.scrollTop; 
+    var scrolltop = document.documentElement.scrollTop||document.body.scrollTop;
     var lastboxHeight =contentbox[contentbox.length-1].offsetTop;
-    console.log(pageheight);
-    console.log(scrolltop);
-    console.log(lastboxHeight);
+    // console.log(pageheight);
+    // console.log(scrolltop);
+    // console.log(lastboxHeight);
     if(lastboxHeight<pageheight+scrolltop){
         return true;
     }

@@ -2,14 +2,14 @@
     margin: 0px;
     padding: 0px;
 }
-.wraper{
-    width: 540px;
+.wrapper{
+    width: 360px;
     overflow: hidden;
     position: relative;
 }
 .nav{
-    width: 540px;
-    height: 70px;
+    width: 360px;
+    height: 60px;
     background-color: #3B3B44;
     display: flex;
     position: fixed;
@@ -19,7 +19,7 @@
 .nav1{
     flex: 1;
     color: #fff;
-    line-height: 50px;
+    line-height: 40px;
     margin: 10px auto;
     text-align: center;
     border-right: 1px solid #eee;
@@ -27,41 +27,41 @@
 .nav2{
     flex: 1;
     color: #fff;
-    line-height: 50px;
+    line-height: 40px;
     margin: 10px auto;
     text-align: center
 }
 .content{
-    width: 540px;
+    width: 360px;
     position: relative;
     height: auto;
-    margin-top: 70px;
-    margin-bottom: 80px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 .content .contentbox{
-    width: 540px;
-    height: 400px;
+    width: 360px;
+    height: 300px;
     position: relative;
 }
 .contentbox .author-title{
     width: 100%;
-    height: 60px;
+    height: 50px;
 }
 .contentbox .authorphoto{
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     float: left;
 }
 .contentbox .authorphoto img{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin: 5px;
     border-radius: 50%;
 }
 .contentbox .nameAndtime{
     float: left;
     width: 160px;
-    height: 50px;
+    height: 40px;
     font-size: 14px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -69,52 +69,61 @@
 .contentbox .nameAndtime .name{
     display: block;
     width: 160px;
-    height: 25px;
+    height: 20px;
 }
 .contentbox .nameAndtime .time{
     display: block;
     width: 160px;
-    height: 25px;
+    height: 20px;
 }
 .contentbox .sort{
     display: block;
     width: 60px;
-    height: 60px;
+    height: 50px;
     float: right;
-    line-height: 60px;
+    line-height: 50px;
 }
 .contentbox .sort span{
     display: block;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
     text-align: center;
 }
 .content .authorcontent{
     width: 100%;
-    height: 340px;
+    height: 250px;
     position: relative;
 }
 .content .authorcontent a{
     display: block;
     width: 100%;
-    height: 340px;
+    height: 250px;
 }
 .content .authorcontent .article-content{
     width: 100%;
-    height: 340px;
-    background-image: url("../img/homeimg/content1.jpg");
+    height: 250px;
     overflow: hidden;
+    background-image: url("../img/homeimg/content1.jpg");
 }
 .content .authorcontent .article-content .article-title{
-    width: 100%;
-    height: 80px;
-    margin-top: 40px ;
+    width: 92%;
+    height: 70px;
+    margin-top: 30px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    margin-left: 4%;
 }
 .content .authorcontent .article-content .article-subhead{
-    width: 100%;
-    height:100px;
-    margin-top: 40px;
+    width: 92%;
+    margin-left: 4%;
+    height:80px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
 }
 .content .authorcontent .interflow span img:hover{
     opacity: 1;
@@ -122,28 +131,29 @@
 .content .authorcontent .interflow{
     position: absolute;
     width: 100%;
-    height: 40px;
-    top:300px;
+    height: 30px;
+    top:220px;
 }
 .content .authorcontent .interflow span{
     display: block;
-    width: 70px;
-    height: 40px;
+    width: 50px;
+    height: 30px;
     float: left;
     margin-left: 10px;
     color: #fff;
+    font-size: 14px;
 }
 .content .authorcontent .interflow span img{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     opacity: 0.6;
 }
 .content .authorcontent .interflow span img:hover{
     opacity: 1;
 }
 .footer{
-    width: 540px;
-    height: 80px;
+    width: 360px;
+    height: 60px;
     position: fixed;
     bottom: 0px;
     background-color: #3B3B44;
@@ -151,18 +161,18 @@
 .footer ul{
     display: block;
     width: 100%;
-    height: 80px;
+    height: 70px;
 }
 .footer li{
     float: left;
     list-style: none;
     display: block;
-    width: 135px;
+    width: 90px;
     height: 100%;
     background-color: #3B3B44;
 }
 .footer li a{
-    width: 135px;
+    width: 90px;
     height: 100%;
     text-decoration: none;
 }
@@ -170,15 +180,15 @@
     background-color: #4D4D59;
 }
 .footer li img{
-    width: 35px;
-    height: 35px;
-    margin-top: 7px;
-    margin-left: 50px;
-    margin-right: 50px;
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 .footer li span{
     display: block;
-    width: 35px;
+    width: 30px;
     height: 25px;
     color: #fff;
     text-align: center;

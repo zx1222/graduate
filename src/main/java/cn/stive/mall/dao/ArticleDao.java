@@ -66,4 +66,7 @@ public class ArticleDao {
 
         jdbcTemplate.update(total_sql,args.toArray());
     }
+
+    public void getArticleDetailList(int page,int len ){
+    }
 }
