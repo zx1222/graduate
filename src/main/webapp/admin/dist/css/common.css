@@ -1,0 +1,21 @@
+button {
+    margin-left: 10px;
+}
+
+.selected {
+    background-color: #CC6600 !important;
+}
+
+i {
+    font-size: 15px;
+}
+
+
+
+.cover_img {
+    margin-bottom: 20px;
+}
+
+.show-cover {
+    width: 200px;
+}

@@ -1,10 +1,40 @@
 window.onload = function () {
 
     var article_list=[];
-    $.get("../js/article.json",function(data){
-        console.log(data);
-        article_list = JSON.parse(data);
+    var p=1;
+    var isFlip = true
+
+    $.get("/mono/article/list",{page:p,len:5},function(data) {
+        console.log(p);
+        article_list = data.data;
+        fillArticleList(article_list);
+        p++;
+        if (data.length > 0) {
+            isFlip = true;
+        }
     });
+
+
+        window.onscroll=function(){
+            if(checkFlag()&&isFlip){
+                isFlip = false;
+                console.log("scroll");
+                $.get("/mono/article/list",{page:p,len:5},function(data){
+                    console.log(p);
+                    article_list = data.data;
+                    fillArticleList(article_list);
+                    p++;
+                    if(data.length>0) {
+                        isFlip = true;
+                    }
+
+                });
+            }
+        }
+}
+
+
+function fillArticleList(article_list){
 
     var interflowimgData=
     {"data":
@@ -16,111 +46,107 @@ window.onload = function () {
         ]
     };
 
+    var parent=document.getElementById("content");
 
-        window.onscroll=function(){
-            if(checkFlag()){
-                var parent=document.getElementById("content");
+    for(var i=0;i<article_list.length;i++){
+        var contentbox=document.createElement("div");
+        contentbox.className="contentbox";
+        parent.appendChild(contentbox);
 
-                for(var i=0;i<article_list.length;i++){
-                    var contentbox=document.createElement("div");
-                    contentbox.className="contentbox";
-                    parent.appendChild(contentbox);
+        var authortitle=document.createElement("div");
+        authortitle.className="author-title";
+        contentbox.appendChild(authortitle);
 
-                    var authortitle=document.createElement("div");
-                    authortitle.className="author-title";
-                    contentbox.appendChild(authortitle);
+        var authorphoto=document.createElement("div");
+        authorphoto.className="authorphoto";
+        authortitle.appendChild(authorphoto);
 
-                    var authorphoto=document.createElement("div");
-                    authorphoto.className="authorphoto";
-                    authortitle.appendChild(authorphoto);
+        var authorphotoimg=document.createElement("img");
+        authorphotoimg.src="../img/homeimg/"+article_list[i].user_info.userphoto;
+        authorphoto.appendChild(authorphotoimg);
 
-                    var authorphotoimg=document.createElement("img");
-                    authorphotoimg.src="../img/homeimg/"+article_list[i].user_info.userphoto;
-                    authorphoto.appendChild(authorphotoimg);
+        var nameAndtime=document.createElement("div");
+        nameAndtime.className="nameAndtime";
+        authortitle.appendChild(nameAndtime);
 
-                    var nameAndtime=document.createElement("div");
-                    nameAndtime.className="nameAndtime";
-                    authortitle.appendChild(nameAndtime);
+        var name=document.createElement("span");
+        name.className="name";
+        name.innerHTML=article_list[i].user_info.name;
+        nameAndtime.appendChild(name);
 
-                    var name=document.createElement("span");
-                    name.className="name";
-                    name.innerHTML=article_list[i].user_info.name;
-                    nameAndtime.appendChild(name);
+        var time=document.createElement("span");
+        time.className="time";
+        time.innerHTML=(new Date(parseInt(parseInt(article_list[i].article_data.time)))).Format("yyyy-MM-dd hh:mm:ss");
+        nameAndtime.appendChild(time);
 
-                    var time=document.createElement("span");
-                    time.className="time";
-                    time.innerHTML=article_list[i].article_data.time;
-                    nameAndtime.appendChild(time);
+        var sort=document.createElement("div");
+        sort.className="sort";
+        sort.innerHTML=article_list[i].article_data.sort;
+        authortitle.appendChild(sort);
 
-                    var sort=document.createElement("div");
-                    sort.className="sort";
-                    sort.innerHTML=article_list[i].article_data.sort;
-                    authortitle.appendChild(sort);
+        var sortname=document.createElement("span");
+        sort.appendChild(sortname);
 
-                    var sortname=document.createElement("span");
-                    sort.appendChild(sortname);
+        var authorcontent=document.createElement("div");
+        authorcontent.className="authorcontent";
+        contentbox.appendChild(authorcontent);
 
-                    var authorcontent=document.createElement("div");
-                    authorcontent.className="authorcontent";
-                    contentbox.appendChild(authorcontent);
+        var contentlink=document.createElement("a");
+        contentlink.href="article_page.html?id="+article_list[i].article_data.id;
+        authorcontent.appendChild(contentlink);
 
-                    var contentlink=document.createElement("a");
-                    authorcontent.appendChild(contentlink);
+        var articlecontent=document.createElement("div");
+        articlecontent.className="article-content";
+        // articlecontent.style.cssText("background-image","url("../img/homeimg/"+art)")
+        contentlink.appendChild(articlecontent);
 
-                    var articlecontent=document.createElement("div");
-                    articlecontent.className="article-content";
-                    // articlecontent.style.cssText("background-image","url("../img/homeimg/"+art)")
-                    contentlink.appendChild(articlecontent);
+        var articletitle=document.createElement("div");
+        articletitle.className="article-title";
+        articletitle.innerHTML=article_list[i].article_data.articletitle;
+        articlecontent.appendChild(articletitle);
 
-                    var articletitle=document.createElement("div");
-                    articletitle.className="article-title";
-                    articletitle.innerHTML=article_list[i].article_data.articletitle;
-                    articlecontent.appendChild(articletitle);
+        var articlesubhead=document.createElement("div");
+        articlesubhead.className="article-subhead";
+        articlesubhead.innerHTML=article_list[i].article_data.articlesubhead;
+        articlecontent.appendChild(articlesubhead);
 
-                    var articlesubhead=document.createElement("div");
-                    articlesubhead.className="article-subhead";
-                    articlesubhead.innerHTML=article_list[i].article_data.articlesubhead;
-                    articlecontent.appendChild(articlesubhead);
+        var interflow=document.createElement("div");
+        interflow.className="interflow";
+        authorcontent.appendChild(interflow);
 
-                    var interflow=document.createElement("div");
-                    interflow.className="interflow";
-                    authorcontent.appendChild(interflow);
+        var interflowspan=document.createElement("span");
+        interflow.appendChild(interflowspan);
+        var interflowa=document.createElement("a");
+        interflowspan.appendChild(interflowa);
+        var interflowimg=document.createElement("img");
+        interflowimg.src="../img/homeimg/"+interflowimgData.data[0].src;
+        interflowa.appendChild(interflowimg);
 
-                    var interflowspan=document.createElement("span");
-                    interflow.appendChild(interflowspan);
-                    var interflowa=document.createElement("a");
-                    interflowspan.appendChild(interflowa);
-                    var interflowimg=document.createElement("img");
-                    interflowimg.src="../img/homeimg/"+interflowimgData.data[0].src;
-                    interflowa.appendChild(interflowimg);
+        var interflowspan=document.createElement("span");
+        interflow.appendChild(interflowspan);
+        var interflowa=document.createElement("a");
+        interflowspan.appendChild(interflowa);
+        var interflowimg=document.createElement("img");
+        interflowimg.src="../img/homeimg/"+interflowimgData.data[1].src;
+        interflowa.appendChild(interflowimg);
 
-                    var interflowspan=document.createElement("span");
-                    interflow.appendChild(interflowspan);
-                    var interflowa=document.createElement("a");
-                    interflowspan.appendChild(interflowa);
-                    var interflowimg=document.createElement("img");
-                    interflowimg.src="../img/homeimg/"+interflowimgData.data[1].src;
-                    interflowa.appendChild(interflowimg);
+        var interflowspan=document.createElement("span");
+        interflow.appendChild(interflowspan);
+        var interflowa=document.createElement("a");
+        interflowspan.appendChild(interflowa);
+        var interflowimg=document.createElement("img");
+        interflowimg.src="../img/homeimg/"+interflowimgData.data[2].src;
+        interflowa.appendChild(interflowimg);
 
-                    var interflowspan=document.createElement("span");
-                    interflow.appendChild(interflowspan);
-                    var interflowa=document.createElement("a");
-                    interflowspan.appendChild(interflowa);
-                    var interflowimg=document.createElement("img");
-                    interflowimg.src="../img/homeimg/"+interflowimgData.data[2].src;
-                    interflowa.appendChild(interflowimg);
+        var interflowspan=document.createElement("span");
+        interflow.appendChild(interflowspan);
+        var interflowa=document.createElement("a");
+        interflowspan.appendChild(interflowa);
+        var interflowimg=document.createElement("img");
+        interflowimg.src="../img/homeimg/"+interflowimgData.data[3].src;
+        interflowa.appendChild(interflowimg);
 
-                    var interflowspan=document.createElement("span");
-                    interflow.appendChild(interflowspan);
-                    var interflowa=document.createElement("a");
-                    interflowspan.appendChild(interflowa);
-                    var interflowimg=document.createElement("img");
-                    interflowimg.src="../img/homeimg/"+interflowimgData.data[3].src;
-                    interflowa.appendChild(interflowimg);
-
-                }
-            }
-        }
+    }
 }
 
 function getChildBox(parent,content){         /*用来获取content下每一个contentbox*/
@@ -141,9 +167,7 @@ function checkFlag(){                         /*监听滚动条，用来判断�
     var pageheight = document.documentElement.clientHeight||document.body.clientHeight;
     var scrolltop = document.documentElement.scrollTop||document.body.scrollTop;
     var lastboxHeight =contentbox[contentbox.length-1].offsetTop;
-    // console.log(pageheight);
-    // console.log(scrolltop);
-    // console.log(lastboxHeight);
+
     if(lastboxHeight<pageheight+scrolltop){
         return true;
     }

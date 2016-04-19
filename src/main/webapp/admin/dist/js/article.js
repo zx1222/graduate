@@ -7,13 +7,11 @@ var article = {
 
     contactArticle: function () {
 
-        var articleObj = commonJs.loadFormValue("articleForm", "id,title,category,content,description,cover_url");
-        console.log(articleObj);
+        var articleObj = commonJs.loadFormValue("articleForm", "id,title,category_id,author_name,content,description,cover_url");
         var user_info = JSON.parse($.cookie("user_info"));
-        articleObj.author_id=user_info.id;
+        articleObj.user_id=user_info.id;
 
-        console.log(articleObj);
-        $.post("/mono/article/add", articleObj, function (data) {
+        $.post("/admin/article/add", articleObj, function (data) {
             if (data.status == 0) {
                 alert("发布成功!");
                 window.location.href = "/admin/articlelist.html"
@@ -23,13 +21,12 @@ var article = {
     fillCategory:function(data){
         var cate_div= $("#category");
         for(var tmp in data){
-            console.log(tmp);
             var optionNode = commonJs.createNode("option",null,{value:data[tmp].id},data[tmp].category_name);
             cate_div[0].appendChild(optionNode);
         }
     },
     getArticleList: function () {
-        var article_url = "/mono/article/list";
+        var article_url = "/admin/article/list";
         var data = commonJs.getData(article_url)
         return data;
     },
@@ -79,22 +76,25 @@ var article = {
     },
     browsArticle: function (_id) {
         var article_detail = {};
-        var data = commonJs.getData("/mono/article", {id: _id});
+        var data = commonJs.getData("/admin/article", {id: _id});
         $("#article_detail").html(decodeURI(data.content));
         $("#article_detail").css("display", "block");
     },
     editArticle: function (_id) {
-        var data = commonJs.getData("/mono/article", {id: _id});
+
+        var data = commonJs.getData("/admin/article", {id: _id});
         this.showEditView();
         var editForm = $("#articleForm");
+        category.fillCategory(this.fillCategory);
+
         commonJs.fillForm(data, editForm)
-        alert("!!!");
-        console.log(data.cover_url);
+
         $(".show-img").attr("src", data.cover_url);
         $(".cover_img").css("display", "none");
+
     },
     delArticle: function (_id) {
-        $.get("/mono/article/del", {id: _id}, function (data) {
+        $.get("/admin/article/del", {id: _id}, function (data) {
             if (data.status == 0) {
                 alert('删除成功!');
                 article.init();
@@ -141,13 +141,10 @@ window.onload = function () {
         done: function (e, result) {
             var imgUrl = result.result.data
 
-            console.log(imgUrl);
-
             alert('上传成功！');
             $(".show-img").attr("src", imgUrl);
 
             $("#cover_url").val(imgUrl);
-            console.log("url:"+$("#cover_url").val());
         }
     })
 

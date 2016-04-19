@@ -14,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
-
 /**
  * Created by dxt on 16/4/8.
  */
@@ -27,7 +25,7 @@ public class UserService {
     @Autowired
     UserDao userDao;
 
-    public void register(User user) throws Exception {
+    public User register(User user) throws Exception {
         //TODO 限制,是否注册过 业务逻辑控制
 
         if(user.getNick_name()==null){
@@ -47,11 +45,13 @@ public class UserService {
         }
 
         try{
-            sendActivieEmail(user.getEmail(),user_id);
+           // sendActivieEmail(user.getEmail(),user_id);
         }catch(Exception e){
             LOG.error("[user],[create],[email],[Error!],[user:{}],[e:{}]",user,e);
 
         }
+        return this.userDao.getUserByPassword(user.getEmail(), user.getPassword());	//直接用phone和passowrd查.. 查不到就抛异常
+
 
 
 
@@ -103,7 +103,10 @@ public class UserService {
 
         user.setToken(token);
 
+    }
 
+    private void focus(long user_id,long visitor_id){
+        userDao.addFocus(user_id,visitor_id);
     }
 
 

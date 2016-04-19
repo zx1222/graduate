@@ -1,18 +1,13 @@
 window.onload = function(){
 
-	$("#submit_btn").click(function(){
+	$("#submit-btn").click(function(){
 		var _formObj = document.getElementById("register-form");
 		var _formValue = loadFormValue(_formObj);
-		var url = commonJs.constant.host_url+"/user/register";
+		var url = "/user/register";
 		$.post(url,_formValue,function(data){
-			if(data.status==0){
-				$("#register_result_text").text("注册成功!! 去邮箱激活");
-				$("#register_result_text").removeClass("result-text-failure");
-
-				$("#register_result_text").addClass("result-text-success");
-			}else{
-				$("#register_result_text").text("注册失败！ 请核对信息");
-				$("#register_result_text").addClass("result-text-failure");
+			if(data.status==0) {
+				alert("注册成功!请去邮箱激活!");
+				window.location.href="/mono/html/home.html";
 			}
 		});
 
@@ -30,12 +25,12 @@ window.onload = function(){
 		var _jsonText = "{";
 		for(var tmp in _inputArray){
 			var obj = _inputArray[tmp];
-			if(obj.type=="text"||obj.type=="email"||obj.type=="passowrd"){
+			if(obj.type=="text"||obj.type=="email"||obj.type=="password"){
 				
 				_jsonText += '"'+obj.name+'"'+":"+'"'+obj.value+'",';
 			}
 		}
 		_jsonText = _jsonText.slice(0,-1)+"}";
-
+		console.log(_jsonText);
 		return eval("("+_jsonText+")");
 	}

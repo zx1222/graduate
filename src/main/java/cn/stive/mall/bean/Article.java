@@ -7,7 +7,8 @@ import java.util.Date;
  */
 public class Article {
     private Long id;
-    private Long author_id;
+    private Long user_id;
+    private String author_name;
     private String title;
     private String description;
     private String cover_url;
@@ -17,12 +18,20 @@ public class Article {
     private String c_name;
     private Date create_time;
 
-    public Long getAuthor_id() {
-        return author_id;
+    public String getAuthor_name() {
+        return author_name;
     }
 
-    public void setAuthor_id(Long author_id) {
-        this.author_id = author_id;
+    public void setAuthor_name(String author_name) {
+        this.author_name = author_name;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public String getC_name() {

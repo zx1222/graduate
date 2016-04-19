@@ -2,11 +2,14 @@ package cn.stive.mall.service;
 
 import cn.stive.mall.bean.Article;
 import cn.stive.mall.bean.Category;
+import cn.stive.mall.bean.mono.ArticleDetail;
+import cn.stive.mall.bean.mono.ArticlePage;
 import cn.stive.mall.dao.ArticleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by dxt on 16/4/12.
@@ -42,5 +45,17 @@ public class ArticleService {
 
     public void updateArticle(Article article) throws Exception {
         articleDao.updateArticle(article);
+    }
+
+    public List<ArticlePage> getMonoArticleList(int page, int len){
+        return articleDao.getArticleDetailList(page,len);
+    }
+
+    public ArticleDetail getArticleDetail(long id){
+        return articleDao.getArticleDetail(id);
+    }
+
+    public List<ArticlePage> getMonoArticleList(int page,int len,long user_id){
+        return articleDao.getArticleDetailList(page,len,user_id);
     }
 }

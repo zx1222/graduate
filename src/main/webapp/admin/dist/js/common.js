@@ -69,28 +69,24 @@ commonJs.clone = function(obj) {
 }
 
 commonJs.loadFormValue = function (__formId,__selector){
+            _felementArray = $("input,textarea,select");
+            var _jsonText = "{";
+            for(var tmp in _felementArray){
+                var obj = _felementArray[tmp];
 
-
-        _felementArray = $("input,textarea,select");
-
-        var _jsonText = "{";
-        for(var tmp in _felementArray){
-            var obj = _felementArray[tmp];
-
-            if(containts(__selector,obj.name)){
-                var valueObj = obj.value;
-                if(obj.name=="content"){
-                    valueObj = encodeURI(obj.value);
+                if(containts(__selector,obj.name)||__selector==null){
+                    var valueObj = obj.value;
+                    if(obj.name=="content"){
+                        valueObj = encodeURI(obj.value);
+                    }
+                    _jsonText += '"'+obj.name+'"'+":"+'"'+valueObj+'",';
                 }
-
-
-                _jsonText += '"'+obj.name+'"'+":"+'"'+valueObj+'",';
             }
-        }
-        _jsonText = _jsonText.slice(0,-1)+"}";
+            _jsonText = _jsonText.slice(0,-1)+"}";
+            console.log(_jsonText);
+            return eval("("+_jsonText+")");
+}
 
-        return eval("("+_jsonText+")");
-    }
 
 commonJs.fillForm = function(_jsonObj,_formObj){
     for(var tmp in _jsonObj){
@@ -98,6 +94,13 @@ commonJs.fillForm = function(_jsonObj,_formObj){
 
         if(tmp=="content"){
             $('.wysihtml5-sandbox').contents().find("body").html(decodeURI(_jsonObj[tmp]));
+        }
+
+        if(inputObj[0]!=null) {
+            if (inputObj[0].tagName == "SELECT") {
+
+                console.log($("#category").children("[value=5]"));
+            }
         }
         inputObj.val(_jsonObj[tmp]);
     }
@@ -111,15 +114,16 @@ window.onload=function(){
 }
 
 function checkLogin(){
-    console.log($.cookie("user_info"));
-    var c = JSON.parse($.cookie("user_info"));
-    if(c==null){
+
+    if($.cookie("user_info")==null){
         window.location.href="/admin/pages/login/login.html";
+        return ;
     }
-    console.log(c);
+
+    var c = JSON.parse($.cookie("user_info"));
     var user_pannel = $(".user-panel");
+
     user_pannel.find(".info").find("p").text(c.nick_name);
-    console.log(user_pannel[0]);
 
 
 }

@@ -5,6 +5,7 @@ import cn.stive.mall.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,20 +17,20 @@ public class ArticleApi extends BaseHandler{
     @Autowired
     private ArticleService articleService;
 
-    @RequestMapping("mono/article/add")
+    @RequestMapping("admin/article/add")
     @ResponseBody
     public Response addArticle(Article article) throws Exception {
         articleService.addArticle(article);
         return this.success();
     }
 
-    @RequestMapping("mono/category")
+    @RequestMapping("admin/category")
     @ResponseBody
     public Response getCategory(Article article) throws Exception {
         return this.success( articleService.getCategory());
     }
 
-    @RequestMapping("mono/article/list")
+    @RequestMapping("admin/article/list")
     @ResponseBody
     public Response addArticle(@RequestParam(required = false,defaultValue = "1")int page,
                                @RequestParam(required = false,defaultValue = "20")int len) throws Exception {
@@ -38,26 +39,46 @@ public class ArticleApi extends BaseHandler{
         );
     }
 
-    @RequestMapping("/mono/article/del")
+    @RequestMapping("/admin/article/del")
     @ResponseBody
     public Response delArticle(long id){
         articleService.delArticle(id);
         return this.success();
     }
 
-    @RequestMapping("/mono/article")
+    @RequestMapping("/admin/article")
     @ResponseBody
     public Response getArticle(long id){
         return this.success(        articleService.getArticle(id)
         );
     }
 
-    @RequestMapping("/mono/article/edit")
+    @RequestMapping("/admin/article/edit")
     @ResponseBody
     public Response updateArticle(Article article) throws Exception {
         articleService.updateArticle(article);
         return this.success();
     }
 
+    @RequestMapping("/mono/article/list")
+    @ResponseBody
+    public Response getMonoArticle(@RequestParam(required = false,defaultValue = "1")int page,
+                                   @RequestParam(required = false,defaultValue = "20")int len) throws Exception {
 
+        return this.success(articleService.getMonoArticleList(page,len));
+    }
+
+    @RequestMapping("/mono/article/detail")
+    @ResponseBody
+    public Response getMonoArticle(long id) throws Exception {
+
+        return this.success(articleService.getArticleDetail(id));
+    }
+    @RequestMapping(value = "/mono/article/list/user",method = RequestMethod.GET)
+    @ResponseBody
+    public Response getUserArticle(long user_id,
+                                   @RequestParam(required = false,defaultValue = "1")int page,
+                                   @RequestParam(required = false,defaultValue = "20")int len){
+        return this.success(articleService.getMonoArticleList(page,len,user_id));
+    }
 }

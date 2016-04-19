@@ -28,8 +28,15 @@ public class UserApi extends BaseHandler {
 
     @RequestMapping(value = "/user/register", method = RequestMethod.POST)
     @ResponseBody
-    public Response register(User user, @RequestParam(required = false, defaultValue = "0") int app_id) throws Exception {
-        userService.register(user);
+    public Response register(User user, @RequestParam(required = false, defaultValue = "0") int app_id,
+                             HttpServletResponse response) throws Exception {
+        User user_info = userService.register(user);
+
+        HttpSession session = request.getSession();
+        session.setAttribute("user_info",JsonUtil.toJson(user));
+        Cookie c = new Cookie("user_info",JsonUtil.toJson(user));
+        c.setPath("/");
+        response.addCookie(c);
         return this.success();
     }
 
@@ -63,4 +70,12 @@ public class UserApi extends BaseHandler {
         }
         return this.success(user);
     }
+
+    @RequestMapping("/user/focus")
+    @ResponseBody
+    public Response focus(long user_id,long visitor_id){
+        return this.success();
+    }
+
+
 }

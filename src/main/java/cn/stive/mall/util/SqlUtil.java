@@ -1,13 +1,23 @@
 package cn.stive.mall.util;
 
 
+import cn.stive.mall.bean.Article;
+import cn.stive.mall.bean.mono.Forward;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
 import java.beans.PropertyDescriptor;
 import java.util.*;
 
 /**
  * Created by dxt on 16/4/8.
  */
+@Repository
 public class SqlUtil {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public static Map getSqlMap(Object obj,Set<String> filter) throws Exception{
         Map<String,Object> map = new HashMap<String, Object>();
@@ -116,5 +126,34 @@ public class SqlUtil {
 
     }
 
+
+    public void insert(Object obj,String table) throws Exception {
+        Map<String,Object> sql_map =  SqlUtil.getSqlMap(obj,null);
+       insert(sql_map,table);
+
+    }
+
+    public void insert(Map<String,Object> sql_map,String table){
+        List<Object> args = new ArrayList<Object>();
+        String sql = SqlUtil.getInsertSql(table,sql_map,args);
+
+        jdbcTemplate.update(sql,args.toArray());
+
+    }
+
+    public void update(Object obj,Set<String> filter,String table,long id) throws Exception {
+        Map<String,Object>sql_map = getSqlMap(obj,filter);
+        Map<String,Object>query_map = new HashMap<String, Object>();
+        query_map.put("id",id);
+
+        List<Object> args= new ArrayList<Object>();
+
+
+        String set_sql = SqlUtil.getSetSQL(sql_map,args);
+        String query_sql = SqlUtil.getQuerySQL(query_map,args,table);
+        String total_sql = "update  "+table+" "+set_sql +" "+query_sql;
+
+        jdbcTemplate.update(total_sql,args.toArray());
+    }
 
 }

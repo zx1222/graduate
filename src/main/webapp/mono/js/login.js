@@ -1,16 +1,16 @@
 window.onload = function(){
 
 	$("#submit_btn").click(function(){
-		var _formObj = document.getElementById("register-form");
-		var _formValue = commonJs.loadFormValue(_formObj);
-		var url = commonJs.constant.host_url+"/user/login/email";
+		var _formObj = document.getElementById("login_form");
+		var _formValue = loadFormValue(_formObj);
+		var url = "/user/login/email";
 		
 		$.post(url,_formValue,function(result){
 			if(result.status==0){
 				alert("登录成功！！");
 				console.log(result.data);
 				$.cookie("user_info",JSON.stringify(result.data),{expired:1,path:"/"});
-				window.location.href="http://localhost:9000";
+				window.location.href="/mono/html/home.html";
 			}
 		});
 

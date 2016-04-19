@@ -12,7 +12,6 @@ import redis.clients.jedis.Jedis;
 
 import java.util.List;
 
-//import com.dxtjt.luck.bean.Article;
 
 public class LuckCacheUtil {
 

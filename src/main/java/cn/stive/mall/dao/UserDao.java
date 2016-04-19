@@ -69,4 +69,11 @@ public class UserDao {
         String sql = "select password from u_user where u_id = ?";
         return jdbcTemplate.queryForObject(sql,new Object[]{u_id},String.class);
     }
+
+    public void addFocus(long user_id, long visitor_id){
+        String sql = "insert into u_focus (user_id,visitor_id) values(?,?)";
+        jdbcTemplate.update(sql,new Object[]{user_id,visitor_id});
+    }
 }
+
+
