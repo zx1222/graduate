@@ -5,6 +5,10 @@ import cn.stive.mall.util.CommonUtil;
 import cn.stive.mall.util.JsonUtil;
 import com.mysql.jdbc.StringUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class UserCacheUtil {
 
 	/*
@@ -13,6 +17,8 @@ public class UserCacheUtil {
 	public final static String KEY_HSET_USER = "hset:user:";
 	public final static String KEY_HSET_USER_FIELD_USERINFO = "userinfo";
 	public final static String KEY_HSET_USER_FIELD_TOKEN = "token";
+	public static Map<String,Object> user_map = new HashMap<String, Object>();
+
 
 	// 防止刷验证码
 	public final static String KEY_HSET_PHONE_LAST_VERFIY_CODE_TIME = "hset:phone:sms:lasttime";
@@ -22,9 +28,9 @@ public class UserCacheUtil {
 	}
 
 	/**
-	 * 缓存可见用户基本信息
+	 * 缓存可见用户基本信息a
 	 * 
-	 * @param user
+	 * @param
 	 */
 	public static void setUser(User user_info) {
 		String key = getRootUserKey(user_info.getId());
@@ -70,15 +76,19 @@ public class UserCacheUtil {
 	}
 
 	public static String getServerToken(long user_id) {
-		String key = getRootUserKey(user_id);
-		String field = KEY_HSET_USER_FIELD_TOKEN;
-		return JedisUtil.hget(key, field);
+		String token ="";
+		try {
+			token=	user_map.get(user_id + "").toString();
+		}catch(Exception e){
+			token = UUID.randomUUID().toString();
+			user_map.put(user_id+"",token);
+		}
+		return token;
+
 	}
 
 	public static void setServerToken(long user_id, String token) {
-		String key = getRootUserKey(user_id);
-		String field = KEY_HSET_USER_FIELD_TOKEN;
-		JedisUtil.hset(key, field, token);
+		user_map.put(user_id+"",token);
 	}
 
 	public static void cleanServerToken(long user_id) {

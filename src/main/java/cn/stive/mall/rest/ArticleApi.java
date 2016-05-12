@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by dxt on 16/4/12.
  */
 @Controller
-public class ArticleApi extends BaseHandler{
+public class
+ArticleApi extends BaseHandler{
     @Autowired
     private ArticleService articleService;
 
     @RequestMapping("admin/article/add")
     @ResponseBody
-    public Response addArticle(Article article) throws Exception {
+    public Response a(Article article) throws Exception {
         articleService.addArticle(article);
         return this.success();
     }

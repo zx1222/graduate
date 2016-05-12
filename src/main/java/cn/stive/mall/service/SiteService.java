@@ -33,5 +33,13 @@ public class SiteService {
         return siteDao.getSiteDetail(id);
     }
 
+    public void addArticle(long article_id,long site_id){
+        siteDao.insertSiteMp(article_id,site_id);
+    }
+
+    public void removeArticle(long article_id,long site_id){
+        siteDao.updateSiteMp(article_id,site_id);
+    }
+
     
 }

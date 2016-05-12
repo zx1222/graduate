@@ -52,4 +52,11 @@ public class SiteApi extends BaseHandler{
         }
         return this.success();
     }
+
+    @RequestMapping("/admin/site/add/article")
+    @ResponseBody
+    public Response methodName(long article_id,long site_id){
+
+        return this.success();
+    }
 }

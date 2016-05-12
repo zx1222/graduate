@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by dxt on 16/4/8.
  */
@@ -21,6 +24,8 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private static Logger LOG = org.slf4j.LoggerFactory.getLogger(UserService.class);
+
+    public static Map<String,Object> user_map = new HashMap<String, Object>();
 
     @Autowired
     UserDao userDao;
@@ -69,7 +74,7 @@ public class UserService {
             return user;				//返回用户信息,附带token. 每次登录token也会不同.
         }catch(EmptyResultDataAccessException e){
             LOG.warn("none user: phone = {}, password = {}", email, password);
-            throw new UnknownUserException();
+            throw new LogAndRegsiterException("用户不存在");
         }
     }
 

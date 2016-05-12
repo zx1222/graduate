@@ -21,7 +21,8 @@ public class CommentApi extends BaseHandler {
 
     @RequestMapping("/mono/article/comment")
     @ResponseBody
-    public Response comment(Comment comment){
+    public Response comment(Comment comment) throws Exception {
+        commentService.addComment(comment);
         return this.success();
     }
 
@@ -46,5 +47,7 @@ public class CommentApi extends BaseHandler {
     ){
         return this.success(commentService.getCommentList(page,len));
     }
+
+
 
 }

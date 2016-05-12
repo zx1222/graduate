@@ -44,5 +44,14 @@ public class SiteDao {
         filter.add("id");
         sqlUtil.update(site,filter,"a_site", site.getId());
     }
+
+    public void insertSiteMp(long article_id,long site_id ){
+        String sql = "insert into a_site_mp ( article_id,site_id ) values(?,?)";
+        jdbcTemplate.update(sql,new Object[]{article_id,site_id});
+    }
+    public void updateSiteMp(long article_id,long site_id ){
+        String sql = "update a_site_mp set status = 1 where article_id=? and site_id=?";
+        jdbcTemplate.update(sql,new Object[]{article_id,site_id});
+    }
 }
 

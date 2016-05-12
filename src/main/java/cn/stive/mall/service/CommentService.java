@@ -20,7 +20,6 @@ public class CommentService {
 
     public void addComment(Comment comment) throws Exception {
         commentDao.insertComment(comment);
-
     }
 
     public void forward(long article_id,long visitor_id) throws Exception {

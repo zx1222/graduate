@@ -20,6 +20,7 @@ public class ArticlePage {
 
     private UserInfo user_info;
     private ArticleData article_data;
+    private SociallyCount sociallyCount;
 
     public ArticlePage() {
         user_info = new UserInfo();
