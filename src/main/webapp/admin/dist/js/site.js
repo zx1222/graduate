@@ -11,45 +11,7 @@ site.fillSite = function (func) {
 }
 
 site.fillSiteTable = function (data) {
-    $("#site_table").DataTable({
-        data: data,
-        columns: [
-            {data: "id", title: "ID"},
-            {data: "site_name", title: "小站名称"},
-            {data: "cover_url", title: "封面"},
-            {data: "description", title: "简介"},
-            {data: "article_count", title: "文章数量"},
-            {data: "create_time", title: "创建时间"},
-            {data: null,title: "操作"}
-
-        ],
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "autoWidth": false,
-        "columnDefs": [{
-            "render": function (data, type, row) {
-                return (new Date(parseInt(data))).Format("yyyy-MM-dd hh:mm:ss");
-            },
-            targets: 5  //还可以渲染添加列.
-        },
-            {
-                "render": function (data, type, row) {
-                    return ("<img width='200' src=" + data + "/>");
-                },
-                targets: 2  //还可以渲染添加列.
-            },
-            {
-                "render": function (data, type, row) {
-                    return '<button onClick="site.browsSite(' + data.id + ')" class="btn btn-success btn-sm"><i class="fa fa-eye" ></i></button>' +
-                        '<button onClick="site.editSite(' + data.id + ')" class="btn btn-primary btn-sm"><i class="fa fa-edit " ></i></button>' +
-                        '<button onclick="site.delSite(' + data.id + ')" class="btn btn-danger btn-sm"><i class="fa fa-minus" ></i></button>';
-                },
-                "targets": 6
-            }]
-
-    });
+    $("#site_table").DataTable(table_site.tableData(data));
     $('#site_table tbody').on('click', 'tr', function () {
         $("tr").removeClass('selected');
     });
@@ -59,6 +21,8 @@ site.fillSiteTable = function (data) {
 site.browsSite = function(id){
     site.id=id;
     site.showArticleList(id);
+    commonJs.show("site_articlelist");
+
 }
 
 site.delSite = function(id){
@@ -119,7 +83,7 @@ site.showArticleList = function(site_id){
 }
 
 site.removeArticle = function(){
-    var  article_id = $(".selected")[0].cells[0].innerText;
+    var  article_id =commonJs.getTableCellValue(0);
     $.get("/admin/site/del/article",{article_id:article_id,site_id:site.id},function(data){
         if(data.status==0){
             alert("移除成功!");
@@ -134,7 +98,9 @@ site.removeArticle = function(){
 window.onload = function () {
     site.init();
 
-
+    $("#btn-add").click(function(){
+        site.showEditView();
+    })
 
     $("#submitSite").click(function(){
         site.addSite();

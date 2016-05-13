@@ -34,7 +34,14 @@ public class SiteService {
     }
 
     public void addArticle(long article_id,long site_id){
+        if(checkSameArticle(article_id,site_id)){
+            throw new RuntimeException("该文章已经添加!");
+        }
         siteDao.insertSiteMp(article_id,site_id);
+    }
+
+    private boolean checkSameArticle(long article_id,long site_id){
+        return siteDao.selecSiteMp(site_id,article_id)>0;
     }
 
     public void removeArticle(long article_id,long site_id){

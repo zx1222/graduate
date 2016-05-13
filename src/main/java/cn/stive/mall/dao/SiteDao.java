@@ -46,9 +46,14 @@ public class SiteDao {
     }
 
     public void insertSiteMp(long article_id,long site_id ){
-        String sql = "insert into a_site_mp ( article_id,site_id ) values(?,?)";
+        String sql = "insert into a_site_mp ( article_id,site_id )  values(?,?) on DUPLICATE key update status=0";
         jdbcTemplate.update(sql,new Object[]{article_id,site_id});
     }
+    public int  selecSiteMp(long article_id,long site_id){
+        String sql = "select count(*) from a_site_mp where site_id=? and article_id = ? and status = 0";
+        return jdbcTemplate.queryForInt(sql,new Object[]{article_id,site_id});
+    }
+
     public void updateSiteMp(long article_id,long site_id ){
         String sql = "update a_site_mp set status = 1 where article_id=? and site_id=?";
         jdbcTemplate.update(sql,new Object[]{article_id,site_id});

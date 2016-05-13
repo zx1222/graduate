@@ -9,7 +9,7 @@ commonJs.constant = {
     uploadUrl:"http://api.125966.com/qhb_admin/upload"
 };
 
-commonJs.getData = function(url, _func) {
+commonJs.getDataHandle = function(url, _func) {
     console.log("getdata" + url);
     var _data = {};
     $.get(url, function(data) {
@@ -83,7 +83,6 @@ commonJs.loadFormValue = function (__formId,__selector){
                 }
             }
             _jsonText = _jsonText.slice(0,-1)+"}";
-            console.log(_jsonText);
             return eval("("+_jsonText+")");
 }
 
@@ -99,7 +98,6 @@ commonJs.fillForm = function(_jsonObj,_formObj){
         if(inputObj[0]!=null) {
             if (inputObj[0].tagName == "SELECT") {
 
-                console.log($("#category").children("[value=5]"));
             }
         }
         inputObj.val(_jsonObj[tmp]);
@@ -129,7 +127,7 @@ function checkLogin(){
 }
 
 commonJs.getData = function(url,param){
-
+    console.log("getData:"+url+","+JSON.stringify(param));
     var data = {};
 
     $.ajax({
@@ -153,7 +151,8 @@ commonJs.hide = function (__objId){
 }
 commonJs.show = function (__objId){
     var obj = document.getElementById(__objId);
-    $(obj).style("display","display");
+    console.log(obj);
+    $(obj).css("display","block");
 }
 
 function containts(__selector,obj){
@@ -175,6 +174,26 @@ commonJs.replace = function(oldStr,rep_char,target_char){
 
 }
 
+commonJs.initTable = function (table_id,tableData) {
+
+    console.log("渲染表格:"+table_id);
+    if (this.datatable) {
+        this.datatable.destroy();
+    }
+    this.datatable = $(table_id).DataTable(tableData);
+    $(table_id+' tbody').on('click', 'tr', function () {
+        $("tr").removeClass('selected');
+        $(this).toggleClass('selected');
+    });
+}
+
+commonJs.getTableCellValue = function (col,id){
+    if(id){
+        return  $(id)[0].cells[col].innerText;
+
+    }
+   return  $(".selected")[0].cells[col].innerText;
+}
 
 
 
@@ -201,4 +220,21 @@ Date.prototype.Format = function(fmt)
         if(new RegExp("("+ k +")").test(fmt))
             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
     return fmt;
+}
+
+function checkSelected(){
+    if($(".selected")[0] ==undefined){
+        alert("请选中一篇文章!");
+        return false;
+    }else{
+        return true;
+    }
+}
+
+function checkResult(data){
+    if(data.status==0){
+        alert("操作成功!");
+    }else{
+        alert(data.msg);
+    }
 }

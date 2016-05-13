@@ -39,7 +39,7 @@ public class ArticleDao {
     }
 
     public List<Article> getArticleList(long site_id,int page,int len){
-        String sql = "select a.* from a_article a left join a_site_mp s on s.article_id = a.id where a.status = 0 ";
+        String sql = "select a.id,a.title,a.description,a.create_time from a_article a left join a_site_mp s on s.article_id = a.id where a.status = 0 ";
 
         List<Object> args  = new ArrayList<Object>();
         if(site_id>0){
@@ -90,7 +90,7 @@ public class ArticleDao {
     public List<ArticlePage> getArticleDetailList(int page, int len ,long user_id){
         String sql = "select a.id,u.head_url userphoto ,u.nick_name name,a.id,a.cover_url article_cover,a.create_time time,c.category_name sort,a.title articletitle,a.description articlesubhead " +
                 "from a_article a left join a_category c on c.id=a.category_id" +
-                " left join u_user u on u.id = a.user_id where 1=1 ";
+                " left join u_user u on u.id = a.user_id where 1=1 and a.status =0 ";
 
 
         List<Object> args = new ArrayList<Object>();

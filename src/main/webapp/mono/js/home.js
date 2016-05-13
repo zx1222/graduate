@@ -134,7 +134,7 @@ function fillArticleList(article_list){
 
         var interflowspan=document.createElement("span");
         interflow.appendChild(interflowspan);
-        var interflowa=document.createElement("a");
+        var interflowa=document.createElement("p");
         interflowspan.appendChild(interflowa);
         var interflowimg=document.createElement("img");
         interflowimg.src="../img/homeimg/"+interflowimgData.data[2].src;
@@ -142,7 +142,7 @@ function fillArticleList(article_list){
 
         var interflowspan=document.createElement("span");
         interflow.appendChild(interflowspan);
-        var interflowa=document.createElement("a");
+        var interflowa=document.createElement("p");
         interflowspan.appendChild(interflowa);
         var interflowimg=document.createElement("img");
         interflowimg.src="../img/homeimg/"+interflowimgData.data[3].src;

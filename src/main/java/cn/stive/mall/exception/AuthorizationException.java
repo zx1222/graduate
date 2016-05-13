@@ -1,4 +1,4 @@
-package cn.stive.mall.Exceptions;
+package cn.stive.mall.exception;
 
 /**
  * Created by dxt on 16/4/8.
