@@ -97,7 +97,7 @@ function fillArticleList(article_list){
 
         var articlecontent=document.createElement("div");
         articlecontent.className="article-content";
-        // articlecontent.style.cssText("background-image","url("../img/homeimg/"+art)")
+        articlecontent.style.backgroundImage="url("+article_list[i].article_data.article_cover+")";
         contentlink.appendChild(articlecontent);
 
         var articletitle=document.createElement("div");

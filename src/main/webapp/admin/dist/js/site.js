@@ -36,7 +36,7 @@ site.fillSiteTable = function (data) {
         },
             {
                 "render": function (data, type, row) {
-                    return ("<img width='200' src=" + data + "/>");
+                    return ("<img width='200' src=" + data + ">");
                 },
                 targets: 2  //还可以渲染添加列.
             },
