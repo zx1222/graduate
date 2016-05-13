@@ -12,6 +12,7 @@ site.fillSite = function (func) {
 
 site.fillSiteTable = function (data) {
     $("#site_table").DataTable(table_site.tableData(data));
+
     $('#site_table tbody').on('click', 'tr', function () {
         $("tr").removeClass('selected');
     });

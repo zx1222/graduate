@@ -1,6 +1,7 @@
 *{
     margin: 0px;
     padding:0px;
+    text-decoration: none;
 }
 body{
     width: 360px;
@@ -45,42 +46,42 @@ body{
     background-size: 60px 60px;
     margin: 0px 150px 0px 150px ;
 }
-.site_describlebox{
+.site_describebox{
     width:100%;
     height: auto;
 }
-.site_describlebox p{
+.site_describebox p{
     width: 100%;
     height: auto;
     text-align: center;
     font-size: 14px;
     margin-top: 10px;
 }
-.site_describlebox .sort{
+.site_describebox .sort{
     width: 100%;
     height: 40px;
     margin-top: 10px;
 }
-.site_describlebox .sort #sort1{
+.site_describebox .sort #sort1{
     width: 179px;
     height: 100%;
     text-align: center;
     border-right: 1px solid #eee;
     float: left;
 }
-.site_describlebox .sort #sort2{
+.site_describebox .sort #sort2{
     width: 179px;
     height: 100%;
     text-align: center;
     float: left;
 }
-.site_describlebox .sort img{
+.site_describebox .sort img{
     width: 30px;
     height: 30px;
     margin: auto;
     opacity: 0.3;
 }
-.site_describlebox .sort .select img{
+.site_describebox .sort .select img{
     opacity: 1;
 }
 .site_describlebox .boundary{
@@ -118,7 +119,7 @@ body{
     height: 25px;
     line-height: 25px;
 }
-.site_masterbox .user_text .user_describle{
+.site_masterbox .user_text .user_describe{
     display: block;
     width: 100%;
     height: 25px;
@@ -147,51 +148,58 @@ body{
     position: relative;
     margin-top: 10px;
 }
-.content .authorcontent{
+.content .contentbox .time{
     width: 100%;
-    height: 250px;
+    height:20px;
+    font-size: 12px;
+    color: #eee;
+    line-height: 20px;
+}
+.content .contentbox{
+    width: 100%;
+    height: 230px;
     position: relative;
 }
-.content .authorcontent a{
+.content .contentbox a{
     display: block;
     width: 100%;
     height: 230px;
 }
-.content .authorcontent .article-content{
+.content .contentbox .article-content{
     width: 100%;
     height: 230px;
     overflow: hidden;
     background-image: url("../img/homeimg/content1.jpg");
 }
-.content .authorcontent .article-content .article-title{
+.content .contentbox .article-content .article-title{
     width: 92%;
     height: 70px;
-    margin-top: 30px;
+    margin-top: 10px;
     color: #fff;
     font-size: 24px;
     font-weight: 500;
     text-align: center;
     margin-left: 4%;
 }
-.content .authorcontent .article-content .article-subhead{
+.content .contentbox .article-content .article-subhead{
     width: 92%;
     margin-left: 4%;
     height:80px;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 16px;
     color: #fff;
     text-align: center;
 }
-.content .authorcontent .interflow span img:hover{
+.content .contentbox .interflow span img:hover{
     opacity: 1;
 }
-.content .authorcontent .interflow{
+.content .contentbox .interflow{
     position: absolute;
     width: 100%;
     height: 30px;
     top:200px;
 }
-.content .authorcontent .interflow span{
+.content .contentbox .interflow span{
     display: block;
     width: 50px;
     height: 30px;
@@ -200,11 +208,11 @@ body{
     color: #fff;
     font-size: 14px;
 }
-.content .authorcontent .interflow span img{
+.content .contentbox .interflow span img{
     width: 20px;
     height: 20px;
     opacity: 0.6;
 }
-.content .authorcontent .interflow span img:hover{
+.content .contentbox .interflow span img:hover{
     opacity: 1;
 }
