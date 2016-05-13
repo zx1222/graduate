@@ -21,6 +21,17 @@ body{
 .user_site_background .nav .back{
     width: 40px;
     height: 40px;
+    float: left;
+}
+.user_site_background .nav .focus button{
+    width: 60px ;
+    height: 30px;
+    background-color: #f4c600;
+    border: none;
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 8px 0px #f4c600;
 }
 .user_site_background .nav .back img{
     width: 20px;

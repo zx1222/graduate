@@ -16,34 +16,36 @@ window.onload = function () {
             {"src":"pinglun.png"}
         ]
     };
-     var user_site_background=document.getElementById("user_site_background");
-    user_site_background.style.backgroundImage="url("+site_list[i].site_info.sitecover+")";
+
 
     window.onscroll=function(){
         if(checkFlag()){
             var parent=document.getElementById("content");
 
             for(var i=0;i<site_list.length;i++){
-                var user_site_background=document.getElementById("user_site_background");
-                user_site_background.style.backgroundImage="url("+site_list[i].site_info.site_cover+")";
 
-                var site_id=document.getElementById("site_id");
-                site_id.innerHTML=site_list[i].site_info.site_name
+                // var user_site_background=document.getElementById("user_site_background");
+                // user_site_background.style.backgroundImage="url("+site_list[i].site_info.site_cover+")";
+                //
+                // var site_id=document.getElementById("site_id");
+                // site_id.innerHTML=site_list[i].site_info.site_name
+                //
+                // var site_photo=document.getElementById("site_photo");
+                // site_photo.backgroundImage="url("+site_list[i].site_info.site_photo+")";
+                //
+                // var site_describe=document.getElementById("site_describe");
+                // ssite_describe.innerHTML=site_list[i].site_info.sitedescribe;
+                //
+                // var user_photo=document.getElementById("user_photo");
+                // user_photo.backgroundImage="url("+site_list[i].site_info.user_photo+")";
+                //
+                // var user_name=document.getElementById("user_id");
+                // user_name.innerHTML=site_list[i].site_info.user_name;
+                //
+                // var user_describe=document.getElementById("user_describe");
+                // user_describe.innerHTML=site_list[i].site_info.user_describe;
 
-                var site_photo=document.getElementById("site_photo");
-                site_photo.backgroundImage="url("+site_list[i].site_info.site_photo+")";
 
-                var site_describe=document.getElementById("site_describe");
-                ssite_describe.innerHTML=site_list[i].site_info.sitedescribe;
-
-                var user_photo=document.getElementById("user_photo");
-                user_photo.backgroundImage="url("+site_list[i].site_info.user_photo+")";
-                
-                var user_name=document.getElementById("user_id");
-                user_name.innerHTML=site_list[i].site_info.user_name;
-                
-                var user_describe=document.getElementById("user_describe");
-                user_describe.innerHTML=site_list[i].site_info.user_describe;
 
                 var contentbox=document.createElement("div");
                 contentbox.className="contentbox";
