@@ -1,9 +1,10 @@
+
 window.onload = function () {
 
-    var article_list=[];
-    $.get("../js/article.json",function(data){
+    var site_list=[];
+    $.get("../js/user_site.json",function(data){
         console.log(data);
-        article_list = JSON.parse(data);
+        site_list = JSON.parse(data);
     });
 
     var interflowimgData=
@@ -15,42 +16,69 @@ window.onload = function () {
             {"src":"pinglun.png"}
         ]
     };
-
+     var user_site_background=document.getElementById("user_site_background");
+    user_site_background.style.backgroundImage="url("+site_list[i].site_info.sitecover+")";
 
     window.onscroll=function(){
         if(checkFlag()){
             var parent=document.getElementById("content");
 
-            for(var i=0;i<article_list.length;i++){
+            for(var i=0;i<site_list.length;i++){
+                var user_site_background=document.getElementById("user_site_background");
+                user_site_background.style.backgroundImage="url("+site_list[i].site_info.site_cover+")";
+
+                var site_id=document.getElementById("site_id");
+                site_id.innerHTML=site_list[i].site_info.site_name
+
+                var site_photo=document.getElementById("site_photo");
+                site_photo.backgroundImage="url("+site_list[i].site_info.site_photo+")";
+
+                var site_describe=document.getElementById("site_describe");
+                ssite_describe.innerHTML=site_list[i].site_info.sitedescribe;
+
+                var user_photo=document.getElementById("user_photo");
+                user_photo.backgroundImage="url("+site_list[i].site_info.user_photo+")";
+                
+                var user_name=document.getElementById("user_id");
+                user_name.innerHTML=site_list[i].site_info.user_name;
+                
+                var user_describe=document.getElementById("user_describe");
+                user_describe.innerHTML=site_list[i].site_info.user_describe;
+
                 var contentbox=document.createElement("div");
                 contentbox.className="contentbox";
                 parent.appendChild(contentbox);
-
-                var authorcontent=document.createElement("div");
-                authorcontent.className="authorcontent";
-                contentbox.appendChild(authorcontent);
-
+                
                 var contentlink=document.createElement("a");
-                authorcontent.appendChild(contentlink);
+                contentbox.appendChild(contentlink);
 
                 var articlecontent=document.createElement("div");
                 articlecontent.className="article-content";
-                // articlecontent.style.cssText("background-image","url("../img/homeimg/"+art)")
+                articlecontent.style.backgroundImage="url("+site_list[i].article_info.article_cover+")";
                 contentlink.appendChild(articlecontent);
 
+                var time=document.createElement("div");
+                time.className="time";
+                articlecontent.appendChild(time);
+                
+                var time_p=document.createElement("p");
+                time_p.innerHTML=(new Date(parseInt(parseInt(site_list[i].article_info.time)))).Format("yyyy-MM-dd hh:mm:ss");
+                time.appendChild(time_p);
+                
+                
                 var articletitle=document.createElement("div");
                 articletitle.className="article-title";
-                articletitle.innerHTML=article_list[i].article_data.articletitle;
+                articletitle.innerHTML=site_list[i].article_info.article_title;
                 articlecontent.appendChild(articletitle);
 
                 var articlesubhead=document.createElement("div");
                 articlesubhead.className="article-subhead";
-                articlesubhead.innerHTML=article_list[i].article_data.articlesubhead;
+                articlesubhead.innerHTML=site_list[i].article_info.article_subhead;
                 articlecontent.appendChild(articlesubhead);
 
                 var interflow=document.createElement("div");
                 interflow.className="interflow";
-                authorcontent.appendChild(interflow);
+                contentbox.appendChild(interflow);
 
                 var interflowspan=document.createElement("span");
                 interflow.appendChild(interflowspan);

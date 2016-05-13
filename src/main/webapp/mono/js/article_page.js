@@ -16,14 +16,18 @@ var article=  {
         author.innerHTML = article_page.author;
         main_content.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+decodeURI(article_page.main_content);
     },
-    getArticleData:function (func) {
+    getArticleData:function (func,id) {
         var data;
-        $.get("/mono/article/detail?id=21", function (data) {
+        $.get("/mono/article/detail?id="+id, function (data) {
             console.log(data.data);
             func(data.data);
         })
     }
 };
 window.onload = function () {
-    article.getArticleData(article.fillArticlePage);
+    var search = window.location.search;
+    var article_id = search.split("=")[1];
+    console.log(article_id);
+
+    article.getArticleData(article.fillArticlePage,article_id);
 }

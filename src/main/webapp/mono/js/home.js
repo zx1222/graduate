@@ -97,9 +97,8 @@ function fillArticleList(article_list){
 
         var articlecontent=document.createElement("div");
         articlecontent.className="article-content";
-        $(articlecontent).css("background-image","url("+article_list[i].article_data.article_cover+")")
-        console.log(article_list[i].article_cover);
 
+        articlecontent.style.backgroundImage="url("+article_list[i].article_data.article_cover+")";
         contentlink.appendChild(articlecontent);
 
         var articletitle=document.createElement("div");
