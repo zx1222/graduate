@@ -34,10 +34,27 @@ public class ArticleDao {
     }
 
 
-
     public List<Article> getArticleList(int page,int len){
-        String sql = "select * from a_article  where status = 0 limit ?,? ";
-        return jdbcTemplate.query(sql,new Object[]{(page-1)*len,len},new BeanPropertyRowMapper<Article>(Article.class));
+        return getArticleList(0,page,len);
+    }
+
+    public List<Article> getArticleList(long site_id,int page,int len){
+        String sql = "select a.* from a_article a left join a_site_mp s on s.article_id = a.id where a.status = 0 ";
+
+        List<Object> args  = new ArrayList<Object>();
+        if(site_id>0){
+            sql += " and s.site_id=? and s.status=0";
+            args.add(site_id);
+
+        }
+
+        if(page>0&&len>0){
+            sql += " limit ? ,?";
+            args.add((page-1)*len);
+            args.add(len);
+
+        }
+        return jdbcTemplate.query(sql,args.toArray(),new BeanPropertyRowMapper<Article>(Article.class));
     }
 
     public Article getArticle(long id){

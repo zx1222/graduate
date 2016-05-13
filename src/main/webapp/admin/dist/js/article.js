@@ -30,12 +30,12 @@ var article = {
         var data = commonJs.getData(article_url)
         return data;
     },
-    initDataTable: function (data) {
+    initDataTable: function (data,table_id) {
         if (this.datatable) {
             this.datatable.destroy();
         }
-        this.datatable = $('#article_table').DataTable({
-            data: this.getArticleList(),
+        this.datatable = $(table_id).DataTable({
+            data: data,
             columns: [
                 {"data": "id", title: 'ID'},
                 {"data": "title", title: "标题"},
@@ -102,7 +102,8 @@ var article = {
         })
     },
     init: function () {
-        this.initDataTable();
+        var data = this.getArticleList();
+        this.initDataTable(data,"#article_table");
         $(".box").css("display", "none");
         $("#article_list").css("display", "block");
 

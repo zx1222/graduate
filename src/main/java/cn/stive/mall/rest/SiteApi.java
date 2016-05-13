@@ -55,8 +55,15 @@ public class SiteApi extends BaseHandler{
 
     @RequestMapping("/admin/site/add/article")
     @ResponseBody
-    public Response methodName(long article_id,long site_id){
+    public Response addArticle(long article_id,long site_id){
 
+        return this.success();
+    }
+
+    @RequestMapping("/admin/site/del/article")
+    @ResponseBody
+    public Response removeArticle(long article_id,long site_id){
+        siteService.removeArticle(article_id,site_id);
         return this.success();
     }
 }

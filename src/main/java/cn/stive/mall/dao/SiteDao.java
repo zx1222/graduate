@@ -53,5 +53,6 @@ public class SiteDao {
         String sql = "update a_site_mp set status = 1 where article_id=? and site_id=?";
         jdbcTemplate.update(sql,new Object[]{article_id,site_id});
     }
+
 }
 

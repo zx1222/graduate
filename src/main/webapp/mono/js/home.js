@@ -62,7 +62,7 @@ function fillArticleList(article_list){
         authortitle.appendChild(authorphoto);
 
         var authorphotoimg=document.createElement("img");
-        authorphotoimg.src="../img/homeimg/"+article_list[i].user_info.userphoto;
+        authorphotoimg.src=article_list[i].user_info.userphoto;
         authorphoto.appendChild(authorphotoimg);
 
         var nameAndtime=document.createElement("div");
@@ -97,7 +97,9 @@ function fillArticleList(article_list){
 
         var articlecontent=document.createElement("div");
         articlecontent.className="article-content";
-        // articlecontent.style.cssText("background-image","url("../img/homeimg/"+art)")
+        $(articlecontent).css("background-image","url("+article_list[i].article_data.article_cover+")")
+        console.log(article_list[i].article_cover);
+
         contentlink.appendChild(articlecontent);
 
         var articletitle=document.createElement("div");

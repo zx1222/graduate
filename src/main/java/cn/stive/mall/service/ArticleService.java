@@ -34,6 +34,10 @@ public class ArticleService {
         return articleDao.getArticleList(page,len);
     }
 
+    public List<Article> getArticleList(long site_id,int page,int len){
+        return articleDao.getArticleList(site_id,page,len);
+    }
+
     public Article getArticle(long id ){
         return articleDao.getArticle(id);
     }

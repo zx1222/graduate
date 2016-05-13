@@ -52,12 +52,13 @@ site.fillSiteTable = function (data) {
     });
     $('#site_table tbody').on('click', 'tr', function () {
         $("tr").removeClass('selected');
-        $(this).toggleClass('selected');
     });
+
 }
 
 site.browsSite = function(id){
-
+    site.id=id;
+    site.showArticleList(id);
 }
 
 site.delSite = function(id){
@@ -73,7 +74,6 @@ site.init = function(){
     site.fillSite(site.fillSiteTable);
 
 }
-
 
 
 site.addSite = function(){
@@ -109,12 +109,41 @@ site.showEditView= function (){
     $("#site_plain").css("display", "block");
 }
 
+site.showArticleList = function(site_id){
+    var data = commonJs.getData("/admin/article/list",{site_id:site_id})
+    article.initDataTable(data,"#site_article_table")
+    $('#site_article_table tbody').on('click', 'tr', function () {
+        $("tr").removeClass('selected');
+        $(this).toggleClass('selected');
+    });
+}
+
+site.removeArticle = function(){
+    var  article_id = $(".selected")[0].cells[0].innerText;
+    $.get("/admin/site/del/article",{article_id:article_id,site_id:site.id},function(data){
+        if(data.status==0){
+            alert("移除成功!");
+            site.browsSite(site.id);
+        }
+    });
+    site.browsSite(site.id);
+}
+
+
+
 window.onload = function () {
     site.init();
+
+
+
     $("#submitSite").click(function(){
         site.addSite();
 
     });
+
+    $("#btn-remove-article").click(function(){
+        site.removeArticle();
+    })
 
     $("#cover_img").fileupload({
         autoUpload: false,//是否自动上传

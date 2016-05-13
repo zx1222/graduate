@@ -34,11 +34,14 @@ ArticleApi extends BaseHandler{
     @RequestMapping("admin/article/list")
     @ResponseBody
     public Response addArticle(@RequestParam(required = false,defaultValue = "1")int page,
-                               @RequestParam(required = false,defaultValue = "20")int len) throws Exception {
+                               @RequestParam(required = false,defaultValue = "20")int len,
+                               @RequestParam(required = false,defaultValue = "0")long site_id) throws Exception {
 
-        return this.success( articleService.getArticleList(page,len)
+        return this.success( articleService.getArticleList(site_id,page,len)
         );
     }
+
+
 
     @RequestMapping("/admin/article/del")
     @ResponseBody
