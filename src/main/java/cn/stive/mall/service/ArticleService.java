@@ -2,6 +2,7 @@ package cn.stive.mall.service;
 
 import cn.stive.mall.bean.Article;
 import cn.stive.mall.bean.Category;
+import cn.stive.mall.bean.mono.ArticleData;
 import cn.stive.mall.bean.mono.ArticleDetail;
 import cn.stive.mall.bean.mono.ArticlePage;
 import cn.stive.mall.dao.ArticleDao;
@@ -36,6 +37,10 @@ public class ArticleService {
 
     public List<Article> getArticleList(long site_id,int page,int len){
         return articleDao.getArticleList(site_id,page,len);
+    }
+
+    public List<ArticleData> getArticleDataList(long site_id,int page,int len){
+        return articleDao.getArticleDataList(site_id,page,len);
     }
 
     public Article getArticle(long id ){

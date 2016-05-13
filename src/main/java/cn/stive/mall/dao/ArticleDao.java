@@ -2,6 +2,7 @@ package cn.stive.mall.dao;
 
 import cn.stive.mall.bean.Article;
 import cn.stive.mall.bean.Category;
+import cn.stive.mall.bean.mono.ArticleData;
 import cn.stive.mall.bean.mono.ArticleDetail;
 import cn.stive.mall.bean.mono.ArticlePage;
 import cn.stive.mall.util.SqlUtil;
@@ -113,6 +114,14 @@ public class ArticleDao {
                 "  from a_article a join u_user u on u.id=a.user_id where a.id=? ";
 
         return jdbcTemplate.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<ArticleDetail>(ArticleDetail.class));
+    }
+
+    public List<ArticleData> getArticleDataList(long site_id,int page,int len){
+        StringBuilder builder = new StringBuilder();
+        builder.append("select id article_id,title articletitle,discription subhead,corver_url article_cover,create_time time from a_article");
+        builder.append(" where status = 0 and site_id=? ");
+        builder.append(" limit ?,? ");
+        return jdbcTemplate.query(builder.toString(),new Object[]{site_id,page,len},new BeanPropertyRowMapper<ArticleData>(ArticleData.class));
     }
 
     public List<Category> getCategory(){

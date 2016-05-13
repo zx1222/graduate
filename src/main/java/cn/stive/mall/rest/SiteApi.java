@@ -1,11 +1,20 @@
 package cn.stive.mall.rest;
 
+import cn.stive.mall.bean.Article;
 import cn.stive.mall.bean.Site;
+import cn.stive.mall.bean.mono.ArticleData;
+import cn.stive.mall.bean.mono.SiteInfo;
+import cn.stive.mall.service.ArticleService;
 import cn.stive.mall.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by dxt on 16/4/18.
@@ -14,6 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class SiteApi extends BaseHandler{
     @Autowired
     private SiteService siteService;
+
+    @Autowired
+    ArticleService articleService;
 
 //    @RequestMapping
 //    @ResponseBody
@@ -66,4 +78,22 @@ public class SiteApi extends BaseHandler{
         siteService.removeArticle(article_id,site_id);
         return this.success();
     }
+
+    @RequestMapping("/mono/site/detail")
+    @ResponseBody
+    public Response monoSiteDetail(long site_id,@RequestParam(required = false,defaultValue = "1")int page,
+                                   @RequestParam(required = false,defaultValue = "20")int len){
+        Map<String,Object> result = new HashMap<String, Object>();
+
+        SiteInfo site_info = siteService.getSiteInfo(site_id);
+        result.put("site_info",site_info);
+
+        List<ArticleData> article_list=  articleService.getArticleDataList(site_id,page,len);
+
+        result.put("article_info",article_list);
+
+        return this.success(result);
+    }
+
+
 }

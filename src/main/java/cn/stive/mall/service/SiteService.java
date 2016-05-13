@@ -1,6 +1,7 @@
 package cn.stive.mall.service;
 
 import cn.stive.mall.bean.Site;
+import cn.stive.mall.bean.mono.SiteInfo;
 import cn.stive.mall.dao.SiteDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class SiteService {
 
     @Autowired
     private SiteDao siteDao;
+
+
 
     public List<Site> getSite(){
         return siteDao.getSites();
@@ -46,6 +49,10 @@ public class SiteService {
 
     public void removeArticle(long article_id,long site_id){
         siteDao.updateSiteMp(article_id,site_id);
+    }
+
+    public SiteInfo getSiteInfo(long site_id){
+        return siteDao.getSiteInfo(site_id);
     }
 
     

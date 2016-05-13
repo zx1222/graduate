@@ -1,0 +1,49 @@
+/**
+ * Created by dxt on 16/5/13.
+ */
+
+{
+    "site_info": {
+        "site_name": "电影公社",
+        "site_photo": "../img/homeimg/user.jpg",
+        "site_describle": "aaaaaaaaaa",
+        "user_photo": "../img/homeimg/user.jpg",
+        "user_name": "夜礼服假面",
+        "user_describle": "bvvvvvvvvvvv"
+},
+    "article_info": [
+    {
+        "article_id": "123",
+        "article_cover": "../img/homeimg/content1.jpg",
+        "time": "2016.02.12 10:11发布",
+        "article_title": "苏州小吃，有着一张从未受过欺负的脸",
+        "article_subhead": "甜过初恋，鲜若少女",
+        "comment_count": 1,
+        "up_count": 2,
+        "forward_count": 3,
+        "collection_count": 4
+    },
+    {
+        "article_id": "123",
+        "article_cover": "../img/homeimg/content1.jpg",
+        "time": "2016.02.12 10:11发布",
+        "article_title": "苏州小吃，有着一张从未受过欺负的脸",
+        "article_subhead": "甜过初恋，鲜若少女",
+        "comment_count": 1,
+        "up_count": 2,
+        "forward_count": 3,
+        "collection_count": 4
+    },
+    {
+        "article_id": "123",
+        "article_cover": "../img/homeimg/content1.jpg",
+        "time": "2016.02.12 10:11发布",
+        "article_title": "苏州小吃，有着一张从未受过欺负的脸",
+        "article_subhead": "甜过初恋，鲜若少女",
+        "comment_count": 1,
+        "up_count": 2,
+        "forward_count": 3,
+        "collection_count": 4
+    }
+]
+}

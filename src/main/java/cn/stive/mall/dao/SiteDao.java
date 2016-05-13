@@ -1,6 +1,7 @@
 package cn.stive.mall.dao;
 
 import cn.stive.mall.bean.Site;
+import cn.stive.mall.bean.mono.SiteInfo;
 import cn.stive.mall.util.SqlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -58,6 +59,14 @@ public class SiteDao {
         String sql = "update a_site_mp set status = 1 where article_id=? and site_id=?";
         jdbcTemplate.update(sql,new Object[]{article_id,site_id});
     }
+
+    public SiteInfo getSiteInfo(long site_id){
+        String sql = "select s.id ,site_name,icon site_photo,cover_url site_cover,description site_descript," +
+                " u.id user_id ,head_url user_photo,nick_name user_name from a_site s left join u_user u on u.id = s.user_id " +
+                " where s.id = ? and s.status = 0";
+       return jdbcTemplate.queryForObject(sql,new Object[]{site_id},SiteInfo.class);
+    }
+
 
 }
 

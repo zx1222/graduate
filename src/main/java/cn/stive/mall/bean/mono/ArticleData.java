@@ -12,6 +12,42 @@ public class ArticleData {
     private String sort;
     private String articletitle;
     private String articlesubhead;
+    private int comment_count;
+    private int up_count;
+    private int forward_count;
+    private int collection_count;
+
+    public int getComment_count() {
+        return comment_count;
+    }
+
+    public void setComment_count(int comment_count) {
+        this.comment_count = comment_count;
+    }
+
+    public int getUp_count() {
+        return up_count;
+    }
+
+    public void setUp_count(int up_count) {
+        this.up_count = up_count;
+    }
+
+    public int getForward_count() {
+        return forward_count;
+    }
+
+    public void setForward_count(int forward_count) {
+        this.forward_count = forward_count;
+    }
+
+    public int getCollection_count() {
+        return collection_count;
+    }
+
+    public void setCollection_count(int collection_count) {
+        this.collection_count = collection_count;
+    }
 
     public long getId() {
         return id;
