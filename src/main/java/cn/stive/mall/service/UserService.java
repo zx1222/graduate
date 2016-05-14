@@ -1,7 +1,6 @@
 package cn.stive.mall.service;
 
-import cn.stive.mall.Exceptions.LogAndRegsiterException;
-import cn.stive.mall.Exceptions.UnknownUserException;
+import cn.stive.mall.exception.LogAndRegsiterException;
 import cn.stive.mall.bean.User;
 import cn.stive.mall.dao.UserDao;
 import cn.stive.mall.redis.UserCacheUtil;

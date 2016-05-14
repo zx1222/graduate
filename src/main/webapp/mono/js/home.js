@@ -62,7 +62,7 @@ function fillArticleList(article_list){
         authortitle.appendChild(authorphoto);
 
         var authorphotoimg=document.createElement("img");
-        authorphotoimg.src="../img/homeimg/"+article_list[i].user_info.userphoto;
+        authorphotoimg.src=article_list[i].user_info.userphoto;
         authorphoto.appendChild(authorphotoimg);
 
         var nameAndtime=document.createElement("div");
@@ -97,6 +97,7 @@ function fillArticleList(article_list){
 
         var articlecontent=document.createElement("div");
         articlecontent.className="article-content";
+
         articlecontent.style.backgroundImage="url("+article_list[i].article_data.article_cover+")";
         contentlink.appendChild(articlecontent);
 
@@ -132,7 +133,7 @@ function fillArticleList(article_list){
 
         var interflowspan=document.createElement("span");
         interflow.appendChild(interflowspan);
-        var interflowa=document.createElement("a");
+        var interflowa=document.createElement("p");
         interflowspan.appendChild(interflowa);
         var interflowimg=document.createElement("img");
         interflowimg.src="../img/homeimg/"+interflowimgData.data[2].src;
@@ -140,7 +141,7 @@ function fillArticleList(article_list){
 
         var interflowspan=document.createElement("span");
         interflow.appendChild(interflowspan);
-        var interflowa=document.createElement("a");
+        var interflowa=document.createElement("p");
         interflowspan.appendChild(interflowa);
         var interflowimg=document.createElement("img");
         interflowimg.src="../img/homeimg/"+interflowimgData.data[3].src;

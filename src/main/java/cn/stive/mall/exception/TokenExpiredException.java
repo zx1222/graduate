@@ -1,4 +1,4 @@
-package cn.stive.mall.Exceptions;
+package cn.stive.mall.exception;
 
 public class TokenExpiredException extends RuntimeException {
 

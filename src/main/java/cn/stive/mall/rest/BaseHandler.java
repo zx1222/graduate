@@ -1,11 +1,10 @@
 package cn.stive.mall.rest;
 
-import cn.stive.mall.Exceptions.AuthorizationException;
-import cn.stive.mall.Exceptions.LogAndRegsiterException;
-import cn.stive.mall.Exceptions.TokenExpiredException;
+import cn.stive.mall.exception.AuthorizationException;
+import cn.stive.mall.exception.LogAndRegsiterException;
+import cn.stive.mall.exception.TokenExpiredException;
 import cn.stive.mall.redis.JedisFactory;
 import cn.stive.mall.redis.LuckCacheUtil;
-import cn.stive.mall.redis.UserCacheUtil;
 import cn.stive.mall.util.CommonUtil;
 import cn.stive.mall.util.SignatureUtil;
 import com.mysql.jdbc.StringUtils;
@@ -62,6 +61,12 @@ public class BaseHandler {
     @ResponseBody
     public Response loginException(Exception e, HttpServletResponse response){
         return reps(Response.CODE_USER_ERROR,e.getMessage());
+    }
+
+    @ExceptionHandler({Exception.class})
+    @ResponseBody
+    public Response exception(Exception e, HttpServletResponse response){
+        return reps(Response.CODE_SERVER_ERROR,e.getMessage());
     }
 
     public Response reps (int code,String msg ){

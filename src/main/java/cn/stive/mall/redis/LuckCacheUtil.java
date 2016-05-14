@@ -1,11 +1,7 @@
 package cn.stive.mall.redis;
 
-import cn.stive.mall.Exceptions.RedisException;
-import cn.stive.mall.bean.User;
-import cn.stive.mall.util.CommonUtil;
+import cn.stive.mall.exception.RedisException;
 import cn.stive.mall.util.JsonUtil;
-import com.google.common.reflect.TypeToken;
-import com.mysql.jdbc.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;

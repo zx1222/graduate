@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by dxt on 16/4/19.
  */
@@ -38,15 +41,27 @@ public class CommentApi extends BaseHandler {
         return this.success();
     }
 
+    public CommentApi() {
+    }
+
     @RequestMapping("/mono/article/comment/list")
     @ResponseBody
     public Response commentList(
+            long article_id,
             @RequestParam(required = false,defaultValue = "1") int page,
-            @RequestParam(required = false,defaultValue = "5") int len
+            @RequestParam(required = false,defaultValue = "20") int len
 
     ){
-        return this.success(commentService.getCommentList(page,len));
+        Map<String,Object> result = new HashMap<String, Object>();
+
+        result.put("comment_count",commentService.getCommentCount(article_id));
+        result.put("up_count",commentService.getUpCount(article_id));
+        result.put("comment_list", commentService.getCommentData(article_id,page,len));
+        return this.success(result);
+
     }
+
+
 
 
 

@@ -1,8 +1,7 @@
 package cn.stive.mall.redis;
 
-import cn.stive.mall.Exceptions.RedisException;
+import cn.stive.mall.exception.RedisException;
 import cn.stive.mall.util.JsonUtil;
-import com.mysql.jdbc.StringUtils;
 import com.mysql.jdbc.StringUtils;
 import redis.clients.jedis.Jedis;
 

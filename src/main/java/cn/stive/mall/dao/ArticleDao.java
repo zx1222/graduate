@@ -2,6 +2,7 @@ package cn.stive.mall.dao;
 
 import cn.stive.mall.bean.Article;
 import cn.stive.mall.bean.Category;
+import cn.stive.mall.bean.mono.ArticleData;
 import cn.stive.mall.bean.mono.ArticleDetail;
 import cn.stive.mall.bean.mono.ArticlePage;
 import cn.stive.mall.util.SqlUtil;
@@ -34,10 +35,27 @@ public class ArticleDao {
     }
 
 
-
     public List<Article> getArticleList(int page,int len){
-        String sql = "select * from a_article  where status = 0 limit ?,? ";
-        return jdbcTemplate.query(sql,new Object[]{(page-1)*len,len},new BeanPropertyRowMapper<Article>(Article.class));
+        return getArticleList(0,page,len);
+    }
+
+    public List<Article> getArticleList(long site_id,int page,int len){
+        String sql = "select a.id,a.title,a.description,a.create_time from a_article a left join a_site_mp s on s.article_id = a.id where a.status = 0 ";
+
+        List<Object> args  = new ArrayList<Object>();
+        if(site_id>0){
+            sql += " and s.site_id=? and s.status=0";
+            args.add(site_id);
+
+        }
+
+        if(page>0&&len>0){
+            sql += " limit ? ,?";
+            args.add((page-1)*len);
+            args.add(len);
+
+        }
+        return jdbcTemplate.query(sql,args.toArray(),new BeanPropertyRowMapper<Article>(Article.class));
     }
 
     public Article getArticle(long id){
@@ -73,7 +91,7 @@ public class ArticleDao {
     public List<ArticlePage> getArticleDetailList(int page, int len ,long user_id){
         String sql = "select a.id,u.head_url userphoto ,u.nick_name name,a.id,a.cover_url article_cover,a.create_time time,c.category_name sort,a.title articletitle,a.description articlesubhead " +
                 "from a_article a left join a_category c on c.id=a.category_id" +
-                " left join u_user u on u.id = a.user_id where 1=1 ";
+                " left join u_user u on u.id = a.user_id where 1=1 and a.status =0 ";
 
 
         List<Object> args = new ArrayList<Object>();
@@ -96,6 +114,16 @@ public class ArticleDao {
                 "  from a_article a join u_user u on u.id=a.user_id where a.id=? ";
 
         return jdbcTemplate.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<ArticleDetail>(ArticleDetail.class));
+    }
+
+    public List<ArticleData> getArticleDataList(long site_id,int page,int len){
+        StringBuilder builder = new StringBuilder();
+        builder.append("select a.id ,title articletitle,description subhead,img_url article_cover,a.create_time time from a_article a");
+        builder.append(" join a_site_mp s on s.article_id = a.id ");
+        builder.append(" where a.status = 0 and site_id=? ");
+        builder.append(" order by s.create_time desc ");
+        builder.append(" limit ?,? ");
+        return jdbcTemplate.query(builder.toString(),new Object[]{site_id,page,len},new BeanPropertyRowMapper<ArticleData>(ArticleData.class));
     }
 
     public List<Category> getCategory(){

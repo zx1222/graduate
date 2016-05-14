@@ -1,6 +1,7 @@
 package cn.stive.mall.dao;
 
 import cn.stive.mall.bean.Site;
+import cn.stive.mall.bean.mono.SiteInfo;
 import cn.stive.mall.util.SqlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -46,12 +47,26 @@ public class SiteDao {
     }
 
     public void insertSiteMp(long article_id,long site_id ){
-        String sql = "insert into a_site_mp ( article_id,site_id ) values(?,?)";
+        String sql = "insert into a_site_mp ( article_id,site_id )  values(?,?) on DUPLICATE key update status=0";
         jdbcTemplate.update(sql,new Object[]{article_id,site_id});
     }
+    public int  selecSiteMp(long article_id,long site_id){
+        String sql = "select count(*) from a_site_mp where site_id=? and article_id = ? and status = 0";
+        return jdbcTemplate.queryForInt(sql,new Object[]{article_id,site_id});
+    }
+
     public void updateSiteMp(long article_id,long site_id ){
         String sql = "update a_site_mp set status = 1 where article_id=? and site_id=?";
         jdbcTemplate.update(sql,new Object[]{article_id,site_id});
     }
+
+    public SiteInfo getSiteInfo(long site_id){
+        String sql = "select s.id ,site_name,icon site_photo,cover_url site_cover,description site_descript," +
+                " u.id user_id ,head_url user_photo,nick_name user_name from a_site s left join u_user u on u.id = s.user_id " +
+                " where s.id = ? and s.status = 0";
+       return jdbcTemplate.queryForObject(sql,new Object[]{site_id},new BeanPropertyRowMapper<SiteInfo>(SiteInfo.class));
+    }
+
+
 }
 

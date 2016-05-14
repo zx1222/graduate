@@ -30,42 +30,9 @@ var article = {
         var data = commonJs.getData(article_url)
         return data;
     },
-    initDataTable: function (data) {
-        if (this.datatable) {
-            this.datatable.destroy();
-        }
-        this.datatable = $('#article_table').DataTable({
-            data: this.getArticleList(),
-            columns: [
-                {"data": "id", title: 'ID'},
-                {"data": "title", title: "标题"},
-                {'data': "description", title: '描述'},
-                {'data': "create_time", title: '发布时间'},
-                {'data': null, title: "操作", class: 'col-md-2'}
-            ],
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "autoWidth": false,
-            "columnDefs": [{
-                "render": function (data, type, row) {
-                    return (new Date(parseInt(data))).Format("yyyy-MM-dd hh:mm:ss");
-                },
-                "targets": 3
-            }, {
-                "render": function (data, type, row) {
-                    return '<button onClick="article.browsArticle(' + data.id + ')" class="btn btn-success btn-sm"><i class="fa fa-eye" ></i></button>' +
-                        '<button onClick="article.editArticle(' + data.id + ')" class="btn btn-primary btn-sm"><i class="fa fa-edit " ></i></button>' +
-                        '<button onclick="article.delArticle(' + data.id + ')" class="btn btn-danger btn-sm"><i class="fa fa-minus" ></i></button>';
-                },
-                "targets": 4
-            }]
-        });
-        $('#article_table tbody').on('click', 'tr', function () {
-            $("tr").removeClass('selected');
-            $(this).toggleClass('selected');
-        });
+    initDataTable: function (data,table_id) {
+        commonJs.initTable(table_id,table_article.tableData(data));
+
     },
     addArticle: function () {
         $(".box").css("display", "none");
@@ -102,7 +69,14 @@ var article = {
         })
     },
     init: function () {
-        this.initDataTable();
+        var data = this.getArticleList();
+        this.initDataTable(data,"#article_table");
+
+        $('#article_table tbody').on('click', 'tr', function () {
+            $("tr").removeClass('selected');
+            $(this).toggleClass('selected');
+        });
+
         $(".box").css("display", "none");
         $("#article_list").css("display", "block");
 
@@ -111,8 +85,32 @@ var article = {
         $(".box").css("display", "none");
         $("#article_plain").removeClass("hide");
         $("#article_plain").css("display", "block");
+    },
+    showSiteList:function(){
+        checkSelected();
+        var article_id = commonJs.getTableCellValue(0);
+
+        commonJs.getDataHandle("/admin/site/list",function(data){
+
+            commonJs.initTable("#site_table",table_site.tableDataAbstract(data.data));
+        });
+
+        $("#model_site_ok").click(function(){
+            if(!checkSelected()){
+                return;
+            }
+            var site_id = commonJs.getTableCellValue(0);
+            $.get("/admin/site/add/article",{article_id:article_id,site_id:site_id},function(data){
+                checkResult(data);
+                window.location.href = "site.html"
+            })
+        })
+
     }
 }
+
+
+
 
 
 window.onload = function () {
@@ -127,6 +125,10 @@ window.onload = function () {
     $("#btn-add").click(function () {
         article.addArticle();
     });
+
+    $("#btn_add_site").click(function(){
+        article.showSiteList();
+    })
 
     $("#cancle_add_article").click(function () {
         article.init();
