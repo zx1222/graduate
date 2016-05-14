@@ -1,6 +1,7 @@
 package cn.stive.mall.service;
 
 import cn.stive.mall.bean.mono.Comment;
+import cn.stive.mall.bean.mono.CommentData;
 import cn.stive.mall.dao.CommentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,18 @@ public class CommentService {
 
     public List<Comment> getCommentList(int page,int len){
         return commentDao.getComment();
+    }
+
+
+    public List<CommentData> getCommentData(long article_id,int page,int len ){
+        return commentDao.getCommentData(article_id,page,len);
+    }
+
+    public int getUpCount(long article_id){
+        return commentDao.getCommentCount(article_id);
+    }
+
+    public int getCommentCount(long article_id){
+        return commentDao.getUpCount(article_id);
     }
 }

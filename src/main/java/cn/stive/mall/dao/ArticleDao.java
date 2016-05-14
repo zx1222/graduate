@@ -118,8 +118,10 @@ public class ArticleDao {
 
     public List<ArticleData> getArticleDataList(long site_id,int page,int len){
         StringBuilder builder = new StringBuilder();
-        builder.append("select id article_id,title articletitle,discription subhead,corver_url article_cover,create_time time from a_article");
-        builder.append(" where status = 0 and site_id=? ");
+        builder.append("select a.id ,title articletitle,description subhead,img_url article_cover,a.create_time time from a_article a");
+        builder.append(" join a_site_mp s on s.article_id = a.id ");
+        builder.append(" where a.status = 0 and site_id=? ");
+        builder.append(" order by s.create_time desc ");
         builder.append(" limit ?,? ");
         return jdbcTemplate.query(builder.toString(),new Object[]{site_id,page,len},new BeanPropertyRowMapper<ArticleData>(ArticleData.class));
     }
