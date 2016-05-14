@@ -36,3 +36,112 @@
     height: 5px;
     background-color: #d0e9c6;
 }
+.pinglun{
+    width: 100%;
+    height: auto;
+}
+.pinglun_statistics{
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+.pinglun_statistics p{
+    width: 270px;
+    height: 40px;
+    line-height: 40px;
+    color: #9e9e9e;
+    float: left;
+    padding-left: 10px;
+}
+.pinglun_statistics .dianzan_totalcount{
+    width: 80px;
+    height: 40px;
+    float: left;
+}
+.pinglun_statistics .dianzan_totalcount img{
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    float: left;
+}
+.pinglun_statistics .dianzan_totalcount span{
+    display: block;
+    width: auto;
+    height: 40px;
+    line-height: 40px;
+    color: #9e9e9e;
+    float: left;
+}
+.pinglunbox{
+    width: 100%;
+    height: auto;
+}
+.pinglunbox .pinglunbox_title {
+    width: 100%;
+    height: 40px;
+}
+.pinglunbox .pinglunbox_title .userphoto{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.pinglunbox .pinglunbox_title .userphoto img{
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+.pinglunbox .pinglunbox_title .username{
+    width: 200px;
+    height: 40px;
+    color: #f4c600;
+    line-height: 40px;
+    font-size: 14px;
+    float: left;
+}
+.pinglunbox .pinglunbox_title .time{
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    float: left;
+    color: #9e9e9e;
+}
+.pinglunbox .pinglunbox_title .dianzan{
+    width: 60px;
+    height: 40px;
+    float: left;
+    font-size: 14px;
+}
+.pinglunbox .pinglunbox_title .dianzan .dianzan_eachcount{
+    display: block;
+    width: 30px;
+    height: 40px;
+    float: left;
+    line-height: 40px;
+    color: #9e9e9e;
+    text-align: center;
+}
+.pinglunbox .pinglunbox_title .dianzan a{
+    display: block;
+    width: 30px;
+    height: 40px;
+    float: left;
+}
+.pinglunbox .pinglunbox_title .dianzan a img{
+    width: 20px;
+    height: 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+}
+.pinglunbox .pinglun_content{
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+.pinglunbox .pinglun_content p{
+    padding-left:40px ;
+    padding-right: 20px;
+}

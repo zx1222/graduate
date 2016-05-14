@@ -181,6 +181,7 @@ body{
     height: 230px;
     overflow: hidden;
     background-image: url("../img/homeimg/content1.jpg");
+    background-size: 430px auto;
 }
 .content .contentbox .article-content .article-title{
     width: 92%;

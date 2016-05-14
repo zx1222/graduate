@@ -1,10 +1,11 @@
 
 window.onload = function () {
 
-    var site_list=[];
+    var site_list={};
     $.get("../js/user_site.json",function(data){
-        console.log(data);
         site_list = JSON.parse(data);
+        console.log(site_list);
+        fillSiteInfo(site_list.site_info);
     });
 
     var interflowimgData=
@@ -16,35 +17,35 @@ window.onload = function () {
             {"src":"pinglun.png"}
         ]
     };
+    function fillSiteInfo(site_info ){
+        // var site_info = site_list.site_info;
+        var user_site_background=document.getElementById("user_site_background");
+        user_site_background.style.backgroundImage="url("+site_info.site_cover+")";
 
+        var site_id=document.getElementById("site_id");
+        site_id.innerHTML=site_info.site_name
+
+        var site_photo=document.getElementById("site_photo");
+        site_photo.backgroundImage="url("+site_info.site_photo+")";
+
+        var site_describe=document.getElementById("site_describe");
+        site_describe.innerHTML=site_info.site_describe;
+
+        var user_photo=document.getElementById("user_photo");
+        user_photo.backgroundImage="url("+site_info.user_photo+")";
+
+        var user_name=document.getElementById("user_id");
+        user_name.innerHTML=site_info.user_name;
+
+        var user_describe=document.getElementById("user_describe");
+        user_describe.innerHTML=site_info.user_describe;
+    }
 
     window.onscroll=function(){
         if(checkFlag()){
+            var article_info=site_list.article_info;
             var parent=document.getElementById("content");
-
-            for(var i=0;i<site_list.length;i++){
-
-                // var user_site_background=document.getElementById("user_site_background");
-                // user_site_background.style.backgroundImage="url("+site_list[i].site_info.site_cover+")";
-                //
-                // var site_id=document.getElementById("site_id");
-                // site_id.innerHTML=site_list[i].site_info.site_name
-                //
-                // var site_photo=document.getElementById("site_photo");
-                // site_photo.backgroundImage="url("+site_list[i].site_info.site_photo+")";
-                //
-                // var site_describe=document.getElementById("site_describe");
-                // ssite_describe.innerHTML=site_list[i].site_info.sitedescribe;
-                //
-                // var user_photo=document.getElementById("user_photo");
-                // user_photo.backgroundImage="url("+site_list[i].site_info.user_photo+")";
-                //
-                // var user_name=document.getElementById("user_id");
-                // user_name.innerHTML=site_list[i].site_info.user_name;
-                //
-                // var user_describe=document.getElementById("user_describe");
-                // user_describe.innerHTML=site_list[i].site_info.user_describe;
-
+            for(var i=0;i<article_info.length;i++){
 
 
                 var contentbox=document.createElement("div");
@@ -56,7 +57,7 @@ window.onload = function () {
 
                 var articlecontent=document.createElement("div");
                 articlecontent.className="article-content";
-                articlecontent.style.backgroundImage="url("+site_list[i].article_info.article_cover+")";
+                articlecontent.style.backgroundImage="url("+article_info[i].article_cover+")";
                 contentlink.appendChild(articlecontent);
 
                 var time=document.createElement("div");
@@ -64,18 +65,18 @@ window.onload = function () {
                 articlecontent.appendChild(time);
                 
                 var time_p=document.createElement("p");
-                time_p.innerHTML=(new Date(parseInt(parseInt(site_list[i].article_info.time)))).Format("yyyy-MM-dd hh:mm:ss");
+                time_p.innerHTML=article_info[i].time;
                 time.appendChild(time_p);
                 
                 
                 var articletitle=document.createElement("div");
                 articletitle.className="article-title";
-                articletitle.innerHTML=site_list[i].article_info.article_title;
+                articletitle.innerHTML=article_info[i].article_title;
                 articlecontent.appendChild(articletitle);
 
                 var articlesubhead=document.createElement("div");
                 articlesubhead.className="article-subhead";
-                articlesubhead.innerHTML=site_list[i].article_info.article_subhead;
+                articlesubhead.innerHTML=article_info[i].article_subhead;
                 articlecontent.appendChild(articlesubhead);
 
                 var interflow=document.createElement("div");
