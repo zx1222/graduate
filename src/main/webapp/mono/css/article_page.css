@@ -12,7 +12,7 @@
     height: 60px;
     background-color: #f0f5f2;
 }
-.nav .author_photo{
+.nav .site_photo{
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -25,14 +25,14 @@
     height: 60px;
     float: left;
 }
-.nav .author_name{
+.nav .site_name{
     width: 120px;
     height: 30px;
     line-height: 30px;
     font-size: 14px;
     padding-left: 10px;
 }
-.nav .article_time{
+.nav .create_time{
     width: 120px;
     height: 30px;
     line-height: 30px;
@@ -62,7 +62,7 @@
 }
 .content .article_cover{
     width: 100%;
-    height: 220px;
+    height: 200px;
     background-image: url("../img/homeimg/content1.jpg");
     background-size: 360px auto;
 }

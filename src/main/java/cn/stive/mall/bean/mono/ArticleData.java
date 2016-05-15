@@ -17,6 +17,9 @@ public class ArticleData {
     private int forward_count;
     private int collection_count;
 
+
+
+
     public int getComment_count() {
         return comment_count;
     }

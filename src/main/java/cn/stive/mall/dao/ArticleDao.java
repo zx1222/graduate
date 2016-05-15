@@ -118,7 +118,7 @@ public class ArticleDao {
 
     public List<ArticleData> getArticleDataList(long site_id,int page,int len){
         StringBuilder builder = new StringBuilder();
-        builder.append("select a.id ,title articletitle,description subhead,img_url article_cover,a.create_time time from a_article a");
+        builder.append("select a.id ,a.title articletitle,description articlesubhead,cover_url article_cover,a.create_time time from a_article a");
         builder.append(" join a_site_mp s on s.article_id = a.id ");
         builder.append(" where a.status = 0 and site_id=? ");
         builder.append(" order by s.create_time desc ");

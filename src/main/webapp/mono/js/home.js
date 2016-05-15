@@ -9,7 +9,7 @@ window.onload = function () {
         article_list = data.data;
         fillArticleList(article_list);
         p++;
-        if (data.length > 0) {
+        if (article_list.length > 0) {
             isFlip = true;
         }
     });
