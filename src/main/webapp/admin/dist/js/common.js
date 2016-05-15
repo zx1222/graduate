@@ -103,8 +103,16 @@ commonJs.fillForm = function(_jsonObj,_formObj){
         inputObj.val(_jsonObj[tmp]);
     }
 
+}
+commonJs.clearForm = function (_id){
 
+    console.log($(_id));
 
+    var inputs = $(_id).find("input");
+    console.log(inputs);
+    $.each(inputs,function(){
+        this.value="";
+    })
 }
 
 window.onload=function(){

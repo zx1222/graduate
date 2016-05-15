@@ -9,11 +9,20 @@ public class Site {
     private String site_name;
     private String description;
     private String cover_url;
+    private String icon_url;
     private String article_count;
     private Date create_time;
     private Long user_id;
 
     private Integer status;
+
+    public String getIcon_url() {
+        return icon_url;
+    }
+
+    public void setIcon_url(String icon_url) {
+        this.icon_url = icon_url;
+    }
 
     public Integer getStatus() {
         return status;
