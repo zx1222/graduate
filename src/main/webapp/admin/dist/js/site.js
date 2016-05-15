@@ -43,7 +43,7 @@ site.init = function(){
 
 site.addSite = function(){
 
-    var siteObj = commonJs.loadFormValue("siteForm", "id,site_name,description,cover_url");
+    var siteObj = commonJs.loadFormValue("siteForm", "id,site_name,description,cover_url,icon_url");
     var user_info = JSON.parse($.cookie("user_info"));
     siteObj.user_id=user_info.id;
 
@@ -64,6 +64,7 @@ site.editSite =  function (_id) {
     commonJs.fillForm(data, editForm)
 
     $(".show-img").attr("src", data.cover_url);
+    $(".show-img-icon").attr("src", data.icon_url);
     $(".cover_img").css("display", "none");
 
 }
@@ -100,6 +101,8 @@ window.onload = function () {
     site.init();
 
     $("#btn-add").click(function(){
+        commonJs.clearForm("#siteForm");
+
         site.showEditView();
     })
 
@@ -125,6 +128,22 @@ window.onload = function () {
             $(".show-img").attr("src", imgUrl);
 
             $("#cover_url").val(imgUrl);
+        }
+    })
+
+    $("#icon_img").fileupload({
+        autoUpload: false,//是否自动上传
+        dataType: 'json',
+        url: commonJs.constant.uploadUrl + "?dir=dxt/test",//文件上传地址，当然也可以直接写在input的data-url属性内
+        type: "POST",
+
+        done: function (e, result) {
+            var imgUrl = result.result.data
+
+            alert('上传成功！');
+            $(".show-img").attr("src", imgUrl);
+
+            $("#icon_url").val(imgUrl);
         }
     })
 

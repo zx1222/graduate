@@ -1,5 +1,6 @@
 package cn.stive.mall.bean.mono;
 
+import cn.stive.mall.bean.Site;
 import cn.stive.mall.bean.User;
 import cn.stive.mall.bean.UserInfo;
 
@@ -15,27 +16,34 @@ public class ArticlePage {
     private String sort;
     private String articletitle;
     private String articlesubhead;
-    private String userphoto ;
-    private String name ;
+    private String site_icon ;
+    private String site_name ;
+    private long site_id;
 
-    private UserInfo user_info;
+    private SiteAbstract site_info;
     private ArticleData article_data;
     private SociallyCount sociallyCount;
 
     public ArticlePage() {
-        user_info = new UserInfo();
+        site_info = new SiteAbstract();
         article_data = new ArticleData();
     }
 
-    public void setUserphoto(String userphoto) {
+    public void setSite_id(long site_id) {
+        this.site_id = site_id;
+        site_info.setSite_Id(site_id);
 
-        user_info.setUserphoto(userphoto);
+    }
+
+    public void setSite_icon(String site_icon) {
+
+        site_info.setIcon_url(site_icon);
     }
 
 
     public void setName(String name) {
 
-        user_info.setName(name);
+        site_info.setSite_name(name);
     }
 
 
@@ -67,9 +75,10 @@ public class ArticlePage {
         article_data.setArticlesubhead(articlesubhead);
     }
 
-    public UserInfo getUser_info(){
-        return  this.user_info;
+    public SiteAbstract getSite_info(){
+        return  this.site_info;
     }
+
 
     public ArticleData getArticle_data(){
         return this.article_data;

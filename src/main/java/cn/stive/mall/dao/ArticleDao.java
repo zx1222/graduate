@@ -89,9 +89,9 @@ public class ArticleDao {
         return getArticleDetailList(page,len,0);
     }
     public List<ArticlePage> getArticleDetailList(int page, int len ,long user_id){
-        String sql = "select a.id,u.head_url userphoto ,u.nick_name name,a.id,a.cover_url article_cover,a.create_time time,c.category_name sort,a.title articletitle,a.description articlesubhead " +
+        String sql = "select a.id,s.id site_id,s.icon_url site_icon ,s.site_name name ,a.id,a.cover_url article_cover,a.create_time time,c.category_name sort,a.title articletitle,a.description articlesubhead " +
                 "from a_article a left join a_category c on c.id=a.category_id" +
-                " left join u_user u on u.id = a.user_id where 1=1 and a.status =0 ";
+                " left join a_site_mp m  on m.article_id = a.id  left join a_site s on s.id = m.site_id where  1=1 and a.status =0 ";
 
 
         List<Object> args = new ArrayList<Object>();
@@ -110,8 +110,8 @@ public class ArticleDao {
     }
 
     public ArticleDetail getArticleDetail(long  id){
-        String sql = "select u.nick_name author_name,a.cover_url article_cover,a.create_time article_time,a.title,a.description subhead,a.content main_content,a.author_name author,u.head_url" +
-                "  from a_article a join u_user u on u.id=a.user_id where a.id=? ";
+        String sql = "select s.site_name ,s.icon_url site_icon,s.id site_id,a.cover_url article_cover,a.create_time article_time,a.title,a.description subhead,a.content main_content,a.author_name author " +
+                "  from a_article a join a_site_mp  m on m.article_id=a.id join a_site s on s.id = m.site_id where a.id=? ";
 
         return jdbcTemplate.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<ArticleDetail>(ArticleDetail.class));
     }
