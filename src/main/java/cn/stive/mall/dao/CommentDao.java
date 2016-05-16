@@ -43,7 +43,7 @@ public class CommentDao {
         StringBuilder builder  = new StringBuilder( "select u.id user_id,u.nick_name user_name,u.head_url,c.content,count(cu.id) up_count ,c.create_time ");
         builder.append(" from a_comment c left join u_user u on u.id = c.visitor_id left join a_comment_up cu on cu.comment_id = c.id  ");
         builder.append(" where c.status = 0 and article_id = ? ");
-        builder.append(" order by c.create_time desc ");
+        builder.append(" group by c.id order by c.create_time desc ");
         builder.append(" limit ? ,? ");
 
         return jdbcTemplate.query(builder.toString(),new Object[]{article_id,(page-1)*len,len},new BeanPropertyRowMapper<CommentData>(CommentData.class));

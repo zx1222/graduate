@@ -53,36 +53,36 @@ function fillArticleList(article_list){
         contentbox.className="contentbox";
         parent.appendChild(contentbox);
 
-        var authortitle=document.createElement("div");
-        authortitle.className="author-title";
-        contentbox.appendChild(authortitle);
+        var article_nav=document.createElement("div");
+        article_nav.className="article_nav";
+        contentbox.appendChild(article_nav);
 
-        var authorphoto=document.createElement("div");
-        authorphoto.className="authorphoto";
-        authortitle.appendChild(authorphoto);
+        var site_photo=document.createElement("div");
+        site_photo.className="site_photo";
+        article_nav.appendChild(site_photo);
 
-        var authorphotoimg=document.createElement("img");
-        authorphotoimg.src=article_list[i].user_info.userphoto;
-        authorphoto.appendChild(authorphotoimg);
+        var sitephotoimg=document.createElement("img");
+        sitephotoimg.src=article_list[i].site_info.icon_url;
+        site_photo.appendChild(sitephotoimg);
 
         var nameAndtime=document.createElement("div");
         nameAndtime.className="nameAndtime";
-        authortitle.appendChild(nameAndtime);
+        article_nav.appendChild(nameAndtime);
 
-        var name=document.createElement("span");
-        name.className="name";
-        name.innerHTML=article_list[i].user_info.name;
-        nameAndtime.appendChild(name);
+        var site_name=document.createElement("span");
+        site_name.className="name";
+        site_name.innerHTML=article_list[i].site_info.site_name;
+        nameAndtime.appendChild(site_name);
 
-        var time=document.createElement("span");
-        time.className="time";
-        time.innerHTML=(new Date(parseInt(parseInt(article_list[i].article_data.time)))).Format("yyyy-MM-dd hh:mm:ss");
-        nameAndtime.appendChild(time);
+        var create_time=document.createElement("span");
+        create_time.className="time";
+        create_time.innerHTML=(new Date(parseInt(parseInt(article_list[i].article_data.time)))).Format("yyyy-MM-dd hh:mm:ss");
+        nameAndtime.appendChild(create_time);
 
         var sort=document.createElement("div");
         sort.className="sort";
         sort.innerHTML=article_list[i].article_data.sort;
-        authortitle.appendChild(sort);
+        article_nav.appendChild(sort);
 
         var sortname=document.createElement("span");
         sort.appendChild(sortname);

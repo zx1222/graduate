@@ -9,7 +9,7 @@ public class Comment {
     private Long id;
     private Long article_id;
     private Long visitor_id;
-    private String comment_content;
+    private String content;
     private Date create_time;
     private Integer status ;
     private Long parent_id;
@@ -46,12 +46,12 @@ public class Comment {
         this.visitor_id = visitor_id;
     }
 
-    public String getComment_content() {
-        return comment_content;
+    public String getContent() {
+        return content;
     }
 
-    public void setComment_content(String comment_content) {
-        this.comment_content = comment_content;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Date getCreate_time() {

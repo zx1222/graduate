@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="../css/pinglun.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <script type="text/javascript" src="../js/jQuery-2.1.4.min.js"></script>
+    <script src="../js/common.js"></script>
     <script src="../js/pinglun.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -24,80 +26,11 @@
         </div>
 
         <div class="pinglun" id="pinglun">
-            <div class="pinglunbox">
-                <div class="pinglunbox_title">
-                    <div class="userphoto"><img src="../img/homeimg/user2.jpg"> </div>
-                    <div class="username">aaaaa</div>
-                    <div class="time">3小时前</div>
-                    <div class="dianzan">
-                        <span class="dianzan_eachcount">2</span>
-                        <span><a href="#"><img src="../img/pinglunimg/like.png"> </a></span>
-                    </div>
-                </div>
-                <div class="pinglun_content">
-                    <p>西方复服装发展缓慢不是因为已经发展到一定程度了，而是因为他是世界最主流的文化，没有被压制过，也就保留了相对纯洁性。</p>
-                </div>
-            </div>
 
-            <div class="pinglunbox">
-                <div class="pinglunbox_title">
-                    <div class="userphoto"><img src="../img/homeimg/user2.jpg"> </div>
-                    <div class="username">aaaaa</div>
-                    <div class="time">3小时前</div>
-                    <div class="dianzan">
-                        <span class="dianzan_eachcount">2</span>
-                        <span><a href="#"><img src="../img/pinglunimg/like.png"> </a></span>
-                    </div>
-                </div>
-                <div class="pinglun_content">
-                    <p>西方复服装发展缓慢不是因为已经发展到一定程度了，而是因为他是世界最主流的文化，没有被压制过，也就保留了相对纯洁性。</p>
-                </div>
-            </div>
-
-            <div class="pinglunbox">
-                <div class="pinglunbox_title">
-                    <div class="userphoto"><img src="../img/homeimg/user2.jpg"> </div>
-                    <div class="username">aaaaa</div>
-                    <div class="time">3小时前</div>
-                    <div class="dianzan">
-                        <span class="dianzan_eachcount">2</span>
-                        <span><a href="#"><img src="../img/pinglunimg/like.png"> </a></span>
-                    </div>
-                </div>
-                <div class="pinglun_content">
-                    <p>西方复服装发展缓慢不是因为已经发展到一定程度了，而是因为他是世界最主流的文化，没有被压制过，也就保留了相对纯洁性。</p>
-                </div>
-            </div>
-
-            <div class="pinglunbox">
-                <div class="pinglunbox_title">
-                    <div class="userphoto"><img src="../img/homeimg/user2.jpg"> </div>
-                    <div class="username">aaaaa</div>
-                    <div class="time">3小时前</div>
-                    <div class="dianzan">
-                        <span class="dianzan_eachcount">2</span>
-                        <span><a href="#"><img src="../img/pinglunimg/like.png"> </a></span>
-                    </div>
-                </div>
-                <div class="pinglun_content">
-                    <p>西方复服装发展缓慢不是因为已经发展到一定程度了，而是因为他是世界最主流的文化，没有被压制过，也就保留了相对纯洁性。</p>
-                </div>
-            </div>
-
-            <div class="pinglunbox">
-                <div class="pinglunbox_title">
-                    <div class="userphoto"><img src="../img/homeimg/user2.jpg"> </div>
-                    <div class="username">aaaaa</div>
-                    <div class="time">3小时前</div>
-                    <div class="dianzan">
-                        <span class="dianzan_eachcount">2</span>
-                        <span><a href="#"><img src="../img/pinglunimg/like.png"> </a></span>
-                    </div>
-                </div>
-                <div class="pinglun_content">
-                    <p>西方复服装发展缓慢不是因为已经发展到一定程度了，而是因为他是世界最主流的文化，没有被压制过，也就保留了相对纯洁性。</p>
-                </div>
-            </div>
+            <form class="write_comment">
+                <input type="text" class="commenttext" placeholder="说点什么吧">
+                <a id="comment_submit"><img src="../img/pinglunimg/comment1.png"> </a>
+            </form>
 
         </div>
     </div>

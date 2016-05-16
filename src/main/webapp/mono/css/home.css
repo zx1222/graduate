@@ -44,16 +44,16 @@
     height: 300px;
     position: relative;
 }
-.contentbox .author-title{
+.contentbox .article_nav{
     width: 100%;
     height: 50px;
 }
-.contentbox .authorphoto{
+.contentbox .site_photo{
     width: 50px;
     height: 50px;
     float: left;
 }
-.contentbox .authorphoto img{
+.contentbox .site_photo img{
     width: 40px;
     height: 40px;
     margin: 5px;
@@ -67,12 +67,12 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
-.contentbox .nameAndtime .name{
+.contentbox .nameAndtime .site_name{
     display: block;
     width: 160px;
     height: 20px;
 }
-.contentbox .nameAndtime .time{
+.contentbox .nameAndtime .create_time{
     display: block;
     width: 160px;
     height: 20px;

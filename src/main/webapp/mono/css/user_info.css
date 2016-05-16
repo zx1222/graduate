@@ -36,7 +36,7 @@ body{
 .user_background{
     width: 100%;
     height: 160px;
-    border-bottom: 2px solid #eee;
+    border-bottom: 1px solid #f4c600;
 }
 .user_background .user_photo{
     width: 30%;
@@ -60,6 +60,30 @@ body{
     height: 20px;
     line-height: 20px;
 }
+.countbox{
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #f4c600;
+}
+.countbox .fans_count{
+    width: 179px;
+    border-right: 1px solid #f4c600;
+    height: 30px;
+    float: left;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 5px;
+}
+.countbox .focus_count{
+    width: 180px;
+    height: 30px;
+    float: left;
+    line-height: 30px;
+    text-align: center;
+    margin-top:5px;
+}
 .createsitebox{
     width: 100%;
     height: 130px;
@@ -82,10 +106,43 @@ body{
     height: 60px;
     margin-left: 15px ;
     border-radius: 50%;
-    background-image: url(../img/homeimg/user.jpg);
+    background-image: url(../img/homeimg/user2.jpg);
     background-size: 60px 60px;
 }
 .createsitebox .create_sitebox .create_site_id{
+    width: 90px;
+    height: 35px;
+    line-height: 17px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.focussitebox{
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px solid #eee;
+}
+.focussitebox p{
+    width: 96%;
+    margin-left: 2%;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 5px;
+}
+.focussitebox .focus_sitebox{
+    width: 90px;
+    height: 95px;
+    float: left;
+}
+.focussitebox .focus_sitebox .focus_site_photo{
+    width: 60px;
+    height: 60px;
+    margin-left: 15px ;
+    border-radius: 50%;
+    background-image: url(../img/homeimg/user.jpg);
+    background-size: 60px 60px;
+}
+.focussitebox .focus_sitebox .focus_site_id{
     width: 90px;
     height: 35px;
     line-height: 17px;

@@ -1,6 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
+    text-decoration: none;
 }
 body{
     margin: 0px;
@@ -8,7 +9,7 @@ body{
 }
 .wrapper{
     width:360px;
-    height: 640x;
+    height: 640px;
 }
 .nav-title{
     width: 100%;
@@ -60,46 +61,16 @@ body{
     height: 25px;
     margin-top: 15px;
 }
+
 .roll-img{
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
+    width: 360px !important;
+    height: 163px !important;
 }
-.roll-img .roll-imgbox{
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
+.roll-img img{
+    height: 163px;
+    width: auto;
 }
-.roll-img .roll-imgbox img{
-    width: 360px;
-    height: 220px;
-}
-.roll-img .roll-linecircle{
-    position: absolute;
-    width: 30%;
-    height: 20px;
-    margin-left: 35%;
-    top: 200px;
-/*    background-color: aqua;   */
-}
-.roll-img .roll-linecircle div{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #eee;
-    float: left;
-    margin-left: 22px;
-    margin-top: 10px;
-}
-.roll-img .roll-linecircle .circleselect{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #fcd632;
-    float: left;
-    margin-left: 22px;
-    margin-top: 10px;
-}
+
 .content{
     width: 100%;
     height: auto;
@@ -107,34 +78,54 @@ body{
 }
 .contentbox{
     width: 100%;
-    height: 460px;
+    height: 515px;
 }
-.contentbox .content-sort-title{
+.contentbox .activity-title{
     width: 100%;
-    height: 160px;
-    background-color:  #fcd632;
-    
+    height: 215px;
 }
-.contentbox .content-related-userbox{
+.contentbox .activity-title img{
+    width: 360px ;
+    height: auto;
+}
+.contentbox .content-related-sitebox{
     width: 100%;
     height: 300px;
 }
-.contentbox .content-related-userbox .userbox{
+.contentbox .content-related-sitebox a{
+    cursor: pointer;
+}
+.contentbox .content-related-sitebox .sitebox{
     width: 50%;
     height: 150px;
     float: left;
 }
-.contentbox .content-related-userbox .userbox a{
-    cursor: pointer;
+.contentbox .content-related-sitebox .sitebox .site_photo{
+    width: 70px ;
+    height: 70px;
+    margin-top: 10px;
+    margin-left: 55px;
 }
-.contentbox .content-related-userbox .userbox img{
+.contentbox .content-related-sitebox .sitebox .site_photo img{
+    width: 70px;
+    height: 70px;
+}
+.contentbox .content-related-sitebox .sitebox .site_name{
+    width:180px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
+}
+.contentbox .content-related-sitebox .sitebox .site_describe{
     width: 180px;
-    height: 150px;
+    height: 40px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #000000;
+
 }
-
-
-
-
 
 .footer{
     width: 360px;
@@ -181,3 +172,6 @@ body{
     margin: 0px auto;
     font-family: "微软雅黑";
 }
+.banner { position: relative; overflow: auto; }
+.banner li { list-style: none; }
+.banner ul li { float: left; }

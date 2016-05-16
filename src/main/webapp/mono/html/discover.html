@@ -4,55 +4,114 @@
     <meta charset="UTF-8">
     <title>Discover</title>
     <link rel="stylesheet" href="../css/discover.css">
+    <script src="../js/jQuery-2.1.4.min.js"/>
+
     <script src="../js/discover.js"></script>
+    <script src="../js/uislider.js"></script>
+    <link rel="stylesheet" href="../bootstrap-3.3.5/dist/css/bootstrap.min.css">
+
 </head>
 <body>
+    <script>
+        $(function() {
+            $('.banner').unslider();
+        });
+    </script>
+
     <div class="wrapper">
         <div class="nav-title">
-            <div class="search-icon"><a><img src="../img/discoverimg/search.png"></a></div>
+            <div class="search-icon"><a href="search.html"><img src="../img/discoverimg/search.png"></a></div>
             <span>发现</span>
             <div class="apply-site">
                 <span>申请建站</span>
                 <span class="site-icon"><a href="../html/site.html"><img src="../img/discoverimg/site.png"</span></a>
             </div>
         </div>
+
         <div class="roll-img" id="roll-img">
-            <div class="roll-imgbox" style="display:block">
-                <img src="../img/discoverimg/roll1.jpg">
-            </div>
-            <div class="roll-imgbox" style="display:none">
-                <img src="../img/discoverimg/roll2.jpg">
-            </div>
-            <div class="roll-imgbox" style="display:none">
-                <img src="../img/discoverimg/roll3.jpg">
-            </div>
-            <div class="roll-linecircle" id="roll-linecircle">
-                <div class="circleselect"></div>
-                <div ></div>
-                <div ></div>
+            <div class="banner">
+                <ul>
+                    <li><a><img src="../img/discoverimg/roll1.png"></a></li>
+                    <li><a><img src="../img/discoverimg/roll2.png"></a></li>
+                    <li><a><img src="../img/discoverimg/roll3.png"></a></li>
+                </ul>
             </div>
         </div>
+
         <div class="content">
            <div class="contentbox">
-               <div class="content-sort-title">
+               <div class="activity-title">
+                   <img src="../img/discoverimg/discover_activity2.png">
                </div>
-               <div class="content-related-userbox">
-                   <div class="userbox" style="background-image:url">
-                       <a><img src="../img/discoverimg/userback%20(1).jpg"></a>
-                   </div>
-                   <div class="userbox">
-                       <a><img src="../img/discoverimg/userback%20(2).jpg"></a>
-                   </div>
-                   <div class="userbox">
-                       <a><img src="../img/discoverimg/userback%20(3).jpg"></a>
-                   </div>
-                   <div class="userbox">
-                       <a><img src="../img/discoverimg/userback%20(4).jpg"></a>
-                   </div>
+               <div class="content-related-sitebox">
+                   <a>
+                       <div class="sitebox">
+                           <div class="site_photo"><img src="../img/discoverimg/user1.jpg" ></div>
+                           <p class="site_name">情话</p>
+                           <p class="site_describe">分享每一句动人情话</p>
+                       </div>
+                   </a>
+                   <a>
+                       <div class="sitebox">
+                           <div class="site_photo"><img src="../img/discoverimg/user2.jpg" ></div>
+                           <p class="site_name">张国荣的一切</p>
+                           <p class="site_describe">关于他的 好的坏的</p>
+                       </div>
+                   </a>
+                   <a>
+                       <div class="sitebox">
+                           <div class="site_photo"><img src="../img/discoverimg/user3.jpg" ></div>
+                           <p class="site_name">文艺青年爱牢骚</p>
+                           <p class="site_describe">说些自己喜欢的</p>
+                       </div>
+                   </a>
+                   <a>
+                       <div class="sitebox">
+                           <div class="site_photo"><img src="../img/discoverimg/user4.png" ></div>
+                           <p class="site_name">隧道</p>
+                           <p class="site_describe">希望我的声音你听得到</p>
+                       </div>
+                   </a>
                </div>
            </div>
+
+            <div class="contentbox">
+                <div class="activity-title">
+                    <img src="../img/discoverimg/discover_activity1.png">
+                </div>
+                <div class="content-related-sitebox">
+                    <a>
+                        <div class="sitebox">
+                            <div class="site_photo"><img src="../img/discoverimg/user1.jpg" ></div>
+                            <p class="site_name">情话</p>
+                            <p class="site_describe">分享每一句动人情话</p>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="sitebox">
+                            <div class="site_photo"><img src="../img/discoverimg/user2.jpg" ></div>
+                            <p class="site_name">张国荣的一切</p>
+                            <p class="site_describe">关于他的 好的坏的</p>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="sitebox">
+                            <div class="site_photo"><img src="../img/discoverimg/user3.jpg" ></div>
+                            <p class="site_name">文艺青年爱牢骚</p>
+                            <p class="site_describe">说些自己喜欢的</p>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="sitebox">
+                            <div class="site_photo"><img src="../img/discoverimg/user4.png" ></div>
+                            <p class="site_name">隧道</p>
+                            <p class="site_describe">希望我的声音你听得到</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-        
+
         <div class="footer">
             <ul>
                <li>

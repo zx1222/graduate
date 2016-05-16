@@ -123,7 +123,7 @@ public class ArticleDao {
         builder.append(" where a.status = 0 and site_id=? ");
         builder.append(" order by s.create_time desc ");
         builder.append(" limit ?,? ");
-        return jdbcTemplate.query(builder.toString(),new Object[]{site_id,page,len},new BeanPropertyRowMapper<ArticleData>(ArticleData.class));
+        return jdbcTemplate.query(builder.toString(),new Object[]{site_id,(page-1)*len,len},new BeanPropertyRowMapper<ArticleData>(ArticleData.class));
     }
 
     public List<Category> getCategory(){

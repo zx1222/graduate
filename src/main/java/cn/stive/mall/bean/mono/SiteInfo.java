@@ -8,6 +8,7 @@ public class SiteInfo {
     private String site_name;
     private String site_photo;
     private String site_cover;
+
     private String site_descript;
     private long user_id;
     private String user_photo;
