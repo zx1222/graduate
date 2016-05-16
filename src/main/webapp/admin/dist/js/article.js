@@ -148,7 +148,22 @@ window.onload = function () {
 
             $("#cover_url").val(imgUrl);
         }
-    })
+    });
+
+    $(".bootstrap-wysihtml5-upload-image-url").fileupload({
+        autoUpload: false,//是否自动上传
+        dataType: 'json',
+        url: commonJs.constant.uploadUrl + "?dir=dxt/test",//文件上传地址，当然也可以直接写在input的data-url属性内
+        type: "POST",
+
+        done: function (e, result) {
+            var imgUrl = result.result.data
+            console.log(result);
+            alert('上传成功！');
+            $(".bootstrap-wysihtml5-insert-image-url").val(imgUrl);
+        }
+    });
+
 
 }
 
