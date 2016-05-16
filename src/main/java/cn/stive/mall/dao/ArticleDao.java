@@ -91,7 +91,7 @@ public class ArticleDao {
     public List<ArticlePage> getArticleDetailList(int page, int len ,long user_id){
         String sql = "select a.id,s.id site_id,s.icon_url site_icon ,s.site_name name ,a.id,a.cover_url article_cover,a.create_time time,c.category_name sort,a.title articletitle,a.description articlesubhead " +
                 "from a_article a left join a_category c on c.id=a.category_id" +
-                " left join a_site_mp m  on m.article_id = a.id  left join a_site s on s.id = m.site_id where  1=1 and a.status =0 ";
+                "  join a_site_mp m  on m.article_id = a.id  left join a_site s on s.id = m.site_id where  1=1 and a.status =0 ";
 
 
         List<Object> args = new ArrayList<Object>();
