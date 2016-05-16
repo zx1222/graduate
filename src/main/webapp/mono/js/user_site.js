@@ -105,35 +105,36 @@ window.onload = function () {
 
             var interflowspan = document.createElement("span");
             interflow.appendChild(interflowspan);
-            var interflowa = document.createElement("a");
-            interflowspan.appendChild(interflowa);
-            var interflowimg = document.createElement("img");
-            interflowimg.src = "../img/homeimg/" + interflowimgData.data[0].src;
-            interflowa.appendChild(interflowimg);
+            var interflowaforward = document.createElement("a");
+            interflowspan.appendChild(interflowaforward);
+            var interflowforwardimg = document.createElement("img");
+            interflowforwardimg.src = "../img/homeimg/" + interflowimgData.data[0].src;
+            interflowaforward.appendChild(interflowforwardimg);
 
             var interflowspan = document.createElement("span");
             interflow.appendChild(interflowspan);
-            var interflowa = document.createElement("a");
-            interflowspan.appendChild(interflowa);
-            var interflowimg = document.createElement("img");
-            interflowimg.src = "../img/homeimg/" + interflowimgData.data[1].src;
-            interflowa.appendChild(interflowimg);
+            var interflowaup = document.createElement("a");
+            interflowspan.appendChild(interflowaup);
+            var  interflowupimg = document.createElement("img");
+            interflowupimg.src = "../img/homeimg/" + interflowimgData.data[1].src;
+            interflowaup.appendChild( interflowupimg);
 
             var interflowspan = document.createElement("span");
             interflow.appendChild(interflowspan);
-            var interflowa = document.createElement("a");
-            interflowspan.appendChild(interflowa);
-            var interflowimg = document.createElement("img");
-            interflowimg.src = "../img/homeimg/" + interflowimgData.data[2].src;
-            interflowa.appendChild(interflowimg);
+            var interflowalike = document.createElement("a");
+            interflowspan.appendChild(interflowalike);
+            var interflowlikeimg = document.createElement("img");
+            interflowlikeimg.src = "../img/homeimg/" + interflowimgData.data[2].src;
+            interflowalike.appendChild(interflowlikeimg);
 
             var interflowspan = document.createElement("span");
             interflow.appendChild(interflowspan);
-            var interflowa = document.createElement("a");
-            interflowspan.appendChild(interflowa);
-            var interflowimg = document.createElement("img");
-            interflowimg.src = "../img/homeimg/" + interflowimgData.data[3].src;
-            interflowa.appendChild(interflowimg);
+            var interflowacomment = document.createElement("a");
+            interflowacomment.href="pinglun.html?id="+article_info[i].id;
+            interflowspan.appendChild(interflowacomment);
+            var interflowcommentimg = document.createElement("img");
+            interflowcommentimg.src = "../img/homeimg/" + interflowimgData.data[3].src;
+            interflowacomment.appendChild(interflowcommentimg);
         }
     }
 

@@ -61,21 +61,25 @@ function fillArticleList(article_list){
         site_photo.className="site_photo";
         article_nav.appendChild(site_photo);
 
+        var site_photoa=document.createElement("a");
+        site_photoa.href="user_site.html?id="+article_list[i].site_info.site_Id;
+        site_photo.appendChild(site_photoa);
+
         var sitephotoimg=document.createElement("img");
         sitephotoimg.src=article_list[i].site_info.icon_url;
-        site_photo.appendChild(sitephotoimg);
+        site_photoa.appendChild(sitephotoimg);
 
         var nameAndtime=document.createElement("div");
         nameAndtime.className="nameAndtime";
         article_nav.appendChild(nameAndtime);
 
         var site_name=document.createElement("span");
-        site_name.className="name";
+        site_name.className="site_name";
         site_name.innerHTML=article_list[i].site_info.site_name;
         nameAndtime.appendChild(site_name);
 
         var create_time=document.createElement("span");
-        create_time.className="time";
+        create_time.className="site_time";
         create_time.innerHTML=(new Date(parseInt(parseInt(article_list[i].article_data.time)))).Format("yyyy-MM-dd hh:mm:ss");
         nameAndtime.appendChild(create_time);
 
@@ -115,37 +119,38 @@ function fillArticleList(article_list){
         interflow.className="interflow";
         authorcontent.appendChild(interflow);
 
-        var interflowspan=document.createElement("span");
+        var interflowspan = document.createElement("span");
         interflow.appendChild(interflowspan);
-        var interflowa=document.createElement("a");
-        interflowspan.appendChild(interflowa);
-        var interflowimg=document.createElement("img");
-        interflowimg.src="../img/homeimg/"+interflowimgData.data[0].src;
-        interflowa.appendChild(interflowimg);
+        var interflowaforward = document.createElement("a");
+        interflowspan.appendChild(interflowaforward);
+        var interflowforwardimg = document.createElement("img");
+        interflowforwardimg.src = "../img/homeimg/" + interflowimgData.data[0].src;
+        interflowaforward.appendChild(interflowforwardimg);
 
-        var interflowspan=document.createElement("span");
+        var interflowspan = document.createElement("span");
         interflow.appendChild(interflowspan);
-        var interflowa=document.createElement("a");
-        interflowspan.appendChild(interflowa);
-        var interflowimg=document.createElement("img");
-        interflowimg.src="../img/homeimg/"+interflowimgData.data[1].src;
-        interflowa.appendChild(interflowimg);
+        var interflowaup = document.createElement("a");
+        interflowspan.appendChild(interflowaup);
+        var  interflowupimg = document.createElement("img");
+        interflowupimg.src = "../img/homeimg/" + interflowimgData.data[1].src;
+        interflowaup.appendChild( interflowupimg);
 
-        var interflowspan=document.createElement("span");
+        var interflowspan = document.createElement("span");
         interflow.appendChild(interflowspan);
-        var interflowa=document.createElement("p");
-        interflowspan.appendChild(interflowa);
-        var interflowimg=document.createElement("img");
-        interflowimg.src="../img/homeimg/"+interflowimgData.data[2].src;
-        interflowa.appendChild(interflowimg);
+        var interflowalike = document.createElement("a");
+        interflowspan.appendChild(interflowalike);
+        var interflowlikeimg = document.createElement("img");
+        interflowlikeimg.src = "../img/homeimg/" + interflowimgData.data[2].src;
+        interflowalike.appendChild(interflowlikeimg);
 
-        var interflowspan=document.createElement("span");
+        var interflowspan = document.createElement("span");
         interflow.appendChild(interflowspan);
-        var interflowa=document.createElement("p");
-        interflowspan.appendChild(interflowa);
-        var interflowimg=document.createElement("img");
-        interflowimg.src="../img/homeimg/"+interflowimgData.data[3].src;
-        interflowa.appendChild(interflowimg);
+        var interflowacomment = document.createElement("a");
+        interflowacomment.href="pinglun.html?id="+article_list[i].article_data.id;
+        interflowspan.appendChild(interflowacomment);
+        var interflowcommentimg = document.createElement("img");
+        interflowcommentimg.src = "../img/homeimg/" + interflowimgData.data[3].src;
+        interflowacomment.appendChild(interflowcommentimg);
 
     }
 }
