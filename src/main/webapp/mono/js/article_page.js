@@ -20,7 +20,11 @@ var article=  {
         subhead.innerHTML=article_page.subhead;
         author.innerHTML = article_page.author;
         main_content.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+decodeURI(article_page.main_content);
+<<<<<<< HEAD
         comment.href="pinglun.html?article_id"+this.article_id;
+=======
+        // comment.href="pinglun.html?article_id"+
+>>>>>>> 888df07290c15ea1a833dd4be397a3bb39320db7
     },
     getArticleData:function (func,id) {
         var data;

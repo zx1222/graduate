@@ -19,8 +19,8 @@ public class SiteService {
 
 
 
-    public List<Site> getSite(){
-        return siteDao.getSites();
+    public List<Site> getSite(long user_id){
+        return siteDao.getSites(user_id);
 
     }
 

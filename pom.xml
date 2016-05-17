@@ -6,7 +6,7 @@
   <artifactId>mono</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
-  <name>li-mall</name>
+  <name>mono</name>
   <url>http://maven.apache.org</url>
 
   <properties>

@@ -36,13 +36,14 @@ public class ArticleDao {
 
 
     public List<Article> getArticleList(int page,int len){
-        return getArticleList(0,page,len);
+        return getArticleList(0,1,page,len);
     }
 
-    public List<Article> getArticleList(long site_id,int page,int len){
-        String sql = "select a.id,a.title,a.description,a.create_time from a_article a left join a_site_mp s on s.article_id = a.id where a.status = 0 ";
+    public List<Article> getArticleList(long site_id,long user_id,int page,int len){
+        String sql = "select a.id,a.title,a.description,a.create_time from a_article a left join a_site_mp s on s.article_id = a.id where a.status = 0 and user_id=? ";
 
         List<Object> args  = new ArrayList<Object>();
+        args.add(user_id);
         if(site_id>0){
             sql += " and s.site_id=? and s.status=0";
             args.add(site_id);

@@ -4,6 +4,7 @@ import cn.stive.mall.bean.User;
 import cn.stive.mall.service.UserService;
 import cn.stive.mall.util.JsonUtil;
 import org.apache.http.HttpResponse;
+import org.jboss.netty.handler.codec.base64.Base64Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 /**
  * Created by dxt on 16/4/8.
@@ -74,7 +76,10 @@ public class UserApi extends BaseHandler {
 
         User user = this.userService.loginEmail(email, password);
         HttpSession session = request.getSession();
+        user.setNick_name(URLEncoder.encode(user.getNick_name(),"UTF-8"));
+        user.setDescript(URLEncoder.encode(user.getDescript(),"UTF-8"));
         session.setAttribute("user_info",JsonUtil.toJson(user));
+        System.out.println(JsonUtil.toJson(user));
         Cookie c = new Cookie("user_info",JsonUtil.toJson(user));
         c.setPath("/");
         response.addCookie(c);
