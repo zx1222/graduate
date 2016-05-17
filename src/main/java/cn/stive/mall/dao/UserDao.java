@@ -76,9 +76,9 @@ public class UserDao {
         return jdbcTemplate.queryForObject(sql,new Object[]{u_id},String.class);
     }
 
-    public void addFocus(long user_id, long visitor_id){
-        String sql = "insert into u_focus (user_id,visitor_id) values(?,?)";
-        jdbcTemplate.update(sql,new Object[]{user_id,visitor_id});
+    public int addFocus(long user_id, long visitor_id){
+        String sql = "insert into u_focus (user_id,visitor_id) values(?,?)  on DUPLICATE KEY UPDATE status = status^1";
+        return jdbcTemplate.update(sql,new Object[]{user_id,visitor_id});
     }
 }
 

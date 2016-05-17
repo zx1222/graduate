@@ -89,8 +89,10 @@ public class ArticleDao {
     public List<ArticlePage> getArticleDetailList(int page,int len){
         return getArticleDetailList(page,len,0);
     }
+
+
     public List<ArticlePage> getArticleDetailList(int page, int len ,long user_id){
-        String sql = "select a.id,s.id site_id,s.icon_url site_icon ,s.site_name name ,a.id,a.cover_url article_cover,a.create_time time,c.category_name sort,a.title articletitle,a.description articlesubhead " +
+        String sql = "select a.id,s.id site_id,s.icon_url site_icon ,s.site_name name ,a.id,a.cover_url article_cover,a.create_time time,a.up_count,a.comment_count,a.collect_count,a.collect_count,c.category_name sort,a.title articletitle,a.description articlesubhead " +
                 "from a_article a left join a_category c on c.id=a.category_id" +
                 "  join a_site_mp m  on m.article_id = a.id  left join a_site s on s.id = m.site_id where  1=1 and a.status =0 ";
 
@@ -119,7 +121,7 @@ public class ArticleDao {
 
     public List<ArticleData> getArticleDataList(long site_id,int page,int len){
         StringBuilder builder = new StringBuilder();
-        builder.append("select a.id ,a.title articletitle,description articlesubhead,cover_url article_cover,a.create_time time from a_article a");
+        builder.append("select a.id ,a.title articletitle,description articlesubhead,cover_url article_cover,a.create_time time,a.up_count,a.comment_count,a.collect_count,a.collect_count from a_article a");
         builder.append(" join a_site_mp s on s.article_id = a.id ");
         builder.append(" where a.status = 0 and site_id=? ");
         builder.append(" order by s.create_time desc ");

@@ -24,6 +24,9 @@ public class CommentDao {
 
     public void insertComment(Comment comment) throws Exception {
         sqlUtil.insert(comment,"a_comment");
+
+        String sql = "update a_article set comment_count= comment_count+1 where id = ?";
+        jdbcTemplate.update(sql,new Object[]{comment.getArticle_id()});
     }
 
     public void insertForward(Map<String,Object> sql_map) throws Exception {
@@ -31,7 +34,14 @@ public class CommentDao {
     }
 
     public void insertUp(Map<String,Object> sql_map ) {
-        sqlUtil.insert(sql_map,"a_article_up");
+        int result =  sqlUtil.insert(sql_map,"a_article_up");
+
+        String sql = "update a_article set up_count= up_count+1 where id = ?";
+        jdbcTemplate.update(sql,new Object[]{sql_map.get("article_id")});
+    }
+
+    public void insertCommentUp(Map<String,Object> sql_map ) {
+        sqlUtil.insert(sql_map,"a_comment_up");
     }
 
     public List<Comment> getComment(){
@@ -58,5 +68,28 @@ public class CommentDao {
     public int getCommentCount(long article_id){
         String sql = "select count(*) from a_comment";
         return jdbcTemplate.queryForInt(sql);
+    }
+
+    public int  addFocus(long site_id, long visitor_id){
+        String sql = "insert into s_focus (user_id,visitor_id) values(?,?)  on DUPLICATE KEY UPDATE status = status^1";
+        int result =  jdbcTemplate.update(sql,new Object[]{site_id,visitor_id});
+
+        if(result==1){
+            sql = "update a_site set focus_count = focus_count+1 where id = ?";
+            jdbcTemplate.update(sql,new Object[]{site_id});
+        }
+        return result;
+    }
+
+    public int addCollection(long article_id,long visitor_id){
+        String sql = "insert into a_collect (article_id,visitor_id) values(?,?)  on DUPLICATE KEY UPDATE status = status^1";
+        int result =  jdbcTemplate.update(sql,new Object[]{article_id,visitor_id});
+
+        if(result==1){
+            sql = "update a_article set collect_count= collect_count+1 where id = ?";
+            jdbcTemplate.update(sql,new Object[]{article_id});
+        }
+
+        return result;
     }
 }

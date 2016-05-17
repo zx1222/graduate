@@ -91,8 +91,14 @@ public class UserApi extends BaseHandler {
 
     @RequestMapping("/user/focus")
     @ResponseBody
-    public Response focus(long user_id,long visitor_id){
-        return this.success();
+    public Response focusUser(long user_id,long visitor_id){
+        int result = userService.focus(user_id,visitor_id);
+        if(result ==1) {
+            return this.success("focus");
+        }else{
+            return this.success("unfocus");
+        }
+
     }
 
 

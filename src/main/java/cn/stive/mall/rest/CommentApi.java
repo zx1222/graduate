@@ -31,13 +31,23 @@ public class CommentApi extends BaseHandler {
 
     @RequestMapping("/mono/article/up")
     @ResponseBody
-    public Response up(long article_id,long visitor_id){
+    public Response upArticle(long article_id,long visitor_id) throws Exception {
+        commentService.upArticle(article_id,visitor_id);
+        return this.success();
+    }
+
+    @RequestMapping("/mono/comment/up")
+    @ResponseBody
+    public Response upComment(long comment_id,long visitor_id) throws Exception {
+        commentService.upComment(comment_id,visitor_id);
         return this.success();
     }
 
     @RequestMapping("/mono/article/forward")
     @ResponseBody
-    public Response forward(long article_id,long visitor_id){
+    public Response forward(long article_id,long visitor_id) throws Exception {
+        commentService.forward(article_id,visitor_id);
+
         return this.success();
     }
 
@@ -62,7 +72,31 @@ public class CommentApi extends BaseHandler {
     }
 
 
+    @RequestMapping("mono/site/focus")
+    @ResponseBody
+    public Response focusSite(long site_id,long visitor_id){
+        int result = commentService.focusSite(site_id,visitor_id);
 
+        if(result ==1) {
+            return this.success("focus");
+        }else{
+            return this.success("unfocus");
+        }
+    }
+
+
+
+    @RequestMapping("mono/article/collect")
+    @ResponseBody
+    public Response articleCollect(long article_id,long visitor_id){
+       int result = commentService.collectArticle(article_id,visitor_id);
+
+        if(result ==1) {
+            return this.success("focus");
+        }else{
+            return this.success("unfocus");
+        }
+    }
 
 
 }

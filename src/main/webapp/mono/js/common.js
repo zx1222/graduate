@@ -113,9 +113,10 @@ function checkLogin(){
         window.location.href="/admin/pages/login/login.html";
     }
     console.log(c);
+    commonJs.user_info = c;
+
     var user_pannel = $(".user-panel");
     user_pannel.find(".info").find("p").text(c.nick_name);
-    console.log(user_pannel[0]);
 
 
 }

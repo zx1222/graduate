@@ -113,8 +113,8 @@ public class UserService {
 
     }
 
-    private void focus(long user_id,long visitor_id){
-        userDao.addFocus(user_id,visitor_id);
+    public  int  focus(long user_id,long visitor_id){
+       return  userDao.addFocus(user_id,visitor_id);
     }
 
 

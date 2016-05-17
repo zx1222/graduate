@@ -32,7 +32,16 @@ public class CommentService {
         commentDao.insertForward(sql_map);
     }
 
-    public void up(long article_id,long visitor_id) throws Exception {
+    public void upComment(long comment_id,long visitor_id) throws Exception {
+        Map<String,Object> sql_map = new HashMap<String, Object>();
+
+        sql_map.put("article_id",comment_id);
+        sql_map.put("visitor_id",visitor_id);
+
+        commentDao.insertCommentUp(sql_map);
+    }
+
+    public void upArticle(long article_id,long visitor_id) throws Exception {
         Map<String,Object> sql_map = new HashMap<String, Object>();
 
         sql_map.put("article_id",article_id);
@@ -56,5 +65,13 @@ public class CommentService {
 
     public int getCommentCount(long article_id){
         return commentDao.getUpCount(article_id);
+    }
+
+    public int  focusSite(long site_id,long visitor_id){
+       return  commentDao.addFocus(site_id,visitor_id);
+    }
+
+    public int collectArticle(long article_id,long visitor_id){
+        return commentDao.addCollection(article_id,visitor_id);
     }
 }

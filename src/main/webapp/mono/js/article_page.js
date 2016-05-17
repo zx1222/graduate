@@ -12,6 +12,8 @@ var article=  {
         var comment=document.getElementById("comment");
 
         site_photo_url.href  = "user_site.html?site_id="+article_page.site_id;
+        article.site_id = article_page.site_id;
+
         site_photo.style.backgroundImage="url("+article_page.site_icon+")";
         site_name.innerHTML=article_page.site_name;
         create_time.innerHTML=(new Date(article_page.article_time).Format("yyyy-MM-dd hh:mm:ss"));
@@ -33,9 +35,18 @@ var article=  {
     }
 };
 window.onload = function () {
+    checkLogin();
     var search = window.location.search;
     article.article_id = search.split("=")[1];
     console.log(article.article_id);
 
     article.getArticleData(article.fillArticlePage,article.article_id);
+
+    var user_id = commonJs.user_info.id;
+
+    $("#focus_site").click(function(){
+        $.get("/mono/site/focus",{site_id:article.site_id,visitor_id:user_id},function(){
+            alert("操作成功!");
+        })
+    })
 }
