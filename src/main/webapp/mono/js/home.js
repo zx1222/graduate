@@ -152,7 +152,7 @@ function fillArticleList(article_list){
         interflowlikeimg.src = "../img/homeimg/" + interflowimgData.data[2].src;
         interflowalike.appendChild(interflowlikeimg);
         var interflowcollectioncount=document.createElement("p");
-        interflowcollectioncount.innerHTML=article_list[i].article_data.collection_count;
+        interflowcollectioncount.innerHTML=article_list[i].article_data.collect_count;
         interflowalike.appendChild(interflowcollectioncount);
 
         var interflowspan = document.createElement("span");
