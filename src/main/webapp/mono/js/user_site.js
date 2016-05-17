@@ -5,6 +5,7 @@ window.onload = function () {
     var site_list = {};
     var page = 1;
     var is_flip = true;
+    var is_request = true;
     console.log(site_id);
     $.get("/mono/site/detail?site_id=" + site_id, function (data) {
         site_list = data.data;
@@ -46,19 +47,30 @@ window.onload = function () {
     }
 
     window.onscroll = function () {
+
         var article_info = [];
-        if (checkFlag()&&is_flip) {
-            console.log("page:"+page);
+        if (checkFlag()&&is_flip&&is_request) {
+            is_request = false;
             $.get("/mono/site/detail", {page: page, len: 5,site_id:site_id}, function (data) {
-                article_info = data.data.article_info;
+                console.log(article_info);
                 if (article_info.length == 0) {
                     is_flip=false;
                     return;
                 }
+                is_request=true;
                 fillArticleContent(article_info);
                 console.log(article_info);
                 page=page+1;
             });
+
+
+            $.ajax({
+                url:"/mono/site/detail",
+                data:{page: page, len: 5,site_id:site_id},
+                type:"GET",
+                sync:false,
+
+            })
         }
     }
 

@@ -20,7 +20,7 @@ var article=  {
         subhead.innerHTML=article_page.subhead;
         author.innerHTML = article_page.author;
         main_content.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+decodeURI(article_page.main_content);
-        // comment.href="pinglun.html?article_id"+
+        comment.href="pinglun.html?article_id"+article_page.article_id;
     },
     getArticleData:function (func,id) {
         var data;
@@ -32,8 +32,8 @@ var article=  {
 };
 window.onload = function () {
     var search = window.location.search;
-    var article_id = search.split("=")[1];
-    console.log(article_id);
+    article.article_id = search.split("=")[1];
+    console.log(article.article_id);
 
-    article.getArticleData(article.fillArticlePage,article_id);
+    article.getArticleData(article.fillArticlePage,article.article_id);
 }

@@ -8,12 +8,21 @@ public class User {
     private String email;
     private String user_name;
     private String nick_name;
+    private String descript;
     private String head_url;
     private String password;
     private String phone ;
     private int status;
 
     private String token;
+
+    public String getDescript() {
+        return descript;
+    }
+
+    public void setDescript(String descript) {
+        this.descript = descript;
+    }
 
     public String getHead_url() {
         return head_url;

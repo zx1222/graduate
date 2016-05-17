@@ -40,6 +40,17 @@ public class UserApi extends BaseHandler {
         return this.success();
     }
 
+    @RequestMapping(value = "/user/update", method = RequestMethod.POST)
+    @ResponseBody
+    public Response updateUser(User user ,HttpServletResponse response) throws Exception {
+        userService.updateUser(user);
+
+        Cookie cookie  = new Cookie("user_info",JsonUtil.toJson(user));
+        response.addCookie(cookie);
+        return this.success();
+    }
+
+
     @RequestMapping(value = "/user/active", method = RequestMethod.GET)
     @ResponseBody
     public Response activeUser(long u_id, HttpServletResponse response) throws IOException {
@@ -51,6 +62,8 @@ public class UserApi extends BaseHandler {
         response.addCookie(cookie);
         return this.success();
     }
+
+
 
     @RequestMapping(value = "/user/login/email", method = RequestMethod.POST)
     @ResponseBody

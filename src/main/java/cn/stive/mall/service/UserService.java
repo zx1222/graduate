@@ -77,6 +77,10 @@ public class UserService {
         }
     }
 
+    public void updateUser(User user) throws Exception {
+        userDao.updateUser(user);
+    }
+
     public void  activeUser(long user_id){
         userDao.updateUserActive(user_id);
     }

@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by dxt on 16/4/14.
  */
 public class ArticlePage {
-    private long id;
+    private Long id;
     private String article_cover;
     private Date time;
     private String sort;
@@ -18,7 +18,7 @@ public class ArticlePage {
     private String articlesubhead;
     private String site_icon ;
     private String site_name ;
-    private long site_id;
+    private Long site_id;
 
     private SiteAbstract site_info;
     private ArticleData article_data;
@@ -29,7 +29,7 @@ public class ArticlePage {
         article_data = new ArticleData();
     }
 
-    public void setSite_id(long site_id) {
+    public void setSite_id(Long site_id) {
         this.site_id = site_id;
         site_info.setSite_Id(site_id);
 
@@ -47,7 +47,7 @@ public class ArticlePage {
     }
 
 
-    public void setId(long id) {
+    public void setId(Long id) {
         article_data.setId(id);
     }
 

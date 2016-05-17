@@ -129,10 +129,22 @@ function checkLogin(){
     var c = JSON.parse($.cookie("user_info"));
     var user_pannel = $(".user-panel");
 
+    console.log(c);
     user_pannel.find(".info").find("p").text(c.nick_name);
-
+    user_pannel.find("img").attr("src",c.head_url);
 
 }
+
+
+
+ function fillUserForm() {
+    var user_info = JSON.parse($.cookie("user_info"));
+    $("#head_img").attr("src", user_info.head_url);
+    $("#user_name").val(user_info.nick_name);
+    $("#descript").val(user_info.descript);
+}
+
+
 
 commonJs.getData = function(url,param){
     console.log("getData:"+url+","+JSON.stringify(param));
@@ -204,6 +216,21 @@ commonJs.getTableCellValue = function (col,id){
 }
 
 
+commonJs.checkDate = function (time){
+    var timestamp = Date.parse(new Date());
+    var diffStamp = timestamp - time;
+
+    if(diffStamp<3600){
+        return diffStamp/60 +"分";
+    }else if(diffStamp<86400){
+        return diffStamp/3600 +"小时";
+
+    }else{
+        return diffStamp/86400 +"天";
+    }
+    return 0;
+}
+
 
 // 对Date的扩展，将 Date 转化为指定格式的String
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
@@ -230,6 +257,9 @@ Date.prototype.Format = function(fmt)
     return fmt;
 }
 
+
+
+
 function checkSelected(){
     if($(".selected")[0] ==undefined){
         alert("请选中一篇文章!");
@@ -246,3 +276,5 @@ function checkResult(data){
         alert(data.msg);
     }
 }
+
+

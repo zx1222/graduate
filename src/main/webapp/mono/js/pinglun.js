@@ -83,8 +83,8 @@ window.onload = function () {
 
             var time=document.createElement("div");
             time.className="time";
-            // time.innerHTML=comment_list[i].create_time;
-            time.innerHTML=(new Date(Number(comment_list[i].create_time))).Format("yyyy-MM-dd hh:mm:ss");
+             time.innerHTML = checkDate(comment_list[i].create_time);
+            //time.innerHTML=(new Date(Number(comment_list[i].create_time))).Format("yyyy-MM-dd hh:mm:ss");
             pinglunbox_title.appendChild(time);
 
             var dianzan=document.createElement("div");
@@ -146,4 +146,20 @@ function checkFlag(){                         /*监听滚动条，用来判断�
     if(lastboxHeight<pageheight+scrolltop-40){
         return true;
     }
+}
+
+function checkDate(time){
+    var timestamp = Date.parse(new Date());
+    var diffStamp = (timestamp - time)/1000;
+
+    console.log(timestamp+","+time+","+(timestamp-time));
+    if(diffStamp<3600){
+        return parseInt(diffStamp/60) +"分钟前";
+    }else if(diffStamp<86400){
+        return parseInt(diffStamp/3600) +"小时前";
+
+    }else{
+        return parseInt(diffStamp/86400) +"天前";
+    }
+    return 0;
 }
