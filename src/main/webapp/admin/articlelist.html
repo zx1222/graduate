@@ -47,6 +47,13 @@
             height: auto;
         }
     </style>
+
+    <script type="text/javascript">
+        function logout (){
+            $.cookie('cookieName',null,{path:'/'})
+            window.location.href="/admin/pages/login/login.html";
+        }
+    </script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -79,6 +86,8 @@
                 <div class="pull-left info">
                     <p>Alexander Pierce</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    <a href="javascript:logout()">退出</a>
+
                 </div>
             </div>
             <ul class="sidebar-menu">

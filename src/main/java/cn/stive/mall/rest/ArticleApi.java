@@ -35,9 +35,10 @@ ArticleApi extends BaseHandler{
     @ResponseBody
     public Response addArticle(@RequestParam(required = false,defaultValue = "1")int page,
                                @RequestParam(required = false,defaultValue = "20")int len,
-                               @RequestParam(required = false,defaultValue = "0")long site_id) throws Exception {
+                               @RequestParam(required = false,defaultValue = "0")long site_id,
+                               long user_id) throws Exception {
 
-        return this.success( articleService.getArticleList(site_id,page,len)
+        return this.success( articleService.getArticleList(site_id,user_id,page,len)
         );
     }
 

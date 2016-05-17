@@ -120,13 +120,15 @@ window.onload=function(){
 }
 
 function checkLogin(){
-
+    console.log($.cookie("user_info"));
     if($.cookie("user_info")==null){
         window.location.href="/admin/pages/login/login.html";
         return ;
     }
 
-    var c = JSON.parse($.cookie("user_info"));
+    console.log($.cookie("user_info"));
+    var c = JSON.parse($.cookie("user_info"))
+    commonJs.user_info = c;
     var user_pannel = $(".user-panel");
 
     console.log(c);

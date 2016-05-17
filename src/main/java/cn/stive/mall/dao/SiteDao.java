@@ -26,9 +26,9 @@ public class SiteDao {
 
         return jdbcTemplate.queryForObject(sql,new Object[]{id}, new BeanPropertyRowMapper<Site>(Site.class));
     }
-    public List<Site> getSites() {
-        String sql = "select * from a_site where status = 0";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Site>(Site.class));
+    public List<Site> getSites(long user_id) {
+        String sql = "select * from a_site where status = 0 and user_id = ?";
+        return jdbcTemplate.query(sql,new Object[]{user_id}, new BeanPropertyRowMapper<Site>(Site.class));
     }
 
     public void insertSites(Site site) throws Exception {

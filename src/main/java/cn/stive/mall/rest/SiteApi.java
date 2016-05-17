@@ -35,8 +35,8 @@ public class SiteApi extends BaseHandler{
 
     @RequestMapping("/admin/site/list")
     @ResponseBody
-    public Response getSiteList(){
-        return this.success(siteService.getSite());
+    public Response getSiteList(long user_id){
+        return this.success(siteService.getSite(user_id));
     }
 
     @RequestMapping("/admin/site/detail")

@@ -5,7 +5,8 @@
 var site = {}
 
 site.fillSite = function (func) {
-    $.get("/admin/site/list", function (data) {
+    var user_id =commonJs.user_info.id;
+    $.get("/admin/site/list?user_id="+user_id, function (data) {
         func(data.data);
     })
 }
@@ -98,6 +99,8 @@ site.removeArticle = function(){
 
 
 window.onload = function () {
+    checkLogin();
+
     site.init();
 
     $("#btn-add").click(function(){
@@ -141,7 +144,7 @@ window.onload = function () {
             var imgUrl = result.result.data
 
             alert('上传成功！');
-            $(".show-img").attr("src", imgUrl);
+            $(".show-img-icon").attr("src", imgUrl);
 
             $("#icon_url").val(imgUrl);
         }

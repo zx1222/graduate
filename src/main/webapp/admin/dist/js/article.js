@@ -26,7 +26,8 @@ var article = {
         }
     },
     getArticleList: function () {
-        var article_url = "/admin/article/list";
+        var user_id = commonJs.user_info.id;
+        var article_url = "/admin/article/list?user_id="+user_id;
         var data = commonJs.getData(article_url)
         return data;
     },
