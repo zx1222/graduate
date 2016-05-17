@@ -5,7 +5,7 @@
 }
 .wraper{
     width: 360px;
-    height: 640px;
+    height: auto;
     overflow: hidden;
 }
 .userpage-nav{
@@ -37,7 +37,8 @@
 }
 .usermessage{
     width: 100%;
-    height: 520px;
+    height: auto;
+    margin-bottom: 60px;
 }
 .uesermessage-box{
     width: 100%;
@@ -100,27 +101,27 @@
 }
 .personalmess{
     width: 100%;
-    height: 55px;
+    height: 40px;
     background-color: #e7fff0;
     overflow: hidden;
 }
 .personalmess a{
     display: block;
     width: 15%;
-    height: 55px;
+    height: 40px;
     overflow: hidden;
     float: left;
 }
 .personalmess a img{
     width: 30px;
     height: 30px;
-    margin: 10px;
+    margin: 5px;
 }
 .personalmess p{
     width: 85%;
-    height: 55px;
+    height: 40px;
     float: left;
-    line-height: 55px;
+    line-height: 40px;
     font-family: "微软雅黑";
 }
 .row{
@@ -132,43 +133,146 @@
     cursor: pointer;
 }
 [class*="col-"]{
-    padding-top: 7px;
+    padding-top: 5px;
 /*    background-color: #f9fcfb;*/
     padding-bottom: 7px;
     border: 1px solid #11cd6e;
     border-radius: 4px;
-    height: 50px;
-    line-height: 40px;
+    height: 40px;
+    line-height: 30px;
 }
-.likesite{
-    width:100%;
-    height: 55px;
-    background-color:#f9fcfb;
-    margin-top: 7px;
-}
-.likesite a{
-    display: block;
+.createsitebox{
     width: 100%;
-    height: 55px;
-    line-height: 52px;
-    text-decoration: none;
-    color: black;
-    padding-left: 10px;
+    height: 135px;
+    border-bottom: 1px solid #eee;
 }
-.other{
-    width:100%;
-    height: 55px;
-    background-color:#f9fcfb;
-    margin-top: 7px;
+.createsitebox p{
+    width: 88%;
+    margin-left: 2%;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 5px;
+    float: left;
 }
-.other a{
+.createsitebox a{
     display: block;
+    width: 8%;
+    height: 25px;
+    margin-right: 2%;
+    float: left;
+}
+.createsitebox a img{
+    width: 20px;
+    height: 20px;
+}
+.createsitebox .create_sitebox{
+    width: 90px;
+    height: 95px;
+    float: left;
+}
+.createsitebox .create_sitebox .create_site_photo{
+    width: 60px;
+    height: 60px;
+    margin-left: 15px ;
+    border-radius: 50%;
+    background-image: url(../img/homeimg/user2.jpg);
+    background-size: 60px 60px;
+}
+.createsitebox .create_sitebox .create_site_id{
+    width: 90px;
+    height: 35px;
+    line-height: 17px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.focussitebox{
     width: 100%;
-    height: 55px;
-    line-height: 52px;
-    text-decoration: none;
-    color: black;
-    padding-left: 10px;
+    height: 135px;
+    border-bottom: 1px solid #eee;
+}
+.focussitebox p{
+    width: 88%;
+    margin-left: 2%;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 5px;
+    float: left;
+}
+.focussitebox a{
+    display: block;
+    width: 8%;
+    height: 25px;
+    margin-right: 2%;
+    float: left;
+}
+.focussitebox a img{
+    width: 20px;
+    height: 20px;
+}
+.focussitebox .focus_sitebox{
+    width: 90px;
+    height: 95px;
+    float: left;
+}
+.focussitebox .focus_sitebox .focus_site_photo{
+    width: 60px;
+    height: 60px;
+    margin-left: 15px ;
+    border-radius: 50%;
+    background-image: url(../img/homeimg/user.jpg);
+    background-size: 60px 60px;
+}
+.focussitebox .focus_sitebox .focus_site_id{
+    width: 90px;
+    height: 35px;
+    line-height: 17px;
+    font-size: 12px;
+    text-align: center;
+}
+.focususerbox{
+    width: 100%;
+    height: 135px;
+    border-bottom: 1px solid #eee;
+}
+.focususerbox p{
+    width: 88%;
+    margin-left: 2%;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 5px;
+    float: left;
+}
+.focususerbox a{
+    display: block;
+    width: 8%;
+    height: 25px;
+    margin-right: 2%;
+    float: left;
+}
+.focususerbox img{
+    width: 20px;
+    height: 20px;
+}
+.focususerbox .focus_userbox{
+    width: 90px;
+    height: 95px;
+    float: left;
+}
+.focususerbox .focus_userbox .focus_user_photo{
+    width: 60px;
+    height: 60px;
+    margin-left: 15px ;
+    border-radius: 50%;
+    background-image: url(../img/homeimg/user.jpg);
+    background-size: 60px 60px;
+}
+.focususerbox .focus_userbox .focus_user_id{
+    width: 90px;
+    height: 35px;
+    line-height: 17px;
+    font-size: 12px;
+    text-align: center;
 }
 
 .footer{

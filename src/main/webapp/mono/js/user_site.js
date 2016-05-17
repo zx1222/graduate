@@ -1,5 +1,6 @@
 
 window.onload = function () {
+    checkLogin();
     var search = window.location.search;
     var site_id = search.split("=")[1];
     var site_list = {};
@@ -43,7 +44,7 @@ window.onload = function () {
         user_name.innerHTML = site_info.user_name;
 
         var user_describe = document.getElementById("user_describe");
-        user_describe.innerHTML = site_info.user_describe;
+        user_describe.innerHTML = JSON.parse($.cookie("user_info")).descript;
     }
 
     window.onscroll = function () {
@@ -122,6 +123,9 @@ window.onload = function () {
             var interflowforwardimg = document.createElement("img");
             interflowforwardimg.src = "../img/homeimg/" + interflowimgData.data[0].src;
             interflowaforward.appendChild(interflowforwardimg);
+            var interflowforwardcount=document.createElement("p");
+            interflowforwardcount.innerHTML=article_info[i].forward_count;
+            interflowaforward.appendChild(interflowforwardcount);
 
             var interflowspan = document.createElement("span");
             interflow.appendChild(interflowspan);
@@ -130,6 +134,9 @@ window.onload = function () {
             var  interflowupimg = document.createElement("img");
             interflowupimg.src = "../img/homeimg/" + interflowimgData.data[1].src;
             interflowaup.appendChild( interflowupimg);
+            var interflowupcount=document.createElement("p");
+            interflowupcount.innerHTML=article_info[i].up_count;
+            interflowaup.appendChild(interflowupcount);
 
             var interflowspan = document.createElement("span");
             interflow.appendChild(interflowspan);
@@ -138,6 +145,9 @@ window.onload = function () {
             var interflowlikeimg = document.createElement("img");
             interflowlikeimg.src = "../img/homeimg/" + interflowimgData.data[2].src;
             interflowalike.appendChild(interflowlikeimg);
+            var interflowcollectioncount=document.createElement("p");
+            interflowcollectioncount.innerHTML=article_info[i].collection_count;
+            interflowalike.appendChild(interflowcollectioncount);
 
             var interflowspan = document.createElement("span");
             interflow.appendChild(interflowspan);
@@ -147,6 +157,9 @@ window.onload = function () {
             var interflowcommentimg = document.createElement("img");
             interflowcommentimg.src = "../img/homeimg/" + interflowimgData.data[3].src;
             interflowacomment.appendChild(interflowcommentimg);
+            var interflowcommentcount=document.createElement("p");
+            interflowcommentcount.innerHTML=article_info[i].comment_count;
+            interflowacomment.appendChild(interflowcommentcount);
         }
     }
 

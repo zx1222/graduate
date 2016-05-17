@@ -103,7 +103,9 @@ commonJs.fillForm = function(_jsonObj,_formObj){
 }
 
 window.onload=function(){
+
     checkLogin();
+    commonJs.user_info = JSON.parse($.cookie("user_info"));
 }
 
 function checkLogin(){
@@ -112,10 +114,7 @@ function checkLogin(){
     if(c==null){
         window.location.href="/admin/pages/login/login.html";
     }
-    console.log(c);
-    var user_pannel = $(".user-panel");
-    user_pannel.find(".info").find("p").text(c.nick_name);
-    console.log(user_pannel[0]);
+
 
 
 }

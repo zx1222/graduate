@@ -127,7 +127,7 @@ function checkLogin(){
     }
 
     console.log($.cookie("user_info"));
-    var c = JSON.parse($.cookie("user_info"))
+    var c = JSON.parse($.cookie("user_info"));
     commonJs.user_info = c;
     var user_pannel = $(".user-panel");
 

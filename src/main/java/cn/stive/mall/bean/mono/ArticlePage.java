@@ -29,6 +29,11 @@ public class ArticlePage {
         article_data = new ArticleData();
     }
 
+
+    public SociallyCount getSociallyCount() {
+        return sociallyCount;
+    }
+
     public void setSite_id(Long site_id) {
         this.site_id = site_id;
         site_info.setSite_Id(site_id);

@@ -90,8 +90,9 @@ var article = {
     showSiteList: function () {
         checkSelected();
         var article_id = commonJs.getTableCellValue(0);
+        var user_id = commonJs.user_info.id;
 
-        commonJs.getDataHandle("/admin/site/list", function (data) {
+        commonJs.getDataHandle("/admin/site/list?user_id="+user_id, function (data) {
 
             commonJs.initTable("#site_table", table_site.tableDataAbstract(data.data));
         });

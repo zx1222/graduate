@@ -77,7 +77,8 @@ site.showEditView= function (){
 }
 
 site.showArticleList = function(site_id){
-    var data = commonJs.getData("/admin/article/list",{site_id:site_id})
+    var user_id = commonJs.user_info.id;
+    var data = commonJs.getData("/admin/article/list",{site_id:site_id,user_id:user_id})
     article.initDataTable(data,"#site_article_table")
     $('#site_article_table tbody').on('click', 'tr', function () {
         $("tr").removeClass('selected');

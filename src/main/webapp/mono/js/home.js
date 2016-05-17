@@ -126,6 +126,9 @@ function fillArticleList(article_list){
         var interflowforwardimg = document.createElement("img");
         interflowforwardimg.src = "../img/homeimg/" + interflowimgData.data[0].src;
         interflowaforward.appendChild(interflowforwardimg);
+        var interflowforwardcount=document.createElement("p");
+        interflowforwardcount.innerHTML=article_list[i].article_data.forward_count;
+        interflowaforward.appendChild(interflowforwardcount);
 
         var interflowspan = document.createElement("span");
         interflow.appendChild(interflowspan);
@@ -134,6 +137,9 @@ function fillArticleList(article_list){
         var  interflowupimg = document.createElement("img");
         interflowupimg.src = "../img/homeimg/" + interflowimgData.data[1].src;
         interflowaup.appendChild( interflowupimg);
+        var interflowupcount=document.createElement("p");
+        interflowupcount.innerHTML=article_list[i].article_data.up_count;
+        interflowaup.appendChild(interflowupcount);
 
         var interflowspan = document.createElement("span");
         interflow.appendChild(interflowspan);
@@ -142,6 +148,9 @@ function fillArticleList(article_list){
         var interflowlikeimg = document.createElement("img");
         interflowlikeimg.src = "../img/homeimg/" + interflowimgData.data[2].src;
         interflowalike.appendChild(interflowlikeimg);
+        var interflowcollectioncount=document.createElement("p");
+        interflowcollectioncount.innerHTML=article_list[i].article_data.collection_count;
+        interflowalike.appendChild(interflowcollectioncount);
 
         var interflowspan = document.createElement("span");
         interflow.appendChild(interflowspan);
@@ -151,6 +160,9 @@ function fillArticleList(article_list){
         var interflowcommentimg = document.createElement("img");
         interflowcommentimg.src = "../img/homeimg/" + interflowimgData.data[3].src;
         interflowacomment.appendChild(interflowcommentimg);
+        var interflowcommentcount=document.createElement("p");
+        interflowcommentcount.innerHTML=article_list[i].article_data.comment_count;
+        interflowacomment.appendChild(interflowcommentcount);
 
     }
 }
