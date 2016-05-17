@@ -51,7 +51,7 @@ public class CommentDao {
 
     public List<CommentData> getCommentData(long article_id,int page,int len){
         StringBuilder builder  = new StringBuilder( "select u.id user_id,u.nick_name user_name,u.head_url,c.content,count(cu.id) up_count ,c.create_time ");
-        builder.append(" from a_comment c left join u_user u on u.id = c.visitor_id left join a_comment_up cu on cu.comment_id = c.id  ");
+        builder.append(" from a_comment c  join u_user u on u.id = c.visitor_id left join a_comment_up cu on cu.comment_id = c.id  ");
         builder.append(" where c.status = 0 and article_id = ? ");
         builder.append(" group by c.id order by c.create_time desc ");
         builder.append(" limit ? ,? ");
@@ -61,12 +61,12 @@ public class CommentDao {
     }
 
     public int getUpCount(long article_id){
-        String sql = "select count(*) from a_article_up ";
+        String sql = "select count(*) from a_article_up  where status = 0";
         return jdbcTemplate.queryForInt(sql);
     }
 
     public int getCommentCount(long article_id){
-        String sql = "select count(*) from a_comment";
+        String sql = "select count(*) from a_comment where status = 0";
         return jdbcTemplate.queryForInt(sql);
     }
 

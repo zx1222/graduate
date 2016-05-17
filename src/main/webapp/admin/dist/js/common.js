@@ -126,7 +126,7 @@ function checkLogin(){
     }
 
     console.log($.cookie("user_info"));
-    var c = JSON.parse($.cookie("user_info"));
+    var c = JSON.parse(decodeURI($.cookie("user_info")));
     commonJs.user_info = c;
 
     console.log("checkLogin:" +commonJs.user_info);
