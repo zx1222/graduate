@@ -28,7 +28,7 @@ window.onload = function () {
         var comment_content=$(".commenttext").val();
         console.log(comment_content);
         var visitor_id= user_info.id;
-        $.get("/mono/article/comment",{"content":comment_content,
+        $.get("/mono/article/comment",{"content":encodeURI(comment_content),
             "visitor_id":visitor_id,"article_id":article_id},function(data){
             if(data.status==0){
                 alert("评论成功");
@@ -111,7 +111,7 @@ window.onload = function () {
             pinglunbox.appendChild(pinglun_content);
 
             var pc_p=document.createElement("p");
-            pc_p.innerHTML=comment_list[i].content;
+            pc_p.innerHTML=decodeURI(comment_list[i].content);
             pinglun_content.appendChild(pc_p);
         }
     }

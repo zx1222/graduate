@@ -44,7 +44,7 @@ window.onload = function () {
         user_name.innerHTML = site_info.user_name;
 
         var user_describe = document.getElementById("user_describe");
-        user_describe.innerHTML = JSON.parse($.cookie("user_info")).descript;
+        user_describe.innerHTML = JSON.parse(decodeURI($.cookie("user_info"))).descript;
     }
 
     window.onscroll = function () {
