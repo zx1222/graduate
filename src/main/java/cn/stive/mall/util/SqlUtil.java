@@ -133,11 +133,11 @@ public class SqlUtil {
 
     }
 
-    public void insert(Map<String,Object> sql_map,String table){
+    public int  insert(Map<String,Object> sql_map,String table){
         List<Object> args = new ArrayList<Object>();
         String sql = SqlUtil.getInsertSql(table,sql_map,args);
 
-        jdbcTemplate.update(sql,args.toArray());
+        return jdbcTemplate.update(sql,args.toArray());
 
     }
 

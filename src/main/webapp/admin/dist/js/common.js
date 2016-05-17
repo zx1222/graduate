@@ -120,7 +120,6 @@ window.onload=function(){
 }
 
 function checkLogin(){
-    console.log($.cookie("user_info"));
     if($.cookie("user_info")==null){
         window.location.href="/admin/pages/login/login.html";
         return ;
@@ -129,6 +128,9 @@ function checkLogin(){
     console.log($.cookie("user_info"));
     var c = JSON.parse($.cookie("user_info"));
     commonJs.user_info = c;
+
+    console.log("checkLogin:" +commonJs.user_info);
+
     var user_pannel = $(".user-panel");
 
     console.log(c);

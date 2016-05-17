@@ -19,7 +19,7 @@ public class CategoryDao {
 
     public List<Category> getCategory(){
         String sql = "select c.`id` ,category_name,c.create_time ,count(*) article_num from a_category c " +
-                "left join a_article a on a.category_id = c.id  where c.status = 0 group by c.id";
+                "left join a_article a on a.category_id = c.id  where c.status = 0 and a.status =0 group by c.id";
 
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<Category>(Category.class));
     }

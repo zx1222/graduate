@@ -12,10 +12,11 @@ public class ArticleData {
     private String sort;
     private String articletitle;
     private String articlesubhead;
+
     private int comment_count;
     private int up_count;
     private int forward_count;
-    private int collection_count;
+    private int collect_count;
 
 
 
@@ -44,12 +45,12 @@ public class ArticleData {
         this.forward_count = forward_count;
     }
 
-    public int getCollection_count() {
-        return collection_count;
+    public int getCollect_count() {
+        return collect_count;
     }
 
-    public void setCollection_count(int collection_count) {
-        this.collection_count = collection_count;
+    public void setCollect_count(int collect_count) {
+        this.collect_count = collect_count;
     }
 
     public long getId() {

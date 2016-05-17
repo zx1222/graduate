@@ -1,4 +1,5 @@
 window.onload = function () {
+    checkLogin();
 
     var article_list=[];
     var p=1;
@@ -133,6 +134,7 @@ function fillArticleList(article_list){
         var interflowspan = document.createElement("span");
         interflow.appendChild(interflowspan);
         var interflowaup = document.createElement("a");
+        interflowaup.href="javascript:social.upArticle("+article_list[i].article_data.id+")"
         interflowspan.appendChild(interflowaup);
         var  interflowupimg = document.createElement("img");
         interflowupimg.src = "../img/homeimg/" + interflowimgData.data[1].src;
@@ -144,6 +146,7 @@ function fillArticleList(article_list){
         var interflowspan = document.createElement("span");
         interflow.appendChild(interflowspan);
         var interflowalike = document.createElement("a");
+        interflowalike.href="javascript:social.collect("+article_list[i].article_data.id+")"
         interflowspan.appendChild(interflowalike);
         var interflowlikeimg = document.createElement("img");
         interflowlikeimg.src = "../img/homeimg/" + interflowimgData.data[2].src;

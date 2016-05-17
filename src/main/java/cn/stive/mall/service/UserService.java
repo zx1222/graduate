@@ -62,6 +62,9 @@ public class UserService {
     }
 
 
+    public User getUserInfo(long user_id){
+        return userDao.getUserInfo(user_id);
+    }
     public User loginEmail(String email, String password) {
         try{
             User user = this.userDao.getUserByPassword(email, password);	//直接用phone和passowrd查.. 查不到就抛异常
@@ -113,8 +116,8 @@ public class UserService {
 
     }
 
-    private void focus(long user_id,long visitor_id){
-        userDao.addFocus(user_id,visitor_id);
+    public  int  focus(long user_id,long visitor_id){
+       return  userDao.addFocus(user_id,visitor_id);
     }
 
 

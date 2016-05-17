@@ -116,7 +116,6 @@ function checkLogin(){
     }
 
 
-
 }
 
 commonJs.getData = function(url,param){

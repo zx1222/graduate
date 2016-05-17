@@ -14,6 +14,16 @@ public class SiteInfo {
     private String user_photo;
     private String user_name;
 
+    private int article_count;
+
+
+    public int getArticle_count() {
+        return article_count;
+    }
+
+    public void setArticle_count(int article_count) {
+        this.article_count = article_count;
+    }
 
     public long getUser_id() {
         return user_id;
