@@ -129,10 +129,22 @@ function checkLogin(){
     var c = JSON.parse($.cookie("user_info"));
     var user_pannel = $(".user-panel");
 
+    console.log(c);
     user_pannel.find(".info").find("p").text(c.nick_name);
-
+    user_pannel.find("img").attr("src",c.head_url);
 
 }
+
+
+
+ function fillUserForm() {
+    var user_info = JSON.parse($.cookie("user_info"));
+    $("#head_img").attr("src", user_info.head_url);
+    $("#user_name").val(user_info.nick_name);
+    $("#descript").val(user_info.descript);
+}
+
+
 
 commonJs.getData = function(url,param){
     console.log("getData:"+url+","+JSON.stringify(param));

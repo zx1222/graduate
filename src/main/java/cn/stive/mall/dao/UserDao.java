@@ -24,6 +24,9 @@ public class UserDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private SqlUtil sqlUtil;
+
 
     public long createUser(User user) throws Exception {
         Set<String> filter = new HashSet<String>();
@@ -49,6 +52,9 @@ public class UserDao {
         return keyHolder.getKey().longValue();
     }
 
+    public void updateUser(User user) throws Exception {
+        sqlUtil.update(user,null,"u_user",user.getId());
+    }
     public void updateUserActive(long user_id){
         String sql = "update u_user set is_active = 1 where id = ?";
         jdbcTemplate.update(sql,new Object[]{user_id});
@@ -60,7 +66,7 @@ public class UserDao {
     }
 
     public User getUserByPassword(String email, String password){
-        String sql = "select id,nick_name,user_name,email,head_url from u_user where email=? and password=?";
+        String sql = "select id,nick_name,user_name,email,head_url,descript from u_user where email=? and password=?";
         return jdbcTemplate.queryForObject(sql,new Object[]{email,password},new BeanPropertyRowMapper<User>(User.class));
     }
 
