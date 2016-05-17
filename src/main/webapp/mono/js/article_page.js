@@ -20,7 +20,7 @@ var article=  {
         subhead.innerHTML=article_page.subhead;
         author.innerHTML = article_page.author;
         main_content.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+decodeURI(article_page.main_content);
-        comment.href="pinglun.html?article_id"+
+        // comment.href="pinglun.html?article_id"+
     },
     getArticleData:function (func,id) {
         var data;
