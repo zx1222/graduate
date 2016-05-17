@@ -70,6 +70,12 @@ public class UserDao {
         return jdbcTemplate.queryForObject(sql,new Object[]{email,password},new BeanPropertyRowMapper<User>(User.class));
     }
 
+    public User getUserInfo(long user_id){
+
+        String sql = "select id,nick_name,user_name,email,head_url,descript from u_user where id=?";
+        return jdbcTemplate.queryForObject(sql,new Object[]{user_id},new BeanPropertyRowMapper<User>(User.class));
+    }
+
 
     public String getPassword(long u_id){
         String sql = "select password from u_user where u_id = ?";

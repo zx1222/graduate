@@ -35,5 +35,6 @@ category.fillCategoryTable = function (data) {
 }
 
 window.onload = function(){
+    checkLogin();
     category.fillCategory(category.fillCategoryTable);
 }

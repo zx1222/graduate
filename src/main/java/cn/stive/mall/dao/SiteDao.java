@@ -27,7 +27,7 @@ public class SiteDao {
         return jdbcTemplate.queryForObject(sql,new Object[]{id}, new BeanPropertyRowMapper<Site>(Site.class));
     }
     public List<Site> getSites(long user_id) {
-        String sql = "select * from a_site where status = 0 and user_id = ?";
+        String sql = "select * from a_site s where status = 0 and user_id = ?";
         return jdbcTemplate.query(sql,new Object[]{user_id}, new BeanPropertyRowMapper<Site>(Site.class));
     }
 
@@ -37,6 +37,9 @@ public class SiteDao {
         String sql = SqlUtil.getInsertSql("a_site", sql_map, args);
 
         jdbcTemplate.update(sql, args.toArray());
+
+        sql = "update a_site set article_count = article_count+1 where id = ? ";
+        jdbcTemplate.update(sql,site.getId());
 
     }
 

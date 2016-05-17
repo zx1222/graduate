@@ -17,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
@@ -46,8 +47,10 @@ public class UserApi extends BaseHandler {
     @ResponseBody
     public Response updateUser(User user ,HttpServletResponse response) throws Exception {
         userService.updateUser(user);
+        User u =userService.getUserInfo(user.getId());
 
-        Cookie cookie  = new Cookie("user_info",JsonUtil.toJson(user));
+
+        Cookie cookie  = setUserInfoCookie(user);
         response.addCookie(cookie);
         return this.success();
     }
@@ -75,18 +78,26 @@ public class UserApi extends BaseHandler {
             HttpServletResponse response) throws IOException, ServletException {
 
         User user = this.userService.loginEmail(email, password);
-        HttpSession session = request.getSession();
-        user.setNick_name(URLEncoder.encode(user.getNick_name(),"UTF-8"));
-        user.setDescript(URLEncoder.encode(user.getDescript(),"UTF-8"));
-        session.setAttribute("user_info",JsonUtil.toJson(user));
-        System.out.println(JsonUtil.toJson(user));
-        Cookie c = new Cookie("user_info",JsonUtil.toJson(user));
-        c.setPath("/");
-        response.addCookie(c);
+
+        response.addCookie(setUserInfoCookie(user));
+
         if(app_id!=1) {
             response.sendRedirect("/admin/articlelist.html");
         }
         return this.success(user);
+    }
+
+    private Cookie setUserInfoCookie(User user) throws UnsupportedEncodingException {
+        HttpSession session = request.getSession();
+        user.setNick_name(URLEncoder.encode(user.getNick_name(),"UTF-8"));
+        if(user.getDescript()!=null) {
+            user.setDescript(URLEncoder.encode(user.getDescript(), "UTF-8"));
+        }
+        session.setAttribute("user_info",JsonUtil.toJson(user));
+        System.out.println(JsonUtil.toJson(user));
+        Cookie c = new Cookie("user_info",JsonUtil.toJson(user));
+        c.setPath("/");
+        return c;
     }
 
     @RequestMapping("/user/focus")
