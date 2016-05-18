@@ -72,17 +72,6 @@ public class CommentApi extends BaseHandler {
     }
 
 
-    @RequestMapping("mono/site/focus")
-    @ResponseBody
-    public Response focusSite(long site_id,long visitor_id){
-        int result = commentService.focusSite(site_id,visitor_id);
-
-        if(result ==1) {
-            return this.success("focus");
-        }else{
-            return this.success("unfocus");
-        }
-    }
 
 
 

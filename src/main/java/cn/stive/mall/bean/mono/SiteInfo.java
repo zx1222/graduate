@@ -13,9 +13,17 @@ public class SiteInfo {
     private long user_id;
     private String user_photo;
     private String user_name;
+    private String user_descript;
 
     private int article_count;
 
+    public String getUser_descript() {
+        return user_descript;
+    }
+
+    public void setUser_descript(String user_descript) {
+        this.user_descript = user_descript;
+    }
 
     public int getArticle_count() {
         return article_count;

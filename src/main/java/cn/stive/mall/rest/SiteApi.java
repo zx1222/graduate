@@ -5,6 +5,7 @@ import cn.stive.mall.bean.Site;
 import cn.stive.mall.bean.mono.ArticleData;
 import cn.stive.mall.bean.mono.SiteInfo;
 import cn.stive.mall.service.ArticleService;
+import cn.stive.mall.service.CommentService;
 import cn.stive.mall.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,8 @@ import java.util.Map;
 public class SiteApi extends BaseHandler{
     @Autowired
     private SiteService siteService;
+    @Autowired
+    private CommentService commentService;
 
     @Autowired
     ArticleService articleService;
@@ -94,6 +97,20 @@ public class SiteApi extends BaseHandler{
 
         return this.success(result);
     }
+
+
+    @RequestMapping("mono/site/focus")
+    @ResponseBody
+    public Response focusSite(long site_id,long visitor_id){
+        int result = commentService.focusSite(site_id,visitor_id);
+
+        if(result ==1) {
+            return this.success("focus");
+        }else{
+            return this.success("unfocus");
+        }
+    }
+
 
 
 
