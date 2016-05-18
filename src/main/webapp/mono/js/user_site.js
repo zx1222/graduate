@@ -44,7 +44,7 @@ window.onload = function () {
         user_name.innerHTML = site_info.user_name;
 
         var user_describe = document.getElementById("user_describe");
-        user_describe.innerHTML = JSON.parse(decodeURI($.cookie("user_info"))).descript;
+        user_describe.innerHTML = site_info.user_descript;
     }
 
     window.onscroll = function () {
@@ -78,7 +78,6 @@ window.onload = function () {
     function fillArticleContent(article_info) {
         var parent = document.getElementById("content");
         for (var i = 0; i < article_info.length; i++) {
-            console.log(article_info);
             var contentbox = document.createElement("div");
             contentbox.className = "contentbox";
             parent.appendChild(contentbox);
@@ -125,11 +124,12 @@ window.onload = function () {
             interflowaforward.appendChild(interflowforwardimg);
             var interflowforwardcount=document.createElement("p");
             interflowforwardcount.innerHTML=article_info[i].forward_count;
-            interflowaforward.appendChild(interflowforwardcount);
+            interflowaforward.appendChild(interflowforwardcount)
 
             var interflowspan = document.createElement("span");
             interflow.appendChild(interflowspan);
             var interflowaup = document.createElement("a");
+            interflowaup.href = "javascript:social.upArticle("+article_info[i].id+")"
             interflowspan.appendChild(interflowaup);
             var  interflowupimg = document.createElement("img");
             interflowupimg.src = "../img/homeimg/" + interflowimgData.data[1].src;
@@ -141,6 +141,7 @@ window.onload = function () {
             var interflowspan = document.createElement("span");
             interflow.appendChild(interflowspan);
             var interflowalike = document.createElement("a");
+            interflowalike.href="javascript:social.collect("+article_info[i].id+")"
             interflowspan.appendChild(interflowalike);
             var interflowlikeimg = document.createElement("img");
             interflowlikeimg.src = "../img/homeimg/" + interflowimgData.data[2].src;

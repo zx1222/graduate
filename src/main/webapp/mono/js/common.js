@@ -164,6 +164,10 @@ commonJs.replace = function(oldStr,rep_char,target_char){
 
 }
 
+function logout (){
+    $.cookie('cookieName',null,{path:'/'})
+    window.location.href="/index.html";
+}
 
 
 
@@ -191,4 +195,5 @@ Date.prototype.Format = function(fmt)
             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
     return fmt;
 }
+
 
