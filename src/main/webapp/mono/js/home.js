@@ -134,9 +134,9 @@ function fillArticleList(article_list){
         var interflowspan = document.createElement("span");
         interflow.appendChild(interflowspan);
         var interflowaup = document.createElement("a");
-        // interflowaup.href = "javascript:social.upArticle("+article_list[i].article_data.id+",this)"
+        interflowaup.href = "javascript:social.upArticle("+article_list[i].article_data.id+")";
 
-        interflowaup.onclick="alert()";
+        // interflowaup.onclick="alert()";
 
         interflowspan.appendChild(interflowaup);
         var  interflowupimg = document.createElement("img");

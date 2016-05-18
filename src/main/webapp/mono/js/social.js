@@ -19,8 +19,8 @@ social.upArticle = function(article_id,up_btn){
     $.get("/mono/article/up",{article_id:article_id,visitor_id:user_id},function(){
         alert("操作成功!");
     })
-    var pre_count = $(up_btn).children("p").html();
-    $(up_btn).children("p").html(pre_count+1);
+    // var pre_count = $(up_btn).children("p").html();
+    // $(up_btn).children("p").html(pre_count+1);
 }
 
 social.upComment = function(){
