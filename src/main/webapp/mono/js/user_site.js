@@ -146,7 +146,7 @@ window.onload = function () {
             interflowlikeimg.src = "../img/homeimg/" + interflowimgData.data[2].src;
             interflowalike.appendChild(interflowlikeimg);
             var interflowcollectioncount=document.createElement("p");
-            interflowcollectioncount.innerHTML=article_info[i].collection_count;
+            interflowcollectioncount.innerHTML=article_info[i].collect_count;
             interflowalike.appendChild(interflowcollectioncount);
 
             var interflowspan = document.createElement("span");

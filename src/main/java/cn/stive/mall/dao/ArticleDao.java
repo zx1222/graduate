@@ -27,6 +27,7 @@ public class ArticleDao {
     public void insertArticle(Article article) throws Exception {
         Map<String,Object> sql_map =  SqlUtil.getSqlMap(article,null);
         List<Object> args = new ArrayList<Object>();
+
         String sql = SqlUtil.getInsertSql("a_article",sql_map,args);
 
         jdbcTemplate.update(sql,args.toArray());
@@ -35,14 +36,12 @@ public class ArticleDao {
     }
 
 
-    public List<Article> getArticleList(int page,int len){
-        return getArticleList(0,1,page,len);
-    }
 
     public List<Article> getArticleList(long site_id,long user_id,int page,int len){
         String sql = "select a.id,a.title,a.description,a.create_time from a_article a left join a_site_mp s on s.article_id = a.id where a.status = 0 and user_id=? ";
 
         List<Object> args  = new ArrayList<Object>();
+
         args.add(user_id);
         if(site_id>0){
             sql += " and s.site_id=? and s.status=0";

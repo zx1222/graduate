@@ -20,9 +20,11 @@ ArticleApi extends BaseHandler{
 
     @RequestMapping("admin/article/add")
     @ResponseBody
-    public Response a(Article article) throws Exception {
+    public Response article(Article article) throws Exception {
+
         articleService.addArticle(article);
         return this.success();
+
     }
 
     @RequestMapping("admin/category")
