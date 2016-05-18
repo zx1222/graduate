@@ -65,7 +65,7 @@ public class SiteDao {
 
     public SiteInfo getSiteInfo(long site_id){
         String sql = "select s.id ,site_name,icon_url site_photo,cover_url site_cover,description site_descript," +
-                " u.id user_id ,head_url user_photo,nick_name user_name from a_site s left join u_user u on u.id = s.user_id " +
+                " u.id user_id ,head_url user_photo,u.descript user_descript,nick_name user_name from a_site s left join u_user u on u.id = s.user_id " +
                 " where s.id = ? and s.status = 0";
        return jdbcTemplate.queryForObject(sql,new Object[]{site_id},new BeanPropertyRowMapper<SiteInfo>(SiteInfo.class));
     }
