@@ -1,6 +1,7 @@
 package cn.stive.mall.dao;
 
 import cn.stive.mall.bean.User;
+import cn.stive.mall.bean.UserInfo;
 import cn.stive.mall.util.SqlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -85,6 +86,27 @@ public class UserDao {
     public int addFocus(long user_id, long visitor_id){
         String sql = "insert into u_focus (user_id,visitor_id) values(?,?)  on DUPLICATE KEY UPDATE status = status^1";
         return jdbcTemplate.update(sql,new Object[]{user_id,visitor_id});
+    }
+
+    public List<UserInfo> getFocusSite(long user_id){
+        String sql = "select s.id,s.site_name,s.icon_url  userphoto  from s_focus f join a_site s on s.id = f.site_id" +
+                "  where f.status = 0 and f.visitor_id =?";
+
+        return jdbcTemplate.query(sql,new Object[]{user_id},new BeanPropertyRowMapper<UserInfo>(UserInfo.class));
+    }
+
+    public List<UserInfo> getMySite(long user_id){
+        String sql = "select id,site_name name ,icon_url userphoto from a_site where user_id = ? and status = 0";
+
+        return jdbcTemplate.query(sql,new Object[]{user_id},new BeanPropertyRowMapper<UserInfo>(UserInfo.class));
+
+    }
+
+    public List<UserInfo> getFocusUser(long user_id){
+
+        String sql = "select u.id,u.nick_name name ,u.head_url userphoto from u_focus f join u_user u  on u.id = f.author_id where f.visitor_id = ? and f.status = 0 ";
+
+        return jdbcTemplate.query(sql,new Object[]{user_id},new BeanPropertyRowMapper<UserInfo>(UserInfo.class));
     }
 }
 

@@ -105,14 +105,15 @@ commonJs.fillForm = function(_jsonObj,_formObj){
 window.onload=function(){
 
     checkLogin();
-    commonJs.user_info = JSON.parse(decodeURI($.cookie("user_info")));
 }
 
 function checkLogin(){
+    console.log("check log in ");
     var c = JSON.parse($.cookie("user_info"));
     if(c==null){
         window.location.href="/admin/pages/login/login.html";
     }
+    commonJs.user_info = JSON.parse(decodeURI($.cookie("user_info")));
 
 
 }

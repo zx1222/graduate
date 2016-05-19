@@ -1,5 +1,6 @@
 package cn.stive.mall.service;
 
+import cn.stive.mall.bean.UserInfo;
 import cn.stive.mall.exception.LogAndRegsiterException;
 import cn.stive.mall.bean.User;
 import cn.stive.mall.dao.UserDao;
@@ -14,6 +15,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -120,6 +122,17 @@ public class UserService {
        return  userDao.addFocus(user_id,visitor_id);
     }
 
+    public List<UserInfo> getMySite(long user_id ) {
+        return userDao.getMySite(user_id);
+    }
+
+    public List<UserInfo> getFocusSite(long user_id){
+        return userDao.getFocusSite(user_id);
+    }
+
+    public List<UserInfo> getFocusUser(long user_id){
+        return userDao.getFocusUser(user_id);
+    }
 
 
 }

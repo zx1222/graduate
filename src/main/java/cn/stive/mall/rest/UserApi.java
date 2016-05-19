@@ -19,6 +19,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by dxt on 16/4/8.
@@ -90,6 +92,7 @@ public class UserApi extends BaseHandler {
     private Cookie setUserInfoCookie(User user) throws UnsupportedEncodingException {
         HttpSession session = request.getSession();
         user.setNick_name(URLEncoder.encode(user.getNick_name(),"UTF-8"));
+
         if(user.getDescript()!=null) {
             user.setDescript(URLEncoder.encode(user.getDescript(), "UTF-8"));
         }
@@ -111,6 +114,28 @@ public class UserApi extends BaseHandler {
         }
 
     }
+
+    @RequestMapping("/user/site")
+    @ResponseBody
+    public Response getUserSite(long user_id){
+
+        return this.success( userService.getMySite(user_id));
+    }
+
+    @RequestMapping("/user/focus/site")
+    @ResponseBody
+    public Response getFocusSite(long user_id){
+
+        return this.success( userService.getFocusSite(user_id));
+    }
+
+    @RequestMapping("/user/focus/user")
+    @ResponseBody
+    public Response getFocusUser(long user_id){
+
+        return this.success( userService.getFocusUser(user_id));
+    }
+
 
 
 }
