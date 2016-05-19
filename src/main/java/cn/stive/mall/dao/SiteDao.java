@@ -1,6 +1,7 @@
 package cn.stive.mall.dao;
 
 import cn.stive.mall.bean.Site;
+import cn.stive.mall.bean.mono.SearchSite;
 import cn.stive.mall.bean.mono.SiteInfo;
 import cn.stive.mall.util.SqlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,12 @@ public class SiteDao {
                 " u.id user_id ,head_url user_photo,u.descript user_descript,nick_name user_name from a_site s left join u_user u on u.id = s.user_id " +
                 " where s.id = ? and s.status = 0";
        return jdbcTemplate.queryForObject(sql,new Object[]{site_id},new BeanPropertyRowMapper<SiteInfo>(SiteInfo.class));
+    }
+
+    public List<SearchSite> getSearchSite(String s_str){
+        String sql = "select id,site_name,description,cover_url from a_site where site_name like '%?%' or description like '%?%'  and status = 0";
+
+        return jdbcTemplate.query(sql,new Object[]{s_str,s_str},new BeanPropertyRowMapper<SearchSite>(SearchSite.class));
     }
 
 

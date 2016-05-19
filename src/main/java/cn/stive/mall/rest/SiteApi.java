@@ -112,6 +112,13 @@ public class SiteApi extends BaseHandler{
     }
 
 
+    @RequestMapping("mono/site/search")
+    @ResponseBody
+    public Response searchSite(String s_str){
+
+
+        return this.success(siteService.getSearchSite(s_str));
+    }
 
 
 
