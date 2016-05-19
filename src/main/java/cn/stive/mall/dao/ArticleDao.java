@@ -5,12 +5,14 @@ import cn.stive.mall.bean.Category;
 import cn.stive.mall.bean.mono.ArticleData;
 import cn.stive.mall.bean.mono.ArticleDetail;
 import cn.stive.mall.bean.mono.ArticlePage;
+import cn.stive.mall.bean.mono.SearchArticle;
 import cn.stive.mall.util.SqlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.net.URLEncoder;
 import java.util.*;
 
 /**
@@ -131,5 +133,12 @@ public class ArticleDao {
     public List<Category> getCategory(){
         String sql  ="select id ,category_name from a_category ";
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<Category>(Category.class));
+    }
+
+
+    public List<SearchArticle> getSearchArticle(String s_str){
+        String sql = " select id , title,description subhead ,cover_url from a_article where title like ? and status = 0 ";
+
+        return jdbcTemplate.query(sql ,new Object[]{"%"+s_str+"%"},new BeanPropertyRowMapper<SearchArticle>(SearchArticle.class));
     }
 }

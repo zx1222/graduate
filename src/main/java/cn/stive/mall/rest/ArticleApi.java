@@ -88,4 +88,15 @@ ArticleApi extends BaseHandler{
                                    @RequestParam(required = false,defaultValue = "20")int len){
         return this.success(articleService.getMonoArticleList(page,len,user_id));
     }
+
+
+
+    @RequestMapping("mono/article/search")
+    @ResponseBody
+    public Response searchArticle(String s_str){
+
+
+        return this.success(articleService.getSearchArticle(s_str));
+    }
+
 }

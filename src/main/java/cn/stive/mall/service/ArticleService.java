@@ -5,6 +5,7 @@ import cn.stive.mall.bean.Category;
 import cn.stive.mall.bean.mono.ArticleData;
 import cn.stive.mall.bean.mono.ArticleDetail;
 import cn.stive.mall.bean.mono.ArticlePage;
+import cn.stive.mall.bean.mono.SearchArticle;
 import cn.stive.mall.dao.ArticleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,5 +64,10 @@ public class ArticleService {
 
     public List<ArticlePage> getMonoArticleList(int page,int len,long user_id){
         return articleDao.getArticleDetailList(page,len,user_id);
+    }
+
+
+    public List<SearchArticle> getSearchArticle(String s_str){
+        return articleDao.getSearchArticle(s_str);
     }
 }

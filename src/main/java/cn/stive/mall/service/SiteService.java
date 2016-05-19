@@ -1,6 +1,7 @@
 package cn.stive.mall.service;
 
 import cn.stive.mall.bean.Site;
+import cn.stive.mall.bean.mono.SearchSite;
 import cn.stive.mall.bean.mono.SiteInfo;
 import cn.stive.mall.dao.SiteDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,10 @@ public class SiteService {
 
     public SiteInfo getSiteInfo(long site_id){
         return siteDao.getSiteInfo(site_id);
+    }
+
+    public List<SearchSite> getSearchSite(String s_str){
+        return siteDao.getSearchSite(s_str);
     }
 
     
