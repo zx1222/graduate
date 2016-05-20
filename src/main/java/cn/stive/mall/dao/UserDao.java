@@ -89,7 +89,7 @@ public class UserDao {
     }
 
     public List<UserInfo> getFocusSite(long user_id){
-        String sql = "select s.id,s.site_name,s.icon_url  userphoto  from s_focus f join a_site s on s.id = f.site_id" +
+        String sql = "select s.id,s.site_name name,s.icon_url  userphoto  from s_focus f join a_site s on s.id = f.site_id" +
                 "  where f.status = 0 and f.visitor_id =?";
 
         return jdbcTemplate.query(sql,new Object[]{user_id},new BeanPropertyRowMapper<UserInfo>(UserInfo.class));

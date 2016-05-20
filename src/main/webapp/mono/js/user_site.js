@@ -189,9 +189,9 @@ window.onload = function () {
             return true;
         }
     }
-
+    var user_id = commonJs.user_info.id;
     $("#focus_site").click(function(){
-        $.get("/mono/site/focus",{site_id:article.site_id,visitor_id:user_id},function(){
+        $.get("/mono/site/focus",{site_id:site_id,visitor_id:user_id},function(){
             alert("操作成功!");
         })
     })

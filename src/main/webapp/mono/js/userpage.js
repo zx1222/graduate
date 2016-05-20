@@ -63,14 +63,14 @@ window.onload=function () {
 
         var focussitebox=document.getElementById("focussitebox");
         for(var i in focus_sitelist) {
-            console.log(focus_userlist[i]);
+            console.log(focus_sitelist[i]);
             var focus_sitebox=document.createElement("div");
             focus_sitebox.className="focus_sitebox";
             focussitebox.appendChild(focus_sitebox);
 
             var focus_site_photo=document.createElement("div");
             focus_site_photo.className="focus_site_photo";
-            focus_site_photo.style.backgroundImage="url("+focus_sitelist[i].sitephoto+")";
+            focus_site_photo.style.backgroundImage="url("+focus_sitelist[i].userphoto+")";
             focus_sitebox.appendChild(focus_site_photo);
 
             var focus_site_id=document.createElement("div");

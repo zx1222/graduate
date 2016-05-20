@@ -73,7 +73,7 @@ public class CommentDao {
     }
 
     public int  addFocus(long site_id, long visitor_id){
-        String sql = "insert into s_focus (user_id,visitor_id) values(?,?)  on DUPLICATE KEY UPDATE status = status^1";
+        String sql = "insert into s_focus (site_id,visitor_id) values(?,?)  on DUPLICATE KEY UPDATE status = status^1";
         int result =  jdbcTemplate.update(sql,new Object[]{site_id,visitor_id});
 
         if(result==1){
