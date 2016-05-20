@@ -70,4 +70,7 @@ public class ArticleService {
     public List<SearchArticle> getSearchArticle(String s_str){
         return articleDao.getSearchArticle(s_str);
     }
+    public List<SearchArticle> getFocusedArticle(long  user_id){
+        return articleDao.getFocusedArticle(user_id);
+    }
 }
