@@ -189,5 +189,11 @@ window.onload = function () {
             return true;
         }
     }
+
+    $("#focus_site").click(function(){
+        $.get("/mono/site/focus",{site_id:article.site_id,visitor_id:user_id},function(){
+            alert("操作成功!");
+        })
+    })
 }
 

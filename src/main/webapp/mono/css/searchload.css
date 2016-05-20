@@ -31,7 +31,7 @@ body{
     height: 80px;
     border-bottom: 1px solid #eee;
 }
-.search_sitebox .user_photo{
+.search_sitebox .site_photo{
     width: 60px;
     height: 60px;
     background-image: url("../img/homeimg/user.jpg");
