@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 /**
  * Created by dxt on 16/4/12.
  */
@@ -93,7 +96,8 @@ ArticleApi extends BaseHandler{
 
     @RequestMapping("mono/article/search")
     @ResponseBody
-    public Response searchArticle(String s_str){
+    public Response searchArticle(String s_str) throws UnsupportedEncodingException {
+        s_str = URLDecoder.decode(s_str,"UTF-8");
 
 
         return this.success(articleService.getSearchArticle(s_str));

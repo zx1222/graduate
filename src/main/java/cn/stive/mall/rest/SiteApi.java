@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,8 +116,8 @@ public class SiteApi extends BaseHandler{
 
     @RequestMapping("mono/site/search")
     @ResponseBody
-    public Response searchSite(String s_str){
-
+    public Response searchSite(String s_str) throws UnsupportedEncodingException {
+        s_str = URLDecoder.decode(s_str,"UTF-8");
 
         return this.success(siteService.getSearchSite(s_str));
     }

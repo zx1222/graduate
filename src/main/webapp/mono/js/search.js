@@ -1,18 +1,18 @@
 window.onload = function (){
 
-
+    var s_str = window.location.search.split("=")[1];
     // var inserttxt=document.getElementById("searchbox").value;
     // console.log(inserttxt);
-    $.get("/mono/article/search",{s_str:"电影"},function(data){
+    $.get("/mono/article/search",{s_str:s_str},function(data){
         var article_list = data.data;
         search.fillArticle(article_list);
     });
 
 
 
-    $.get("/mono/site/search",{s_str:"张国荣"},function(data){
+    $.get("/mono/site/search",{s_str:s_str},function(data){
         var site_list = data.data;
-        search.fillArticle(site_list);
+        search.fillSite(site_list);
     });
 
 
@@ -31,7 +31,7 @@ search.fillArticle= function(article_list){
 
         var article_cover=document.createElement("div");
         article_cover.className="article_cover";
-        article_cover.style.backgroundImage="url("+article_list.article_cover+")";
+        article_cover.style.backgroundImage="url("+article_list[i].cover_url+")";
         search_contentbox.appendChild(article_cover);
 
         var article_text=document.createElement("div");
@@ -56,14 +56,14 @@ search.fillArticle= function(article_list){
 search.fillSite = function(site_list){
     console.log(site_list);
     var parent=document.getElementById("search_site");
-    for(var i in article_list){
+    for(var i in site_list){
         var search_sitebox=document.createElement("div");
         search_sitebox.className="search_sitebox";
         parent.appendChild(search_sitebox);
 
         var site_photo=document.createElement("div");
         site_photo.className="site_photo";
-        site_photo.style.backgroundImage="url("+site_list.site_photo+")";
+        site_photo.style.backgroundImage="url("+site_list[i].icon_url+")";
         search_sitebox.appendChild(site_photo);
 
         var site_text=document.createElement("div");
@@ -72,12 +72,12 @@ search.fillSite = function(site_list){
 
         var site_id=document.createElement("div");
         site_id.className="site_id";
-        site_id.innerHTML=site_list[i].id;
+        site_id.innerHTML=site_list[i].site_name;
         site_text.appendChild(site_id);
 
         var site_describle=document.createElement("div");
         site_describle.className="site_describle";
-        site_describle.innerHTML=site_list[i].site_describle;
+        site_describle.innerHTML=site_list[i].descript;
         site_text.appendChild(site_describle);
     }
 

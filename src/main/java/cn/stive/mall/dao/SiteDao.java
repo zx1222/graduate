@@ -73,7 +73,7 @@ public class SiteDao {
 
     public List<SearchSite> getSearchSite(String s_str){
         String s = "%"+s_str+"%";
-        String sql = "select id,site_name,description descript ,cover_url icon_url from a_site where site_name like ?  or description like ?  and status = 0";
+        String sql = "select id,site_name,description descript , icon_url from a_site where site_name like ?  or description like ?  and status = 0";
 
         return jdbcTemplate.query(sql,new Object[]{s,s},new BeanPropertyRowMapper<SearchSite>(SearchSite.class));
     }
