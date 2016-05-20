@@ -23,7 +23,7 @@ var article=  {
         author.innerHTML = article_page.author;
         main_content.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+decodeURI(article_page.main_content);
 
-        comment.href="pinglun.html?article_id"+article_page.article_id;
+        comment.href="pinglun.html?article_id="+article.article_id;
 
     },
     getArticleData:function (func,id) {
