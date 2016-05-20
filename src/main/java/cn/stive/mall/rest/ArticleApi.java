@@ -103,4 +103,10 @@ ArticleApi extends BaseHandler{
         return this.success(articleService.getSearchArticle(s_str));
     }
 
+    @RequestMapping("mono/article/collect/list")
+    @ResponseBody
+    public Response focusArticle(long  user_id){
+        return this.success(articleService.getFocusedArticle(user_id));
+    }
+
 }

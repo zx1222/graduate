@@ -141,4 +141,10 @@ public class ArticleDao {
 
         return jdbcTemplate.query(sql ,new Object[]{"%"+s_str+"%"},new BeanPropertyRowMapper<SearchArticle>(SearchArticle.class));
     }
+
+    public List<SearchArticle> getFocusedArticle(long  user_id){
+        String sql = " select a.id , title,description subhead ,cover_url from a_article a join a_collect c on c.article_id = a.id where user_id = ? and a.status = 0  ";
+
+        return jdbcTemplate.query(sql ,new Object[]{user_id},new BeanPropertyRowMapper<SearchArticle>(SearchArticle.class));
+    }
 }
