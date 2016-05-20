@@ -1,6 +1,5 @@
 window.onload = function (){
 
-    // var s_str = window.search.split("=")[1];
 
     // var inserttxt=document.getElementById("searchbox").value;
     // console.log(inserttxt);
@@ -10,7 +9,8 @@ window.onload = function (){
     });
 
 
-    $.get("/mono/article/search",{s_str:"电影"},function(data){
+
+    $.get("/mono/site/search",{s_str:"张国荣"},function(data){
         var site_list = data.data;
         search.fillArticle(site_list);
     });
@@ -49,6 +49,9 @@ search.fillArticle= function(article_list){
         article_text.appendChild(search_article_subhead);
     }
 }
+
+
+
 
 search.fillSite = function(site_list){
     console.log(site_list);

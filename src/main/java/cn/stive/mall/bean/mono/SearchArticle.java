@@ -9,6 +9,13 @@ public class SearchArticle {
     private String subhead;
     private String cover_url;
 
+    public String getCover_url() {
+        return cover_url;
+    }
+
+    public void setCover_url(String cover_url) {
+        this.cover_url = cover_url;
+    }
 
     public long getId() {
         return id;
